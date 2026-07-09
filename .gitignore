@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# Grok Build local
+.xgic/
+.tmp/
+tmp/
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.env
+.env.*
