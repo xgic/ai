@@ -1,0 +1,36 @@
+name: Documentation / standards
+description: Propose or improve hub documentation, ADRs, or registry entries
+title: "docs: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe a public-safe improvement to this multi-repo standards hub.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What should change and why?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Base standards
+        - ADR
+        - Architecture / workflow / playbooks
+        - Python namespace registry
+        - README / AGENTS / CONTRIBUTING
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public safety
+      options:
+        - label: This request does not require publishing private coordination details
+          required: true

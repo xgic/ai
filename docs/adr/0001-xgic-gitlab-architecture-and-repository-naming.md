@@ -63,7 +63,7 @@ This ADR records the key architectural decisions for Phase 1 delivery and a sust
 
 **Consequences**:
 - Phase 1 may use focused entry points inside orchestrator images.
-- Phase 2 adopts namespaces such as `xgic.cli.*` and related libraries per the public namespace convention (see `docs/xgic-python-namespace-convention.md` in this repository).
+- Phase 2 adopts namespaces such as `xgic.cli.*` and related libraries per the public namespace convention (see [xgic-python-namespace-convention.md](../xgic-python-namespace-convention.md)).
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Audience
 
-High-level orientation for public consumers and AI agents. Full internal registry details (local paths, private coordination) are maintained privately and are intentionally omitted here.
+High-level orientation for public consumers and AI agents. Internal-only registry details are intentionally omitted; this file is the **public** registry summary cited by other XGIC repositories.
 
 ## Purpose
 
