@@ -1,16 +1,34 @@
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
+.Python
 .venv/
 venv/
-# Grok Build local
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Grok Build / local agent artifacts (never commit)
 .xgic/
 .tmp/
 tmp/
+*.local.md
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
 # OS / IDE
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
-.env
-.env.*
+*.swp
+*~

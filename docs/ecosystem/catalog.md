@@ -1,0 +1,105 @@
+# XGIC ecosystem component catalog
+
+**Audience:** humans and AI agents.  
+**Rule:** Prefer this table over inventing modules. Update via PR when a public component is added, renamed, or retired.
+
+**Status legend**
+
+| Status | Meaning |
+|--------|---------|
+| `available` | Public repository and/or published artifact exists |
+| `planned` | Intended public component; not yet fully published |
+| `experimental` | Public but evolving rapidly; APIs may change |
+| `reference` | Pattern documented here; implementation may live in a sibling repo |
+
+---
+
+## 1. Intelligence and standards
+
+| ID | Name | Type | Status | Location | Purpose |
+|----|------|------|--------|----------|---------|
+| `hub.ai` | XGIC AI hub | docs / standards | `available` | [xgic/ai](https://github.com/xgic/ai) | Public multi-repo intelligence: ADRs, standards, catalog, agent knowledge |
+| `std.base` | Base standards | standard | `available` | [BASE-STANDARDS…](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) | Minimum process/docs for public orchestrated repos |
+| `std.adr` | ADR set | decisions | `available` | [docs/adr/](../adr/) | Formal multi-repo architecture decisions |
+| `std.playbooks` | AI playbooks | playbooks | `available` | [grok-playbooks.md](../grok-playbooks.md), [agent/](../agent/) | Agentic workflows and recommendation rules |
+
+---
+
+## 2. Python libraries
+
+| ID | Name | Namespace | Status | Location | Purpose |
+|----|------|-----------|--------|----------|---------|
+| `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `planned` | [xgic/cli](https://github.com/xgic/cli) (planned) | Shared CLI framework for modular commands |
+| `lib.xde` | Environment orchestration library | (via `xde` / CLI modules) | `experimental` | Lives with Payload/dev-container tooling today; extractable | Dev container & environment orchestration primitives |
+
+See also: [Python namespace convention](../xgic-python-namespace-convention.md).
+
+---
+
+## 3. XGIC CLI and modules
+
+| ID | Name | Namespace | Status | Location | Purpose |
+|----|------|-----------|--------|----------|---------|
+| `cli.core` | XGIC CLI core | `xgic.cli` | `planned` | planned `xgic/cli` | Entry framework, config, plugins |
+| `cli.dev` | Dev Container CLI | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
+| `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
+| `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
+| `cli.payload` | Payload CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload / project orchestration with dev tooling |
+
+**Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
+
+---
+
+## 4. Dev Containers, images, and registries
+
+| ID | Name | Type | Status | Location | Purpose |
+|----|------|------|--------|----------|---------|
+| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload + tooling environment; `xde` surface |
+| `img.ghcr` | GHCR publications | container images | `planned` / partial | GitHub Container Registry under `xgic` | Published images for templates and orchestrators |
+| `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
+| `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
+
+**Vendor images:** Prefer official unaltered images for third-party products (GitLab EE, Postgres, Redis, etc.).
+
+---
+
+## 5. Orchestration and platform services
+
+| ID | Name | Type | Status | Location | Purpose |
+|----|------|------|--------|----------|---------|
+| `orch.gitlab` | GitLab orchestration surface | Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE-oriented orchestration / template experience |
+| `orch.compose` | Docker Compose-first ops | pattern | `reference` | [platform/docker-compose.md](../platform/docker-compose.md) | Default on-prem deployment model |
+| `orch.k8s` | Kubernetes path | pattern | `reference` | [platform/kubernetes.md](../platform/kubernetes.md) | Future scale-out; same contracts where possible |
+| `orch.hybrid` | Hybrid on-prem / cloud | pattern | `reference` | [platform/hybrid.md](../platform/hybrid.md) | Lab/edge Compose + cloud K8s recommendations |
+
+---
+
+## 6. Applications and content platforms
+
+| ID | Name | Stack | Status | Location | Purpose |
+|----|------|-------|--------|----------|---------|
+| `app.payload` | Payload CMS solutions | Payload CMS | `experimental` / `available` tooling | Dev-container repo + future app templates | Headless CMS and content apps |
+| `app.next` | Next.js applications | Next.js | `planned` | future public app repos | Web frontends and full-stack Next apps |
+| `app.fullstack` | Custom full-stack apps | polyglot | `planned` | future public app repos | Product-specific full-stack systems following hub standards |
+| `app.unreal` | Unreal Engine tools & plugins | Unreal Engine | `planned` | future public UE repos | Editor tools, plugins, pipelines |
+
+---
+
+## 7. Cross-cutting practices
+
+| ID | Name | Status | Location | Purpose |
+|----|------|--------|----------|---------|
+| `prac.agentic` | Agentic workflows | `available` | [grok-playbooks.md](../grok-playbooks.md), [agent/](../agent/) | Multi-step AI-assisted implementation |
+| `prac.python314` | Python 3.14 baseline | `available` | [ADR-0002](../adr/0002-standardize-on-python-3-14.md) | New Python development standard |
+| `prac.apache` | Apache 2.0 licensing | `available` | [licensing.md](../licensing.md), [ADR-0004](../adr/0004-apache-2-0-for-public-solutions.md) | Public solutions license |
+| `prac.security` | Public hard security | `available` | [BASE-STANDARDS…](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) | Zero private leakage in public artifacts |
+
+---
+
+## Catalog maintenance
+
+1. New public component → add a row with stable `ID`, status, and HTTPS location.  
+2. Rename/move → update row and leave a one-line note in PR description.  
+3. Retire → set status to retired in a follow-up or remove with ADR if multi-repo impact.  
+4. Do **not** list private repositories or private tracker IDs.
