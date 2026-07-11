@@ -66,6 +66,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 - **Human review gate**: agents prepare complete drafts; humans review and approve in the GitHub UI before merge to `main`. Agents never approve or merge their own PRs.
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
 - **Atomic changes**: include relevant doc updates in the same commit when they are part of the change.
+- **Labels (mandatory):** apply proper labels to every issue, PR, and Discussion welcome post before considering the artifact complete. Welcome posts: `welcome` + `documentation`. See [docs/community-health.md](docs/community-health.md).
 - **Rule text lives in standards docs** (this file, base standards). Do not restate full rule procedures in issue/PR templates.
 
 ---

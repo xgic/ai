@@ -32,7 +32,7 @@ This repository is public-facing. Do **not** include private repository details,
 
 ## Community health (org standard)
 
-XGIC public repositories use root `CONTRIBUTING.md`, YAML issue forms, and Discussions per [docs/community-health.md](docs/community-health.md) (coordinating issue: https://github.com/xgic/ai/issues/5).  
+XGIC public repositories use root `CONTRIBUTING.md`, YAML issue forms, Discussions, and **mandatory labels** on issues, PRs, and welcome Discussion posts per [docs/community-health.md](docs/community-health.md) (coordinating issue: https://github.com/xgic/ai/issues/5).  
 
 ## License
 
