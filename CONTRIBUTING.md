@@ -30,6 +30,10 @@ This repository is public-facing. Do **not** include private repository details,
 - Prefer linking hub docs over duplicating policy text elsewhere  
 - Catalog entries need stable IDs and honest status (`available` / `planned` / …)  
 
+## Community health (org standard)
+
+XGIC public repositories use root `CONTRIBUTING.md`, YAML issue forms, and Discussions per [docs/community-health.md](docs/community-health.md) (coordinating issue: https://github.com/xgic/ai/issues/5).  
+
 ## License
 
 By contributing, you agree that your contributions are licensed under the **Apache License, Version 2.0** (see [LICENSE](LICENSE) and [NOTICE](NOTICE)).

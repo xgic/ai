@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a problem with this hub (docs, standards, links, or repository configuration)
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the XGIC public multi-repo intelligence hub.
+        For product-specific bugs (GitLab stack, GraphQL client, Payload tooling), open an issue in that repository instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Optional. Include links with full https://github.com/xgic/... URLs when relevant.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public safety
+      options:
+        - label: This report does not include private hosts, private tracker IDs, internal paths, or secrets
+          required: true

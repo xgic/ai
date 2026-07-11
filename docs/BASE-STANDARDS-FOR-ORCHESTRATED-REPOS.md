@@ -46,7 +46,7 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
    - development or orchestration workflow
    - playbooks for AI-assisted tasks (optional but recommended)
 7. **`.gitignore`** covering secrets, virtualenvs, IDE noise, and **`.xgic/`** (local agent status reports; never commit).
-8. **Issue / PR templates** that collect useful fields **without** embedding full rule text (point to `AGENTS.md` / this document if a short pointer is needed).
+8. **Issue / PR templates** that collect useful fields **without** embedding full rule text (point to `AGENTS.md` / this document if a short pointer is needed). Follow [community-health.md](community-health.md): YAML issue forms, `blank_issues_enabled: false`, root `CONTRIBUTING.md` only, Discussions contact links only when enabled.
 9. **Python 3.14** for *new* Python development ([ADR-0002](adr/0002-standardize-on-python-3-14.md)):
    - `requires-python = ">=3.14"`
    - Prefer official `python:3.14.6-slim` (or current pinned 3.14 patch) for containers
