@@ -51,7 +51,7 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | [adr/README.md](adr/README.md) | ADR process and index |
 | [adr/0001-…](adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | GitLab architecture, naming, phased CLI |
 | [adr/0002-…](adr/0002-standardize-on-python-3-14.md) | Python 3.14 baseline |
-| [adr/0003-…](adr/0003-compose-first-kubernetes-ready.md) | Compose-first, Kubernetes-ready |
+| [adr/0003-…](adr/0003-docker-compose-first-kubernetes-ready.md) | Docker Compose-first, Kubernetes-ready |
 | [adr/0004-…](adr/0004-apache-2-0-for-public-solutions.md) | Apache 2.0 for public solutions |
 
 ## Templates

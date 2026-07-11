@@ -1,4 +1,4 @@
-# ADR-0003: Compose-first deployments with Kubernetes-ready architecture
+# ADR-0003: Docker Compose-first deployments with Kubernetes-ready architecture
 
 **Status**: Accepted  
 **Date**: 2026-07-11  
@@ -19,8 +19,8 @@ Agents need a clear default so recommendations stay consistent across the ecosys
 1. **Default deployment documentation and samples use Docker Compose** for on-premises, lab, and single-host scenarios.  
 2. **Application and image contracts must remain portable** so the same artifacts can run under Kubernetes without redesigning business logic.  
 3. **Kubernetes guidance is first-class documentation** (path, patterns, checklists) and is implemented in product repositories when scale requirements appear.  
-4. **Hybrid** deployments (Compose on edge/on-prem + K8s in cloud) are supported as an explicit pattern, not an afterthought.  
-5. AI agents **recommend Compose first** unless the user states requirements that justify Kubernetes (HA, multi-cluster, advanced policy/autoscaling, etc.).
+4. **Hybrid** deployments (Docker Compose on edge/on-prem + K8s in cloud) are supported as an explicit pattern, not an afterthought.  
+5. AI agents **recommend Docker Compose first** unless the user states requirements that justify Kubernetes (HA, multi-cluster, advanced policy/autoscaling, etc.).
 
 ---
 

@@ -17,7 +17,7 @@ A **secure, well-documented, AI-accelerated platform** for building and operatin
 - GitHub Flow + human review across orchestrated public repos
 - Existing OSS seeds: GraphQL client, GitLab orchestration surface, Payload/dev-container tooling
 
-### Phase 1 — Compose-first delivery
+### Phase 1 — Docker Compose-first delivery
 
 - On-premises and workstation deployments default to **Docker Compose**
 - Official vendor images for third-party services where applicable ([ADR-0001](adr/0001-xgic-gitlab-architecture-and-repository-naming.md))

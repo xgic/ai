@@ -1,4 +1,4 @@
-# Platform overview — Compose first, Kubernetes ready
+# Platform overview — Docker Compose first, Kubernetes ready
 
 ## Intent
 
@@ -10,7 +10,7 @@ XGIC public solutions target a **full-stack cloud-native platform** over time, w
 | Scale / multi-cluster | **Kubernetes** | [kubernetes.md](kubernetes.md) |
 | Mixed | **Hybrid** | [hybrid.md](hybrid.md) |
 
-Formal decision: [ADR-0003](../adr/0003-compose-first-kubernetes-ready.md).
+Formal decision: [ADR-0003](../adr/0003-docker-compose-first-kubernetes-ready.md).
 
 ## Principles
 

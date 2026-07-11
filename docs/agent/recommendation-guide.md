@@ -46,7 +46,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 | Match | `dc.payload` / payload-cms-dev-containers |
 | Link | https://github.com/xgic/payload-cms-dev-containers |
 | Compose | Dev Container + Compose services; prefer `xde` patterns over new Makefiles |
-| Deploy | Compose first |
+| Deploy | Docker Compose first |
 | Avoid | Custom forked DB images if official Postgres works |
 
 ### C. “We need production HA in the cloud”
@@ -73,7 +73,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 1. Point to hub README + VISION  
 2. Show catalog families  
 3. List available repos with HTTPS links  
-4. Explain Compose-first ops and public-safe rules  
+4. Explain Docker Compose-first ops and public-safe rules  
 
 ## Quality bar
 

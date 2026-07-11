@@ -38,7 +38,7 @@ Host / cluster runtime
 | Local GitLab EE lab | `orch.gitlab` + Compose + official images | Custom GitLab EE image forks |
 | Payload contributor environment | `dc.payload` / `xde` patterns | One-off Dockerfiles without shared tooling |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
-| On-prem deploy | Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
+| On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
 | Cloud HA / multi-cluster | K8s path with portable contracts | Rewriting app logic for the orchestrator |
 | Multi-repo policy | Link `https://github.com/xgic/ai` | Forking large policy docs into every repo |
 
@@ -79,7 +79,7 @@ Host / cluster runtime
 | New Makefile islands | Divergent DX | xde / CLI modules |
 | Custom vendor image forks | Patch burden | Official images + config |
 | Invented `xgic` submodules not in catalog | Agent confusion | PR to update catalog first |
-| K8s-only from day one for simple on-prem | Complexity tax | Compose first |
+| K8s-only from day one for simple on-prem | Complexity tax | Docker Compose first |
 | Duplicating ADRs in every repo | Drift | Cite hub ADRs |
 
 ---

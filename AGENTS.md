@@ -16,7 +16,7 @@ Act as the **central public intelligence layer** for the XGIC ecosystem:
 | Ecosystem “what exists” | `docs/ecosystem/catalog.md` |
 | Ecosystem “how it fits” | `docs/ecosystem/composition.md` |
 | Agent knowledge model | `docs/agent/knowledge-model.md` |
-| Platform path (Compose → K8s) | `docs/platform/` |
+| Platform path (Docker Compose → K8s) | `docs/platform/` |
 | Formal decisions | `docs/adr/` |
 | Long-term vision | `docs/VISION.md` |
 

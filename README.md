@@ -19,7 +19,7 @@ This repository is the **public entry point** into XGIC open-source solutions. I
 |----------|--------|
 | **Humans** | Single place to discover XGIC OSS, decisions, and implementation patterns |
 | **AI agents** | Structured ecosystem knowledge for intelligent, context-aware recommendations |
-| **Implementers** | Faster onboarding: standards, Compose-first ops, and clear module boundaries |
+| **Implementers** | Faster onboarding: standards, Docker Compose-first ops, and clear module boundaries |
 | **Contributors** | Shared ADRs, licensing (Apache 2.0), and contribution process |
 
 Without a hub, multi-repo ecosystems fragment: agents invent dependencies, humans re-read tribal knowledge, and standards drift. **`xgic/ai` is the central intelligence layer** that keeps the public surface coherent as Grok Build and automation advance across projects.
@@ -81,7 +81,7 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
 
 1. **Public-safe by default** — No private infrastructure, private tracker IDs, or internal paths in public artifacts ([hard security](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).
 2. **Apache 2.0** — XGIC public solutions use the Apache License 2.0 ([licensing](docs/licensing.md)).
-3. **Compose first, Kubernetes when ready** — On-premises path is Docker Compose; platform design stays portable toward Kubernetes ([platform overview](docs/platform/overview.md)).
+3. **Docker Compose first, Kubernetes when ready** — On-premises path is Docker Compose; platform design stays portable toward Kubernetes ([platform overview](docs/platform/overview.md)).
 4. **Python 3.14** for new Python development ([ADR-0002](docs/adr/0002-standardize-on-python-3-14.md)).
 5. **GitHub Flow + human review** — Agents draft; humans approve in the GitHub UI.
 6. **Agent-readable structure** — Catalog, composition graph, and knowledge model over prose-only docs.

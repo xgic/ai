@@ -27,4 +27,4 @@ When a user says “hybrid”:
 ## Related
 
 - [overview.md](overview.md)
-- [ADR-0003](../adr/0003-compose-first-kubernetes-ready.md)
+- [ADR-0003](../adr/0003-docker-compose-first-kubernetes-ready.md)

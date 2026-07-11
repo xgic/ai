@@ -19,7 +19,7 @@ For structured recommendation format, see [agent/recommendation-guide.md](agent/
 1. Load catalog + composition + knowledge model.  
 2. Classify goal (library, CLI, image, app, ops, docs).  
 3. Emit the recommendation template from [recommendation-guide.md](agent/recommendation-guide.md).  
-4. Default deploy path: **Compose**; escalate to **Kubernetes** only with explicit requirements.  
+4. Default deploy path: **Docker Compose**; escalate to **Kubernetes** only with explicit requirements.  
 5. Cite ADRs 0001–0004 as applicable.  
 
 ## Playbook C — Adopt a hub standard in a product repo

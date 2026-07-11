@@ -16,7 +16,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 | `Standard` | Process or technical standard | base standards, Apache 2.0 |
 | `ADR` | Architecture decision record | ADR-0001… |
 | `Playbook` | Stepwise agent/human procedure | grok-playbooks |
-| `Pattern` | Reusable architecture pattern | Compose-first, `*-dev` naming |
+| `Pattern` | Reusable architecture pattern | Docker Compose-first, `*-dev` naming |
 
 ## Relationship types
 
@@ -35,7 +35,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 
 ```text
 Hub(xgic/ai)
-  DOCUMENTS → Standard(base), ADR(*), Pattern(compose-first), Catalog(*)
+  DOCUMENTS → Standard(base), ADR(*), Pattern(docker-compose-first), Catalog(*)
 Library(gitlab.graphql) IMPLEMENTS ← Repo(gitlab-graphql)
 Orchestrator(gitlab) CONSUMES → Image(vendor gitlab-ee, postgres, redis)
 DevContainerProject(payload-cms-dev-containers) PRODUCES → local/dev images
@@ -66,7 +66,7 @@ Agents should treat each catalog row as having:
 3. **Namespace root `xgic`** for Python packages unless an ADR says otherwise.  
 4. **Python `>=3.14`** for new Python code ([ADR-0002](../adr/0002-standardize-on-python-3-14.md)).  
 5. **Apache-2.0** for new public XGIC solutions ([ADR-0004](../adr/0004-apache-2-0-for-public-solutions.md)).  
-6. **Compose default** for on-prem; K8s when justified ([ADR-0003](../adr/0003-compose-first-kubernetes-ready.md)).  
+6. **Docker Compose default** for on-prem; K8s when justified ([ADR-0003](../adr/0003-docker-compose-first-kubernetes-ready.md)).  
 7. **Catalog before invention** — if missing, propose a catalog PR rather than silent new modules.
 
 ## Context pack (minimum load order)

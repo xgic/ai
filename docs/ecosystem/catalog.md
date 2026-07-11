@@ -69,7 +69,7 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
 | `orch.gitlab` | GitLab orchestration surface | Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE-oriented orchestration / template experience |
-| `orch.compose` | Compose-first ops | pattern | `reference` | [platform/docker-compose.md](../platform/docker-compose.md) | Default on-prem deployment model |
+| `orch.compose` | Docker Compose-first ops | pattern | `reference` | [platform/docker-compose.md](../platform/docker-compose.md) | Default on-prem deployment model |
 | `orch.k8s` | Kubernetes path | pattern | `reference` | [platform/kubernetes.md](../platform/kubernetes.md) | Future scale-out; same contracts where possible |
 | `orch.hybrid` | Hybrid on-prem / cloud | pattern | `reference` | [platform/hybrid.md](../platform/hybrid.md) | Lab/edge Compose + cloud K8s recommendations |
 
