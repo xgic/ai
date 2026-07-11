@@ -7,6 +7,7 @@ body:
     attributes:
       value: |
         Describe a public-safe improvement to this multi-repo standards hub.
+        Questions and open-ended ideas belong in [Discussions](https://github.com/xgic/ai/discussions).
   - type: textarea
     id: summary
     attributes:

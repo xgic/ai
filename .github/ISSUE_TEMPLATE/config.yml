@@ -1,5 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: XGIC organization
-    url: https://github.com/xgic
-    about: Browse other public XGIC repositories
+  - name: Contributing Guidelines
+    url: https://github.com/xgic/ai/blob/main/CONTRIBUTING.md
+    about: Please read our contribution guidelines before opening an issue.
+  - name: Discussions
+    url: https://github.com/xgic/ai/discussions
+    about: Ask questions and share ideas here (not for bugs or tracked feature work).

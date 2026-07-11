@@ -1,0 +1,43 @@
+name: Feature request
+description: Propose an improvement to hub docs, standards, catalog, or community health
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prefer linking multi-repo policy to this hub rather than duplicating large policy text in product repos.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What gap exists for humans or AI agents?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Ecosystem catalog / composition
+        - Agent knowledge
+        - Platform (Docker Compose / Kubernetes)
+        - Base standards / community health
+        - ADR
+        - Templates / Discussions
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public safety
+      options:
+        - label: This request does not require publishing private coordination details
+          required: true
