@@ -36,5 +36,6 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 
 1. Define namespace and planned public GitHub repository name.
 2. Implement against Python 3.14 baseline (ADR-0002) and OO design norms.
-3. Publish high-level status in this document when the public repo exists or is intentionally listed as planned.
-4. Do not embed private coordination IDs or private repository paths in public documentation.
+3. License as Apache-2.0 (ADR-0004); set package SPDX/metadata accordingly.
+4. Add or update rows in this document **and** [ecosystem/catalog.md](ecosystem/catalog.md).
+5. Do not embed private coordination IDs or private repository paths in public documentation.

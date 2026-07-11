@@ -19,6 +19,9 @@ body:
     attributes:
       label: Area
       options:
+        - Ecosystem catalog / composition
+        - Agent knowledge model
+        - Platform (Compose / Kubernetes / hybrid)
         - Base standards
         - ADR
         - Architecture / workflow / playbooks

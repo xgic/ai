@@ -53,6 +53,9 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 10. **Conventional Commits**, atomic changes, positive professional tone.
 11. **XGIC CLI / xde direction** where environment orchestration applies — no new Makefiles in new or modernized repos.
 12. **Public package metadata** uses the org-facing author identity (e.g. `XGIC`), never private project names.
+13. **Apache License 2.0** for public XGIC solutions ([licensing.md](licensing.md), [ADR-0004](adr/0004-apache-2-0-for-public-solutions.md)).
+14. **Compose-first ops docs** for on-prem; Kubernetes path documented when relevant ([ADR-0003](adr/0003-compose-first-kubernetes-ready.md)).
+15. **Cite this hub** for multi-repo policy and the [ecosystem catalog](ecosystem/catalog.md) rather than inventing parallel modules.
 
 ---
 

@@ -15,3 +15,7 @@ If you believe this repository contains **secrets**, **credentials**, or **priva
 ## Public hard-security expectation
 
 XGIC public repositories must not document private infrastructure, private repository inventories, or private tracker identifiers. See [docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
+
+## License
+
+This project is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
