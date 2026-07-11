@@ -37,4 +37,4 @@ Product-specific decisions belong in the product repository’s own `docs/adr/` 
 
 ## Public-safety
 
-ADRs must not include private hosts, private tracker IDs, or internal paths.
+ADRs must not include private hosts, private tracker IDs, private repositories, internal paths, or anything that violates information security best practices and XGIC cybersecurity standards.
