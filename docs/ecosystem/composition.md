@@ -36,7 +36,7 @@ Host / cluster runtime
 |------|--------|--------|
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
 | Local GitLab EE lab | `orch.gitlab` + Compose + official images | Custom GitLab EE image forks |
-| Payload contributor environment | `dc.payload` / `xde` patterns | One-off Dockerfiles without shared tooling |
+| Payload contributor environment | `dc.payload` / `xde` today (XGIC CLI — planned public brand) | One-off Dockerfiles without shared tooling |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
 | Cloud HA / multi-cluster | K8s path with portable contracts | Rewriting app logic for the orchestrator |
@@ -61,7 +61,8 @@ Host / cluster runtime
 
 ### Environment orchestration
 
-- Prefer **xde / XGIC CLI** over new Makefiles  
+- Prefer **`xde` today** / **XGIC CLI** (planned public brand after extraction) over new Makefiles  
+
 - Scripts remain thin shims; logic lives in tested Python where growth warrants it  
 
 ### Real-time / Unreal (planned)

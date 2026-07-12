@@ -17,7 +17,11 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 | Dev Container CLI | CLI module | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | 2 | Core CLI | VS Code dev-container orchestration helpers |
 | GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | Backup/restore and GitLab ops |
 | AIS CLI | CLI module | `xgic.cli.ais` | [xgic/ais-cli](https://github.com/xgic/ais-cli) | 3 | Core CLI | Automation-oriented AIS features (public surface only) |
-| Payload CMS CLI | CLI module | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | 4 | Core CLI, Dev CLI | Payload CMS / xde-related orchestration |
+| Payload CMS CLI | CLI module | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | 4 | Core CLI, Dev CLI | Payload CMS orchestration (today often via in-tree **`xde`**; planned under **XGIC CLI**) |
+
+### Naming note (xde → XGIC CLI)
+
+The current environment-orchestration CLI used with Dev Containers is **`xde`**. The planned public product brand after modular extraction is **XGIC CLI** (`xgic.cli.*`). Until extraction ships, use **`xde`** for concrete commands and packages; use **XGIC CLI** for the future public product line. See the [ecosystem catalog](ecosystem/catalog.md) section **XGIC CLI and modules**.
 
 ## Namespace rules
 

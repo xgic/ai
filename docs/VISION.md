@@ -22,12 +22,12 @@ A **secure, well-documented, AI-accelerated platform** for building and operatin
 - On-premises and workstation deployments default to **Docker Compose**
 - Official vendor images for third-party services where applicable ([ADR-0001](adr/0001-xgic-gitlab-architecture-and-repository-naming.md))
 - Dev Containers for contributor environments; GHCR for published images
-- XGIC CLI modules grow as extractable, versioned packages
+- **XGIC CLI** modules grow as extractable, versioned packages (today’s in-tree surface remains **`xde`** until extraction; see [catalog](ecosystem/catalog.md) naming note)
 
 ### Phase 2 — Modular platform services
 
 - Published Python packages under `xgic.*` (see [namespace convention](xgic-python-namespace-convention.md))
-- Clear split between **libraries**, **CLI modules**, **image producers (`*-dev`)**, and **end-user templates**
+- Clear split between **libraries**, **CLI modules** (XGIC CLI / transitional `xde`), **image producers (`*-dev`)**, and **end-user templates**
 - Payload CMS + Next.js reference applications with repeatable bootstrap
 - Agentic playbooks covering multi-repo implementation sequences
 
