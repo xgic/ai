@@ -36,7 +36,7 @@ Host / cluster runtime
 |------|--------|--------|
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
 | Local GitLab EE lab | `orch.gitlab` + Compose + official images | Custom GitLab EE image forks |
-| Payload contributor environment | `dc.payload` / `xde` patterns | One-off Dockerfiles without shared tooling |
+| Payload contributor environment | `dc.payload` / `xde` today (XGIC CLI — planned public brand) | One-off Dockerfiles without shared tooling |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
 | Cloud HA / multi-cluster | K8s path with portable contracts | Rewriting app logic for the orchestrator |
@@ -61,7 +61,9 @@ Host / cluster runtime
 
 ### Environment orchestration
 
-- Prefer **xde / XGIC CLI** over new Makefiles  
+- Prefer **XGIC CLI** (and pre-cutover **`xde`** only while that is still the shipped entrypoint) over new Makefiles. After full migration, living docs name **XGIC CLI only**.  
+
+
 - Scripts remain thin shims; logic lives in tested Python where growth warrants it  
 
 ### Real-time / Unreal (planned)
@@ -76,7 +78,7 @@ Host / cluster runtime
 | Anti-pattern | Why it hurts | Prefer |
 |--------------|--------------|--------|
 | Private IDs in public PRs | Security / trust failure | Public-only references |
-| New Makefile islands | Divergent DX | xde / CLI modules |
+| New Makefile islands | Divergent DX | XGIC CLI modules (pre-cutover: `xde` only if still shipped) |
 | Custom vendor image forks | Patch burden | Official images + config |
 | Invented `xgic` submodules not in catalog | Agent confusion | PR to update catalog first |
 | K8s-only from day one for simple on-prem | Complexity tax | Docker Compose first |

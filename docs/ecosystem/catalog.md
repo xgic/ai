@@ -31,7 +31,7 @@
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
 | `lib.cli.core` | Core CLI framework | `xgic.cli` | `planned` | [xgic/cli](https://github.com/xgic/cli) (planned) | Shared CLI framework for modular commands |
-| `lib.xde` | Environment orchestration library | (via `xde` / CLI modules) | `experimental` | Lives with Payload/dev-container tooling today; extractable | Dev container & environment orchestration primitives |
+| `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
@@ -39,13 +39,23 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
 ## 3. XGIC CLI and modules
 
+**Naming (transition → complete cutover):**
+
+| Phase | Living docs and guidelines | Code / packages |
+|-------|----------------------------|-----------------|
+| **Now (pre-extraction)** | May say **`xde` (current CLI; successor product brand: XGIC CLI)** when introducing the tool; use **`xde`** for concrete commands and paths that still exist in-repo | `xde` entrypoint and library surface remain as implemented |
+| **After full modular XGIC CLI migration** | **No `xde` in current documentation or guidelines.** Only **XGIC CLI** / `xgic.cli.*`. Any residual `xde` text is limited to **minimal historical notes** in completed project artifacts (closed issues, old changelog entries)—not living standards | Code, packages, and commands use **XGIC CLI** only; **no** `xde` compatibility alias |
+
+Full extraction and rename are a dedicated initiative (not a bulk rewrite of open historical issues). Do not leave dual product names after cutover.
+
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
-| `cli.core` | XGIC CLI core | `xgic.cli` | `planned` | planned `xgic/cli` | Entry framework, config, plugins |
-| `cli.dev` | Dev Container CLI | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
+| `cli.core` | XGIC CLI core | `xgic.cli` | `planned` | planned `xgic/cli` | Entry framework, config, plugins (public brand) |
+| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
-| `cli.payload` | Payload CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload / project orchestration with dev tooling |
+| `cli.payload` | Payload CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload / project orchestration (today often via in-tree `xde` until cutover) |
+| `cli.xde` | xde (current entrypoint, pre-cutover only) | (in-tree `xde`) | `experimental` | [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | **Today’s** env CLI; **replaced entirely** by XGIC CLI modules at migration complete (no long-term alias) |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
 
@@ -55,7 +65,7 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload + tooling environment; `xde` surface |
+| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload + tooling environment; **`xde` today** (XGIC CLI — planned public brand) |
 | `img.ghcr` | GHCR publications | container images | `planned` / partial | GitHub Container Registry under `xgic` | Published images for templates and orchestrators |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
