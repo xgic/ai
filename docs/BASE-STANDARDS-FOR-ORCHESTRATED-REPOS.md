@@ -51,7 +51,7 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
    - `requires-python = ">=3.14"`
    - Prefer official `python:3.14.6-slim` (or current pinned 3.14 patch) for containers
 10. **Conventional Commits**, atomic changes, positive professional tone.
-11. **XGIC CLI / xde direction** where environment orchestration applies — no new Makefiles. **Today:** in-tree **`xde`**. **Planned public brand:** **XGIC CLI** (`xgic.cli.*`) after modular extraction; see [ecosystem catalog](ecosystem/catalog.md) naming note.
+11. **XGIC CLI / environment orchestration** — no new Makefiles. **Pre-cutover:** in-tree **`xde`** where that is still the shipped CLI. **Post full modular migration:** living docs and guidelines refer only to **XGIC CLI** (`xgic.cli.*`); no `xde` in current standards (historical completed artifacts only). See [ecosystem catalog](ecosystem/catalog.md) naming note.
 12. **Public package metadata** uses the org-facing author identity (e.g. `XGIC`), never private project names.
 13. **Apache License 2.0** for public XGIC solutions ([licensing.md](licensing.md), [ADR-0004](adr/0004-apache-2-0-for-public-solutions.md)).
 14. **Docker Compose-first ops docs** for on-prem; Kubernetes path documented when relevant ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).

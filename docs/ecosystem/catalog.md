@@ -39,7 +39,14 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
 ## 3. XGIC CLI and modules
 
-**Naming (transition):** The current CLI binary and in-tree library surface used with Dev Containers is **`xde`**. The **planned public product brand** after extraction into modular repositories is **XGIC CLI** (`xgic` / `xgic.cli.*`). Until extraction ships, catalogs and docs may say **`xde` (XGIC CLI — planned public brand)** when introducing the product line; keep **`xde`** for commands, paths, and packages that still exist in-repo. Full rebrand and extraction are a separate initiative (not a bulk rewrite of historical issues).
+**Naming (transition → complete cutover):**
+
+| Phase | Living docs and guidelines | Code / packages |
+|-------|----------------------------|-----------------|
+| **Now (pre-extraction)** | May say **`xde` (current CLI; successor product brand: XGIC CLI)** when introducing the tool; use **`xde`** for concrete commands and paths that still exist in-repo | `xde` entrypoint and library surface remain as implemented |
+| **After full modular XGIC CLI migration** | **No `xde` in current documentation or guidelines.** Only **XGIC CLI** / `xgic.cli.*`. Any residual `xde` text is limited to **minimal historical notes** in completed project artifacts (closed issues, old changelog entries)—not living standards | Code, packages, and commands use **XGIC CLI** only; **no** `xde` compatibility alias |
+
+Full extraction and rename are a dedicated initiative (not a bulk rewrite of open historical issues). Do not leave dual product names after cutover.
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
@@ -47,8 +54,8 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 | `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
-| `cli.payload` | Payload CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload / project orchestration (today often via `xde`) |
-| `cli.xde` | xde (current entrypoint) | (in-tree `xde`) | `experimental` | [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | **Today’s** env CLI; planned to fold into XGIC CLI with optional compatibility alias |
+| `cli.payload` | Payload CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload / project orchestration (today often via in-tree `xde` until cutover) |
+| `cli.xde` | xde (current entrypoint, pre-cutover only) | (in-tree `xde`) | `experimental` | [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | **Today’s** env CLI; **replaced entirely** by XGIC CLI modules at migration complete (no long-term alias) |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
 

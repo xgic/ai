@@ -21,7 +21,12 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 
 ### Naming note (xde → XGIC CLI)
 
-The current environment-orchestration CLI used with Dev Containers is **`xde`**. The planned public product brand after modular extraction is **XGIC CLI** (`xgic.cli.*`). Until extraction ships, use **`xde`** for concrete commands and packages; use **XGIC CLI** for the future public product line. See the [ecosystem catalog](ecosystem/catalog.md) section **XGIC CLI and modules**.
+| Phase | Living docs | In-repo names |
+|-------|-------------|---------------|
+| **Pre-cutover** | May introduce the tool as **`xde` (current CLI; successor brand: XGIC CLI)**; use **`xde`** for real commands/packages | `xde` remains |
+| **Post-cutover** | Living docs and guidelines use **only XGIC CLI** / `xgic.cli.*`. **No `xde`** except minimal historical notes in completed artifacts | Code and packages use XGIC CLI only—**no** `xde` compatibility alias |
+
+See the [ecosystem catalog](ecosystem/catalog.md) section **XGIC CLI and modules**.
 
 ## Namespace rules
 
