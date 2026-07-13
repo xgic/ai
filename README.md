@@ -105,6 +105,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Proposals for new catalog entries, ADRs,
 
 ## License
 
-Copyright 2026 XGIC / Donovan Chepien.  
+Copyright 2026 XGIC.  
 Licensed under the [Apache License, Version 2.0](LICENSE).  
 See [NOTICE](NOTICE) for attribution.

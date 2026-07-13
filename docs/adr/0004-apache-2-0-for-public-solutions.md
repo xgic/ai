@@ -14,13 +14,13 @@ XGIC public repositories must share a clear, enterprise-friendly open-source lic
 
 ## Decision
 
-1. **Apache License, Version 2.0** is the default license for XGIC public solutions under `github.com/xgic`.  
-2. Repositories include a root `LICENSE` file with the Apache-2.0 text and a `NOTICE` file when required for attribution.  
-3. Package metadata (e.g. PyPI classifiers / SPDX `Apache-2.0`) matches the repository license.  
-4. Exceptions require a documented ADR and explicit README notice.  
-5. Third-party dependencies retain their own licenses; consumers document them in the usual way.
-
----
+1. **Apache License, Version 2.0** is the default license for XGIC public solutions under `github.com/xgic`.
+2. Repositories include a root `LICENSE` file with the full Apache-2.0 text and a `NOTICE` file for product attribution.
+3. **Copyright holder form** is `Copyright 2026 XGIC` (company only). Do not use personal names or email addresses in the copyright holder line. Personal credit uses git authors, profiles, and optional maintainer notes.
+4. Package metadata (e.g. PyPI classifiers / SPDX `Apache-2.0`) matches the repository license; public package authors use `XGIC`.
+5. Exceptions require a documented ADR and explicit README notice.
+6. Third-party dependencies retain their own licenses; consumers document them in the usual way.
+7. Templates and details: [licensing.md](../licensing.md).
 
 ## Consequences
 
