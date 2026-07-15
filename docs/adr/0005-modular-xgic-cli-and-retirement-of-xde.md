@@ -33,7 +33,7 @@ Related hub docs: [ecosystem catalog](../ecosystem/catalog.md), [Python namespac
 |-----------|-----------|---------------------------|
 | Core framework + `xgic` entry | `xgic.cli` | `xgic/cli` |
 | Dev container / env orchestration | `xgic.cli.dev` | `xgic/dev-cli` |
-| Payload-oriented commands | `xgic.cli.payload` | `xgic/payload-cms-cli` |
+| Commands for Payload CMS | `xgic.cli.payload` | `xgic/payload-cms-cli` |
 | GitLab-oriented commands | `xgic.cli.gitlab` | `xgic/gitlab-cli` |
 | AIS-oriented public surface | `xgic.cli.ais` | `xgic/ais-cli` |
 
@@ -52,11 +52,11 @@ Prefer **thin-core first, then domain modules**:
 1. Bootstrap public `xgic/cli` (scaffold + packaging + CI).  
 2. Extract shared core (environment/docker/project/CLI framework) from the transitional in-tree surface into `xgic.cli`.  
 3. Extract non-product-specific env/dev commands into `xgic.cli.dev`.  
-4. Extract product-specific Payload commands into `xgic.cli.payload`.  
+4. Extract product-specific commands for Payload CMS into `xgic.cli.payload`.  
 5. **Hard cutover:** remove supported `xde` surface from living docs and shipping entrypoints.  
 6. Later: GitLab CLI and public-safe AIS CLI modules (do not block cutover).
 
-Product template repositories (e.g. Payload Dev Containers) become **consumers** of modular packages, not the long-term home of the shared library.
+Product template repositories (e.g. Payload CMS Dev Containers) become **consumers** of modular packages, not the long-term home of the shared library.
 
 ### 5. Documentation rules
 
@@ -80,7 +80,7 @@ New public CLI modules follow the public bar: Apache-2.0 + `Copyright 2026 XGIC`
 ### Positive
 
 - Clear single product brand after cutover  
-- Modular reuse across Payload, GitLab, and future products  
+- Modular reuse across Payload CMS, GitLab, and future products  
 - Better agent ergonomics (one entrypoint family, stable namespaces)  
 - Aligns catalog, namespace registry, and packaging  
 
