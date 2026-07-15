@@ -46,7 +46,7 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 | **Now (pre-extraction)** | May say **`xde` (current CLI; successor product brand: XGIC CLI)** when introducing the tool; use **`xde`** for concrete commands and paths that still exist in-repo | `xde` entrypoint and library surface remain as implemented |
 | **After full modular XGIC CLI migration** | **No `xde` in current documentation or guidelines.** Only **XGIC CLI** / `xgic.cli.*`. Any residual `xde` text is limited to **minimal historical notes** in completed project artifacts (closed issues, old changelog entries)—not living standards | Code, packages, and commands use **XGIC CLI** only; **no** `xde` compatibility alias |
 
-Full extraction and rename are a dedicated initiative (not a bulk rewrite of open historical issues). Do not leave dual product names after cutover.
+Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-retirement-of-xde.md) (thin-core first, then domain modules; console entry `xgic`; **no** long-term `xde` alias). Not a bulk rewrite of open historical issues. Do not leave dual product names after cutover.
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
