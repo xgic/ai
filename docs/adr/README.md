@@ -10,6 +10,7 @@ ADRs capture **multi-repository** decisions that public XGIC projects and AI age
 | [0002](0002-standardize-on-python-3-14.md) | Standardize new Python development on Python 3.14 | Accepted |
 | [0003](0003-docker-compose-first-kubernetes-ready.md) | Docker Compose-first deployments, Kubernetes-ready architecture | Accepted |
 | [0004](0004-apache-2-0-for-public-solutions.md) | Apache 2.0 for XGIC public solutions | Accepted |
+| [0005](0005-modular-xgic-cli-and-retirement-of-xde.md) | Modular XGIC CLI and retirement of transitional `xde` brand | Proposed |
 
 ## When to write an ADR here
 
