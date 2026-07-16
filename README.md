@@ -71,6 +71,7 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
 | Repository | Role |
 |------------|------|
 | [xgic/ai](https://github.com/xgic/ai) | **This hub** |
+| [xgic/cli](https://github.com/xgic/cli) | XGIC CLI core (`xgic.cli`, entrypoint `xgic`) |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | GitLab GraphQL client (`xgic.gitlab.graphql`) |
 | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE orchestration / template surface |
 | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev-container + Payload tooling (`xde`) |
