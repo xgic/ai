@@ -30,7 +30,7 @@
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
-| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Shared CLI framework for modular commands (early scaffold: `xgic --help` / `--version`) |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Shared CLI framework + importable core (environment/docker/project); entrypoint `xgic` |
 | `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
@@ -50,7 +50,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
-| `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Entry framework, config, plugins (public brand; thin core scaffold) |
+| `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Entry framework, plugins, shared core library (public brand; domain modules planned) |
 | `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |

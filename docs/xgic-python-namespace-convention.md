@@ -13,7 +13,7 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 | Name | Type | Namespace | GitHub | Priority | Dependencies | Status (high-level) |
 |------|------|-----------|--------|----------|--------------|---------------------|
 | GitLab GraphQL Client | Library | `xgic.gitlab.graphql` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | 1 | — | Available — GraphQL client for Work Items, hierarchy, auth, pagination |
-| Core CLI | CLI / framework | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) | 2 | — | Available (early scaffold) — base framework; entrypoint `xgic` |
+| Core CLI | CLI / framework | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) | 2 | — | Available — shared core library + entrypoint `xgic` (domain modules planned) |
 | Dev Container CLI | CLI module | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | 2 | Core CLI | VS Code dev-container orchestration helpers |
 | GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | Backup/restore and GitLab ops |
 | AIS CLI | CLI module | `xgic.cli.ais` | [xgic/ais-cli](https://github.com/xgic/ais-cli) | 3 | Core CLI | Automation-oriented AIS features (public surface only) |
