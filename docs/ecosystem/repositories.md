@@ -5,7 +5,9 @@
 | Repository | Primary role | Catalog IDs |
 |------------|--------------|-------------|
 | [xgic/ai](https://github.com/xgic/ai) | Intelligence hub (this repo) | `hub.ai`, `std.*` |
-| [xgic/cli](https://github.com/xgic/cli) | XGIC CLI core framework | `cli.core`, `lib.cli.core` |
+| [xgic/cli](https://github.com/xgic/cli) | XGIC CLI thin core | `cli.core`, `lib.cli.core` |
+| [xgic/dev-cli](https://github.com/xgic/dev-cli) | Dev Container / Compose module | `cli.dev` |
+| [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS CLI module | `cli.payload` |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Python GraphQL client | `lib.gitlab.graphql` |
 | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab orchestration / template surface | `orch.gitlab` |
 | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev Container + Payload tooling | `dc.payload`, `lib.xde` (partial) |
@@ -16,10 +18,8 @@ These names are **intent signals** for agents and humans. They are not guarantee
 
 | Planned repository | Intended role | Catalog IDs |
 |--------------------|---------------|-------------|
-| `xgic/dev-cli` | Dev Container CLI module | `cli.dev` |
 | `xgic/gitlab-cli` | GitLab CLI module | `cli.gitlab` |
 | `xgic/ais-cli` | AIS-oriented CLI module (public surface) | `cli.ais` |
-| `xgic/payload-cms-cli` | Payload orchestration CLI module | `cli.payload` |
 | `xgic/*-dev` producers | Image build systems | `pattern.dev-suffix`, `img.ghcr` |
 | Future app templates | Next.js, Payload apps, full-stack samples | `app.*` |
 | Future Unreal repos | Tools and plugins | `app.unreal` |

@@ -30,7 +30,7 @@
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
-| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Shared CLI framework for modular commands (early scaffold: `xgic --help` / `--version`) |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
 | `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
@@ -50,11 +50,11 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
-| `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Entry framework, config, plugins (public brand; thin core scaffold) |
-| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `planned` | planned `xgic/dev-cli` | VS Code Dev Container helpers |
+| `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin entry framework + plugins (product-agnostic) |
+| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Docker Compose orchestration helpers (library; lifecycle subcommands later) |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
-| `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `planned` | planned `xgic/payload-cms-cli` | Payload CMS / project orchestration (today often via in-tree `xde` until cutover) |
+| `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS project ensure/create helpers (subcommands later; transitional `xde` until cutover) |
 | `cli.xde` | xde (current entrypoint, pre-cutover only) | (in-tree `xde`) | `experimental` | [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | **Today’s** env CLI; **replaced entirely** by XGIC CLI modules at migration complete (no long-term alias) |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
