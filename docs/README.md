@@ -44,6 +44,7 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | [orchestration-workflow.md](orchestration-workflow.md) | GitHub Flow, commits, PRs, agent workflow |
 | [licensing.md](licensing.md) | Apache 2.0 policy |
 | [xgic-python-namespace-convention.md](xgic-python-namespace-convention.md) | Public `xgic.*` namespace registry |
+| [python-package-release.md](python-package-release.md) | Publish public Python packages (TestPyPI → PyPI, OIDC, `uv` smoke) |
 
 ## Architecture decisions
 

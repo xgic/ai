@@ -93,6 +93,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 | Architecture decisions | `docs/adr/` (new ADR + index) |
 | Vision / roadmap framing | `docs/VISION.md` |
 | Python packages map | `docs/xgic-python-namespace-convention.md` |
+| Python package release (PyPI) | `docs/python-package-release.md` |
 | Hub orientation | `README.md`, this file, `CONTRIBUTING.md` |
 
 Downstream public repositories should **link** here rather than copy large policy blocks.

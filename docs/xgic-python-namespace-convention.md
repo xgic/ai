@@ -36,6 +36,12 @@ See the [ecosystem catalog](ecosystem/catalog.md) section **XGIC CLI and modules
 4. Prefer small, importable libraries over ad-hoc scripts.
 5. New modules register here (public summary) when the corresponding public repository is announced or published.
 
+## Publishing to PyPI
+
+Public distributions under this registry **must** follow the hub release standard:
+
+**[python-package-release.md](python-package-release.md)** — RC on TestPyPI with clean-env smoke, final on PyPI via OIDC Trusted Publishing (`pypa/gh-action-pypi-publish`), `uv` for build and install verification, dependency-order publish for modular stacks.
+
 ## Related ADRs
 
 - [ADR-0001: GitLab architecture and repository naming](adr/0001-xgic-gitlab-architecture-and-repository-naming.md)
@@ -48,3 +54,10 @@ See the [ecosystem catalog](ecosystem/catalog.md) section **XGIC CLI and modules
 3. License as Apache-2.0 (ADR-0004); set package SPDX/metadata accordingly.
 4. Add or update rows in this document **and** [ecosystem/catalog.md](ecosystem/catalog.md).
 5. Do not embed private coordination IDs or private repository paths in public documentation.
+6. When publishing to PyPI, follow **[python-package-release.md](python-package-release.md)** (TestPyPI RC + smoke, then PyPI via OIDC Trusted Publishing; `uv` build/smoke).
+
+## Publishing to PyPI
+
+Public distributions under this registry **must** use the hub release standard:
+
+**[python-package-release.md](python-package-release.md)** — clean-env install matrix; RC on TestPyPI with smoke; final on PyPI via OIDC Trusted Publishing (`pypa/gh-action-pypi-publish`); `uv` for build and install verification; dependency-order publish for modular stacks.
