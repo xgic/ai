@@ -56,6 +56,7 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 13. **Apache License 2.0** for public XGIC solutions ([licensing.md](licensing.md), [ADR-0004](adr/0004-apache-2-0-for-public-solutions.md)).
 14. **Docker Compose-first ops docs** for on-prem; Kubernetes path documented when relevant ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).
 15. **Cite this hub** for multi-repo policy and the [ecosystem catalog](ecosystem/catalog.md) rather than inventing parallel modules.
+16. **Public Python packages (PyPI):** when a public repo publishes to PyPI, it **must** follow [python-package-release.md](python-package-release.md): clean-env install matrix on packaging PRs; RC → TestPyPI + smoke; final → PyPI via **OIDC Trusted Publishing** and **`pypa/gh-action-pypi-publish` only**; **`uv`** for build and install smoke; no long-lived PyPI tokens for routine releases; no laptop publishes for official releases.
 
 ---
 
@@ -96,4 +97,5 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 - [Orchestration workflow](orchestration-workflow.md)
 - [Grok playbooks](grok-playbooks.md)
 - [Python namespace convention](xgic-python-namespace-convention.md)
+- [Python package release process](python-package-release.md) (TestPyPI → PyPI, OIDC, `uv` smoke)
 - [ADR index](adr/README.md)

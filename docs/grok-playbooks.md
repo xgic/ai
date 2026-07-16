@@ -37,6 +37,20 @@ For structured recommendation format, see [agent/recommendation-guide.md](agent/
 3. Ensure package author/metadata is public-safe (`XGIC`).  
 4. PR on **this hub** updating catalog + namespace tables.  
 5. Link the new repo from relevant READMEs.  
+6. When first publishing wheels: follow [python-package-release.md](python-package-release.md) (Trusted Publisher setup, TestPyPI RC, clean-env smoke, then PyPI).  
+
+## Playbook D2 — Publish public Python package (TestPyPI → PyPI)
+
+**Authority:** [python-package-release.md](python-package-release.md) (only acceptable method).
+
+1. Confirm packaging CI green: unit tests + **`uv build`** + **clean-env install matrix** (local wheels; core / +dev / full stack as applicable).  
+2. Set **RC version** (e.g. `0.2.0rc1`); no long-lived PyPI tokens.  
+3. GitHub Actions only: **`uv build`** → **`pypa/gh-action-pypi-publish`** to **TestPyPI** (OIDC, environment `testpypi`).  
+4. Clean env: `uv pip install` from TestPyPI (`--extra-index-url https://pypi.org/simple/`); run smoke (`xgic --version`, domain `--help`, `from xgic.cli import __version__`).  
+5. On success: final version + tag; Actions → **`pypa/gh-action-pypi-publish`** to **PyPI** (OIDC, environment `pypi`).  
+6. Clean env: install from **pypi.org** only; same smoke.  
+7. GitHub Release + catalog/namespace updates if the public surface changed.  
+8. Publish modular stacks in dependency order: core → dev module → product modules.  
 
 ## Playbook E — Public leakage scan (before every public PR)
 
@@ -59,5 +73,6 @@ If found: remove or rewrite with high-level public wording; do not describe priv
 
 - [Orchestration workflow](orchestration-workflow.md)
 - [Base standards](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)
+- [Python package release](python-package-release.md)
 - [Ecosystem catalog](ecosystem/catalog.md)
 

@@ -67,7 +67,8 @@ Agents should treat each catalog row as having:
 4. **Python `>=3.14`** for new Python code ([ADR-0002](../adr/0002-standardize-on-python-3-14.md)).  
 5. **Apache-2.0** for new public XGIC solutions ([ADR-0004](../adr/0004-apache-2-0-for-public-solutions.md)).  
 6. **Docker Compose default** for on-prem; K8s when justified ([ADR-0003](../adr/0003-docker-compose-first-kubernetes-ready.md)).  
-7. **Catalog before invention** — if missing, propose a catalog PR rather than silent new modules.
+7. **Catalog before invention** — if missing, propose a catalog PR rather than silent new modules.  
+8. **Public PyPI releases** — only via [python-package-release.md](../python-package-release.md): TestPyPI RC + clean-env smoke, then PyPI with OIDC Trusted Publishing (`pypa/gh-action-pypi-publish`); `uv` for build/smoke; no long-lived PyPI tokens; no laptop publishes.
 
 ## Context pack (minimum load order)
 
