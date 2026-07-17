@@ -43,19 +43,19 @@ See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
 | Phase | Living docs and guidelines | Code / packages |
 |-------|----------------------------|-----------------|
-| **Now (pre-extraction)** | May say **`xde` (current CLI; successor product brand: XGIC CLI)** when introducing the tool; use **`xde`** for concrete commands and paths that still exist in-repo | `xde` entrypoint and library surface remain as implemented |
-| **After full modular XGIC CLI migration** | **No `xde` in current documentation or guidelines.** Only **XGIC CLI** / `xgic.cli.*`. Any residual `xde` text is limited to **minimal historical notes** in completed project artifacts (closed issues, old changelog entries)—not living standards | Code, packages, and commands use **XGIC CLI** only; **no** `xde` compatibility alias |
+| **Now (post B5 cutover for public template)** | Living docs use **XGIC CLI only** / `xgic.cli.*` | Modular packages + template consumer; no supported `xde` entrypoint |
+| **Historical only** | Residual `xde` limited to **minimal notes** in completed artifacts (closed issues, old changelogs)—not living standards | No `xde` compatibility alias |
 
 Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-retirement-of-xde.md) (thin-core first, then domain modules; console entry `xgic`; **no** long-term `xde` alias). Not a bulk rewrite of open historical issues. Do not leave dual product names after cutover.
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin entry framework + plugins (product-agnostic) |
-| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Docker Compose orchestration helpers (library; lifecycle subcommands later) |
+| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Compose lifecycle (`xgic up`/`down`/`check`/…) + library |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
-| `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS project ensure/create helpers (subcommands later; transitional `xde` until cutover) |
-| `cli.xde` | xde (current entrypoint, pre-cutover only) | (in-tree `xde`) | `experimental` | [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | **Today’s** env CLI; **replaced entirely** by XGIC CLI modules at migration complete (no long-term alias) |
+| `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`) |
+| `cli.xde` | xde (retired) | — | `retired` | historical notes only | Former in-tree entrypoint; living template uses modular XGIC CLI only |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
 
@@ -65,7 +65,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload CMS + tooling environment; **`xde` today** (XGIC CLI — planned public brand) |
+| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload CMS + tooling; **consumer** of modular XGIC CLI |
 | `img.ghcr` | GHCR publications | container images | `planned` / partial | GitHub Container Registry under `xgic` | Published images for templates and orchestrators |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
