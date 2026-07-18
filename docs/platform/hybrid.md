@@ -9,9 +9,9 @@
 
 ## Recommendations
 
-1. **One artifact pipeline** — same container images for Compose and K8s.  
+1. **One artifact pipeline** — same container images for Docker Compose and K8s.  
 2. **Externalize config** — env and mounted files work in both models.  
-3. **Promote deliberately** — develop on Compose; promote to K8s with integration tests.  
+3. **Promote deliberately** — develop on Docker Compose; promote to K8s with integration tests.  
 4. **Data gravity** — be explicit about where databases live; avoid silent dual-writes.  
 5. **Security** — public docs describe patterns only; customer secrets and private topology stay out of public repos.  
 
@@ -20,7 +20,7 @@
 When a user says “hybrid”:
 
 1. Clarify which components must run on-prem vs cloud.  
-2. Recommend Compose for local parity of on-prem nodes.  
+2. Recommend Docker Compose for local parity of on-prem nodes.  
 3. Recommend K8s for cloud control planes / scaled services.  
 4. Produce a component table from the [catalog](../ecosystem/catalog.md) with deploy targets.  
 

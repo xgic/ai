@@ -18,7 +18,7 @@ When advising a human or planning agent work, emit:
 Ordered steps (bootstrap → integrate → verify)
 
 ## Deployment
-Compose | Kubernetes | Hybrid — with rationale
+Docker Compose | Kubernetes | Hybrid — with rationale
 
 ## Standards / ADRs to follow
 …
@@ -35,8 +35,8 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 |------|--------|
 | Match | `lib.gitlab.graphql` (`available`) |
 | Link | https://github.com/xgic/gitlab-graphql |
-| Compose | Library only unless operator UX needed → then planned `cli.gitlab` |
-| Deploy | N/A for library; if full GitLab stack needed → `orch.gitlab` + Compose |
+| Composition | Library only unless operator UX needed → then planned `cli.gitlab` |
+| Deploy | N/A for library; if full GitLab stack needed → `orch.gitlab` + Docker Compose |
 | ADRs | 0001 naming/images, 0002 Python, 0004 license |
 
 ### B. “Stand up Payload CMS for local development”
@@ -45,7 +45,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 |------|--------|
 | Match | `dc.payload` / payload-cms-dev-containers |
 | Link | https://github.com/xgic/payload-cms-dev-containers |
-| Compose | Dev Container + Compose services; prefer `xde` patterns over new Makefiles |
+| Composition | Dev Container + Docker Compose services; prefer modular XGIC CLI over new Makefiles |
 | Deploy | Docker Compose first |
 | Avoid | Custom forked DB images if official Postgres works |
 
@@ -54,7 +54,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 | Step | Action |
 |------|--------|
 | Start | Confirm app contracts are 12-factor / portable |
-| Path | Document Compose parity → introduce K8s manifests/Helm later in product repos |
+| Path | Document Docker Compose parity → introduce K8s manifests/Helm later in product repos |
 | Hub | Cite [platform/kubernetes.md](../platform/kubernetes.md) and ADR-0003 |
 | Avoid | Blocking on-prem users on K8s-only tooling |
 

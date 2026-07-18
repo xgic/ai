@@ -34,13 +34,13 @@ A **secure, well-documented, AI-accelerated platform** for building and operatin
 ### Phase 3 — Cloud-native scale-out
 
 - Same application and config contracts deploy to **Kubernetes**
-- Hybrid patterns: Compose on edge/on-prem lab; K8s in cloud/production clusters
+- Hybrid patterns: Docker Compose on edge/on-prem lab; K8s in cloud/production clusters
 - Progressive delivery, observability, and policy as code without rewriting product logic
 - Platform recommendations remain documentation-first in this hub until services graduate to dedicated repos
 
 ## Design tenets
 
-1. **Portable contracts** — Prefer Compose-compatible service definitions and 12-factor config that map cleanly to K8s later.
+1. **Portable contracts** — Prefer Docker Compose-compatible service definitions and 12-factor config that map cleanly to K8s later.
 2. **Thin orchestration** — Orchestrators configure and operate; they do not fork vendor application images.
 3. **Agent ergonomics** — Structure docs for machines: catalogs, tables, explicit statuses, stable URLs.
 4. **Security boundaries** — Public docs never expose private coordination; private work stays private.
@@ -52,7 +52,7 @@ A **secure, well-documented, AI-accelerated platform** for building and operatin
 |--------|-----------|
 | Discoverability | New contributors/agents find the right repo in minutes |
 | Correct composition | Recommendations match catalog + composition rules |
-| Ops clarity | Compose path documented; K8s path explicit and non-blocking |
+| Ops clarity | Docker Compose path documented; K8s path explicit and non-blocking |
 | Coherence | ADRs cited from multiple public repos without policy forks |
 | Safety | Zero private leakage incidents in public artifacts |
 

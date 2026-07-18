@@ -8,7 +8,7 @@ How XGIC public components **should fit together**. Agents use this to make cont
 Applications / templates
         │  consume
         ▼
-Orchestrators (Compose today · K8s later)
+Orchestrators (Docker Compose today · K8s later)
         │  use
         ▼
 CLI modules  ──►  libraries (xgic.*)
@@ -35,7 +35,7 @@ Host / cluster runtime
 | Goal | Prefer | Avoid |
 |------|--------|--------|
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
-| Local GitLab EE lab | `orch.gitlab` + Compose + official images | Custom GitLab EE image forks |
+| Local GitLab EE lab | `orch.gitlab` + Docker Compose + official images | Custom GitLab EE image forks |
 | Payload contributor environment | `dc.payload` / `xde` today (XGIC CLI — planned public brand) | One-off Dockerfiles without shared tooling |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
@@ -49,7 +49,7 @@ Host / cluster runtime
 ### GitLab automation
 
 - **Library:** `xgic.gitlab.graphql` for API access  
-- **Orchestration:** Compose-based GitLab surface for runtime  
+- **Orchestration:** Docker Compose-based GitLab surface for runtime  
 - **CLI (planned):** `xgic.cli.gitlab` for operator workflows  
 - **Decision source:** [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md)
 
@@ -57,7 +57,7 @@ Host / cluster runtime
 
 - **CMS:** Payload CMS with shared dev-container patterns  
 - **Web:** Next.js apps as separate deployable units  
-- **Shared:** Apache 2.0, public-safe docs, Compose for local stacks
+- **Shared:** Apache 2.0, public-safe docs, Docker Compose for local stacks
 
 ### Environment orchestration
 
@@ -93,7 +93,7 @@ Host / cluster runtime
 2. Match catalog rows by domain and status
 3. If available → recommend that component + HTTPS URL
 4. If planned only → say so; propose interim using available parts
-5. Choose deploy model: Compose default; K8s if scale/HA/multi-tenant explicit
+5. Choose deploy model: Docker Compose default; K8s if scale/HA/multi-tenant explicit
 6. Check ADRs for naming, Python version, license
 7. Emit a short composition plan (ordered steps, no private details)
 ```

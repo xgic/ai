@@ -27,7 +27,7 @@ This ADR records the key architectural decisions for Phase 1 delivery and a sust
 - Alignment with vendor-tested “golden” configurations.
 
 **Consequences**:
-- Orchestrator images focus on orchestration (Compose or future platforms), not forking vendor images.
+- Orchestrator images focus on orchestration (Docker Compose or future platforms), not forking vendor images.
 - Future Kubernetes / cloud modules consume the same official images.
 
 ---

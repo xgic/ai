@@ -16,13 +16,13 @@ Formal decision: [ADR-0003](../adr/0003-docker-compose-first-kubernetes-ready.md
 
 1. **Same application contracts** — Config via env/files; no orchestrator-only business logic.  
 2. **Official vendor images** for third-party services when possible.  
-3. **Orchestration is thin** — Compose/K8s declare topology; images and apps remain portable.  
+3. **Orchestration is thin** — Docker Compose/K8s declare topology; images and apps remain portable.  
 4. **Document both paths** in this hub; implement path-specific manifests in product repos.  
-5. **Agent default** — Recommend Compose unless the user states HA, multi-tenant cluster, or cloud-native constraints.
+5. **Agent default** — Recommend Docker Compose unless the user states HA, multi-tenant cluster, or cloud-native constraints.
 
 ## Capability matrix (target)
 
-| Concern | Compose (on-prem) | Kubernetes (cloud-native) |
+| Concern | Docker Compose (on-prem) | Kubernetes (cloud-native) |
 |---------|-------------------|---------------------------|
 | Local/lab bootstrap | Excellent | Optional / heavier |
 | Single-node production | Good | Possible |

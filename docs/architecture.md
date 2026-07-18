@@ -60,7 +60,7 @@ This hub is a **public subset** of broader foundation practice. Private coordina
 |---------|----------------|
 | **Intelligence hub** (`xgic/ai`) | Cross-cutting decisions, catalog, agent knowledge |
 | **Libraries** | Versioned Python packages under `xgic.*` |
-| **Orchestrators / templates** | End-user Compose/config experiences |
+| **Orchestrators / templates** | End-user Docker Compose/config experiences |
 | **Dev-container / image producers** | Contributor environments and image pipelines (`*-dev` when applicable) |
 
 ## Agent mental model

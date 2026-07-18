@@ -11,7 +11,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 | `CliModule` | CLI surface over libraries | `xgic.cli.gitlab` (planned) |
 | `DevContainerProject` | VS Code Dev Container producer/consumer | payload-cms-dev-containers |
 | `Image` | Container image artifact | GHCR images |
-| `Orchestrator` | Compose/K8s stack definition surface | xgic/gitlab |
+| `Orchestrator` | Docker Compose/K8s stack definition surface | xgic/gitlab |
 | `Application` | Product or sample app | Payload/Next.js apps |
 | `Standard` | Process or technical standard | base standards, Apache 2.0 |
 | `ADR` | Architecture decision record | ADR-0001… |
@@ -29,7 +29,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 | `CONSUMES` | Repo/template consumes an image or package |
 | `EXTENDS` | CLI module extends core CLI |
 | `CITES` | Doc/repo cites an ADR or standard |
-| `DEPLOYS_WITH` | Component is typically deployed via Compose or K8s |
+| `DEPLOYS_WITH` | Component is typically deployed via Docker Compose or K8s |
 
 ## Canonical graph (simplified)
 
@@ -56,7 +56,7 @@ Agents should treat each catalog row as having:
 | `location` | yes | HTTPS URL or hub-relative path |
 | `purpose` | yes | One-sentence capability |
 | `namespace` | when Python | e.g. `xgic.cli.dev` |
-| `interfaces` | recommended | library API, CLI, Compose service, HTTP, etc. |
+| `interfaces` | recommended | library API, CLI, Docker Compose service, HTTP, etc. |
 | `depends_on` | recommended | Other catalog IDs |
 
 ## Invariants agents must not violate
