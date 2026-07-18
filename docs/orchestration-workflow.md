@@ -46,7 +46,7 @@ When behavior or process changes:
 
 For dev containers and related tooling:
 
-- Prefer **xde** / XGIC CLI modules over new Makefiles
+- Prefer **XGIC CLI** modules (`xgic` / `xgic.cli.*`) over new Makefiles
 - Keep scripts small; put logic in tested libraries when growth warrants it
 
 ## Related

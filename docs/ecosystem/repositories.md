@@ -10,7 +10,7 @@
 | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS CLI module | `cli.payload` |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Python GraphQL client | `lib.gitlab.graphql` |
 | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab orchestration / template surface | `orch.gitlab` |
-| [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev Container + Payload tooling | `dc.payload`, `lib.xde` (partial) |
+| [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev Container + Payload template (XGIC CLI consumer) | `dc.payload` |
 
 ## Planned (illustrative public names)
 

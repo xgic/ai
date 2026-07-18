@@ -49,7 +49,7 @@ This hub is a **public subset** of broader foundation practice. Private coordina
 3. **Official vendor images** for third-party services when orchestrating them.  
 4. **Python 3.14** minimum for *new* Python development ([ADR-0002](adr/0002-standardize-on-python-3-14.md)).  
 5. **OO design + Pydantic** for structured configuration where Python is used.  
-6. **Shared CLI / xde direction** — no new Makefiles in new or modernized repos.  
+6. **Shared XGIC CLI direction** — modular `xgic` / `xgic.cli.*`; no new Makefiles in new or modernized repos.  
 7. **Docker Compose default; Kubernetes-ready contracts** ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).  
 8. **GitHub Flow + human review** on every public repository.  
 9. **Catalog-driven discovery** — agents consult the ecosystem catalog before inventing modules.
