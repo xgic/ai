@@ -35,7 +35,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 |------|--------|
 | Match | `lib.gitlab.graphql` (`available`) |
 | Link | https://github.com/xgic/gitlab-graphql |
-| Composition | Library only unless operator UX needed → then planned `cli.gitlab` |
+| Composition | Library only unless operator UX needed → then experimental `cli.gitlab` |
 | Deploy | N/A for library; if full GitLab stack needed → `orch.gitlab` + Docker Compose |
 | ADRs | 0001 naming/images, 0002 Python, 0004 license |
 

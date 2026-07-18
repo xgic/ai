@@ -8,7 +8,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 |------|-------------|----------|
 | `Hub` | Documentation/intelligence repository | `xgic/ai` |
 | `Library` | Importable package | `xgic.gitlab.graphql` |
-| `CliModule` | CLI surface over libraries | `xgic.cli.gitlab` (planned) |
+| `CliModule` | CLI surface over libraries | `xgic.cli.gitlab` (experimental), `xgic.cli.payload` |
 | `DevContainerProject` | VS Code Dev Container producer/consumer | payload-cms-dev-containers |
 | `Image` | Container image artifact | GHCR images |
 | `Orchestrator` | Docker Compose/K8s stack definition surface | xgic/gitlab |

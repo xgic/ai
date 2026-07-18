@@ -50,7 +50,7 @@ Host / cluster runtime
 
 - **Library:** `xgic.gitlab.graphql` for API access  
 - **Orchestration:** Docker Compose-based GitLab surface for runtime  
-- **CLI (planned):** `xgic.cli.gitlab` for operator workflows  
+- **CLI (experimental bootstrap):** `xgic.cli.gitlab` (`xgic gitlab …`) for operator workflows
 - **Decision source:** [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md)
 
 ### Content & web
