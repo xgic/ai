@@ -36,7 +36,7 @@ Agents need a clear default so recommendations stay consistent across the ecosys
 **Trade-offs**
 
 - Two orchestration stories to maintain (mitigated by shared images/config contracts)  
-- Product repos must resist Compose-only hardcoding (e.g. host networking assumptions)
+- Product repos must resist Docker Compose-only hardcoding (e.g. host networking assumptions)
 
 ---
 

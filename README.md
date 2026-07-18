@@ -34,7 +34,7 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
 | [docs/ecosystem/composition.md](docs/ecosystem/composition.md) | How components compose (fit patterns) |
 | [docs/agent/knowledge-model.md](docs/agent/knowledge-model.md) | Structured model agents should load |
 | [docs/VISION.md](docs/VISION.md) | Long-term platform vision |
-| [docs/platform/overview.md](docs/platform/overview.md) | Compose → Kubernetes deployment path |
+| [docs/platform/overview.md](docs/platform/overview.md) | Docker Compose → Kubernetes deployment path |
 | [docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) | Canonical public base standards |
 | [docs/adr/](docs/adr/) | Architecture Decision Records |
 | [AGENTS.md](AGENTS.md) | Instructions for AI coding assistants |
@@ -52,7 +52,7 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
               ┌─────────────────────┼─────────────────────┐
               ▼                     ▼                     ▼
         Libraries/CLIs        Orchestration          Surfaces
-     xgic.* Python packs    Compose · (K8s path)   CMS · web · UE
+     xgic.* Python packs    Docker Compose · (K8s path)   CMS · web · UE
      GHCR / Docker images   Dev Containers         Full-stack apps
 ```
 
@@ -97,7 +97,7 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
 1. Read [AGENTS.md](AGENTS.md) and [docs/agent/knowledge-model.md](docs/agent/knowledge-model.md).
 2. Consult the [ecosystem catalog](docs/ecosystem/catalog.md) before inventing modules or repos.
 3. Prefer **full HTTPS URLs** (`https://github.com/xgic/...`) for cross-repo references.
-4. Recommend **Compose** for on-prem bootstrap; surface the **Kubernetes** path only when requirements justify it.
+4. Recommend **Docker Compose** for on-prem bootstrap; surface the **Kubernetes** path only when requirements justify it.
 5. Keep all contributions **public-safe**.
 
 ---

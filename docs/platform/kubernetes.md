@@ -8,9 +8,9 @@
 
 ## Practices
 
-1. **Do not block** Compose users: keep Compose path working.  
-2. Map Compose services → Deployments/StatefulSets + Services + ConfigMaps/Secrets.  
-3. Prefer portable images already used in Compose.  
+1. **Do not block** Docker Compose users: keep the Docker Compose path working.  
+2. Map Docker Compose services → Deployments/StatefulSets + Services + ConfigMaps/Secrets.  
+3. Prefer portable images already used in Docker Compose.  
 4. Introduce Helm/Kustomize/operators in **product** repos when complexity warrants it.  
 5. Observe resource requests/limits, probes, and PDB patterns early.  
 6. Document cluster prerequisites (ingress, storage classes, cert management).

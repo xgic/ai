@@ -6,7 +6,7 @@ Thank you for improving XGIC’s public multi-repository intelligence hub.
 
 - Expand the **ecosystem catalog** and composition rules  
 - Propose or refine **ADRs**  
-- Improve **platform** guidance (Compose, Kubernetes, hybrid)  
+- Improve **platform** guidance (Docker Compose, Kubernetes, hybrid)  
 - Strengthen **agent** knowledge model and playbooks  
 - Keep the **Python namespace** summary accurate  
 - Fix navigation, typos, and broken links  

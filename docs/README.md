@@ -18,7 +18,7 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | [ecosystem/README.md](ecosystem/README.md) | Ecosystem docs index |
 | [ecosystem/repositories.md](ecosystem/repositories.md) | Live and planned repository map |
 
-## Platform (Compose → Kubernetes)
+## Platform (Docker Compose → Kubernetes)
 
 | Document | Description |
 |----------|-------------|

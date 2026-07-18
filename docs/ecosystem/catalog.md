@@ -51,7 +51,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin entry framework + plugins (product-agnostic) |
-| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Compose lifecycle (`xgic up`/`down`/`check`/…) + library |
+| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Docker Compose lifecycle (`xgic up`/`down`/`check`/…) + library |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`) |
@@ -78,10 +78,10 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `orch.gitlab` | GitLab orchestration surface | Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE-oriented orchestration / template experience |
+| `orch.gitlab` | GitLab orchestration surface | Docker Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE-oriented orchestration / template experience |
 | `orch.compose` | Docker Compose-first ops | pattern | `reference` | [platform/docker-compose.md](../platform/docker-compose.md) | Default on-prem deployment model |
 | `orch.k8s` | Kubernetes path | pattern | `reference` | [platform/kubernetes.md](../platform/kubernetes.md) | Future scale-out; same contracts where possible |
-| `orch.hybrid` | Hybrid on-prem / cloud | pattern | `reference` | [platform/hybrid.md](../platform/hybrid.md) | Lab/edge Compose + cloud K8s recommendations |
+| `orch.hybrid` | Hybrid on-prem / cloud | pattern | `reference` | [platform/hybrid.md](../platform/hybrid.md) | Lab/edge Docker Compose + cloud K8s recommendations |
 
 ---
 
