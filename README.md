@@ -6,7 +6,7 @@
 [![Docs](https://img.shields.io/badge/docs-hub-informational)](docs/README.md)
 [![ADRs](https://img.shields.io/badge/ADRs-index-success)](docs/adr/README.md)
 
-This repository is the **public entry point** into XGIC open-source solutions. It is a curated public subset of the broader XGIC Foundation practice: high-quality documentation, formal Architecture Decision Records (ADRs), base standards, agentic workflows, and an ecosystem catalog designed so AI agents can reason about *what exists*, *where it lives*, and *how components fit together*.
+This repository is the **public entry point** into XGIC open-source solutions. It is a curated public subset of broader XGIC practice: high-quality documentation, formal Architecture Decision Records (ADRs), base standards, agentic workflows, and an ecosystem catalog designed so AI agents can reason about *what exists*, *where it lives*, and *how components fit together*.
 
 > **Scope today:** documentation, standards, ADRs, and agent knowledge.  
 > **Trajectory:** a full-stack cloud-native platform — starting with **Docker Compose** for on-premises deployments and evolving toward **Kubernetes** and hybrid cloud-native operations.

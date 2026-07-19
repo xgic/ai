@@ -16,18 +16,25 @@
 
 - Use full HTTPS URLs to public GitHub artifacts: `https://github.com/xgic/<repo>/...`
 - Same-repo short refs (`#N`) only within that public repository
-- Do **not** close or reference private trackers from public PR bodies (no private project IDs)
+- Do **not** name private hubs, private repository identities, private hosts, or private trackers on public surfaces—including in “safe” summary phrases
+- Do **not** close or reference private trackers from public PR bodies
 - Do **not** spell real private hostnames or private tracker paths—even as “forbidden examples”—on public surfaces
-- When private coordination exists, use only a high-level phrase: “Private portfolio coordination is tracked only in the private XGIC Foundation (org members only).”
+- When work is coordinated privately, **omit** that coordination from public artifacts entirely (no substitute phrase that names private systems)
+
+**Project artifacts vs rule documents:**
+
+- **Project artifacts** (PR/issue/Discussion bodies, release notes, commit messages meant for product history): describe the technical change only. Do **not** restate portfolio hard-security rules or name private coordination systems.
+- **Rule documents** (this file, `AGENTS.md`, and linked public standards): hold the rules. Agents and humans follow them; they do not copy rule prose into every PR.
 
 **Pre-publish checklist** (every public PR/issue body, comment, and commit message):
 
 1. No private hosts / internal URLs  
-2. No private tracker IDs or private work-item links  
+2. No private tracker IDs, private work-item links, or private hub/repository names  
 3. No private local paths  
-4. Labels applied  
+4. No restated portfolio rules (rules live in dedicated documents only)  
+5. Labels applied  
 
-Violations are security incidents: correct immediately; coordinate remediation privately if needed. Do not re-leak private hosts or tracker URLs while describing the fix on public GitHub.
+Violations are security incidents: correct immediately. Do not re-leak private names, hosts, or tracker URLs while describing the fix on public GitHub.
 
 ---
 

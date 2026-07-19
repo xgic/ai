@@ -3,7 +3,7 @@
 **Status:** Living public pointer  
 **Date:** 2026-07-18  
 
-Full portfolio style rules for Markdown (including private coordination docs) live in the private XGIC Foundation style guide. This page is the **public-safe** summary for open-source repositories.
+This page is the **public** documentation-style summary for open-source repositories. Broader portfolio style rules that are not public-safe stay out of public surfaces.
 
 ## Headings
 
@@ -38,11 +38,12 @@ Full portfolio style rules for Markdown (including private coordination docs) li
 
 Public issues, pull requests, Discussions, and comments must **never** include:
 
-- Private GitLab hosts or URLs  
-- Private tracker paths or IDs from private coordination systems  
+- Private hosts or URLs  
+- Private tracker paths, IDs, or private hub/repository names  
 - Private local filesystem paths as required documentation  
+- Restated portfolio hard-security rules (those belong only in dedicated rule documents such as [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) and root `AGENTS.md`)  
 
-Cross-repository links on public GitHub use full `https://github.com/xgic/...` URLs only. When private coordination exists, use only a high-level phrase such as: “Private portfolio coordination is tracked only in the private XGIC Foundation (org members only).” Do not link or number private work items from public surfaces.
+Cross-repository links on public GitHub use full `https://github.com/xgic/...` URLs only. When work is coordinated privately, **omit** that coordination from public project artifacts entirely—do not substitute a phrase that names private systems.
 
 ## Related
 
