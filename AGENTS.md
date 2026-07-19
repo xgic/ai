@@ -43,7 +43,9 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 **Do not** restate hard-security rules in PR/issue bodies—rules live in this file and [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md). When work is coordinated privately, omit that fact from public artifacts entirely.
 
-**Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no rule restatement in project artifacts; labels applied.
+**Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no hard-coded private project/user IDs in tests or source; no rule restatement in project artifacts; labels applied.
+
+**Configuration over hard-coding:** hosts, namespace paths, user IDs, and credentials come from env/config or synthetic fixtures—not literals that identify private systems. See [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
 
 **Mandatory checklist completion before close** (issues, PRs, and any Markdown task lists on those artifacts):
 

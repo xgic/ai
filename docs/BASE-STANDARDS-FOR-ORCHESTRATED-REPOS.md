@@ -10,7 +10,7 @@
 
 ## Hard security (non-negotiable)
 
-**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output destined for public artifacts).
+**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, **tests**, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output destined for public artifacts).
 
 **Public-safe references only**:
 
@@ -20,6 +20,13 @@
 - Do **not** close or reference private trackers from public PR bodies
 - Do **not** spell real private hostnames or private tracker paths—even as “forbidden examples”—on public surfaces
 - When work is coordinated privately, **omit** that coordination from public artifacts entirely (no substitute phrase that names private systems)
+
+**Configuration over hard-coding (mandatory for production code and tests):**
+
+- Hosts, base URLs, project/namespace paths, user IDs, tokens, and similar environment-specific values must come from **configuration or environment variables** (or explicit test fixtures with **synthetic** names).
+- **Unit tests** use only fictional placeholders (e.g. `example-group/example-project`, `gid://gitlab/User/1001`).
+- **Integration tests** (opt-in) read live targets from env (e.g. `GITLAB_URL`, `GITLAB_TOKEN`, `GITLAB_TEST_NAMESPACE_PATH`) and must target a **dedicated non-production** instance/project—never production coordination projects.
+- Do not hard-code private usernames, production project paths, or real credential material in source, tests, or docs.
 
 **Project artifacts vs rule documents:**
 
