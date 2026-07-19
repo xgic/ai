@@ -15,7 +15,7 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 | GitLab GraphQL Client | Library | `xgic.gitlab.graphql` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.2** | 1 | — | Available — `uv pip install xgic-gitlab-graphql`; Work Items, hierarchy, auth, pagination |
 | Core CLI | CLI / framework | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) | 2 | — | Available — thin core (framework, env detect, output); entrypoint `xgic` |
 | Dev Container CLI | CLI module | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | 2 | Core CLI | Available — Docker Compose lifecycle + library (`xgic up`/`down`/`check`/…) |
-| GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | Planned — backup/restore and GitLab ops |
+| GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | **Experimental** — B6a bootstrap (`xgic gitlab info`); backup/restore later |
 | AIS CLI | CLI module | `xgic.cli.ais` | [xgic/ais-cli](https://github.com/xgic/ais-cli) | 3 | Core CLI | Planned — automation-oriented AIS features (public surface only) |
 | Payload CMS CLI | CLI module | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | 4 | Core CLI, Dev CLI | Available — Payload CMS product commands (`xgic payload …`) |
 

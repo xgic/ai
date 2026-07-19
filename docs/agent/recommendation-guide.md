@@ -35,9 +35,9 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 |------|--------|
 | Match | `lib.gitlab.graphql` (`available`) |
 | Link | https://github.com/xgic/gitlab-graphql |
-| Composition | Library only unless operator UX needed → then planned `cli.gitlab` |
-| Deploy | N/A for library; if full GitLab stack needed → `orch.gitlab` + Docker Compose |
-| ADRs | 0001 naming/images, 0002 Python, 0004 license |
+| Composition | Library only unless operator UX needed → then experimental `cli.gitlab` (`xgic gitlab …`) |
+| Deploy | N/A for library; if full GitLab stack needed → `orch.gitlab` + `img.xgic-gitlab` + Docker Compose |
+| ADRs | 0001 naming/images, 0002 Python, 0004 license, 0005 modular CLI |
 
 ### B. “Stand up Payload CMS for local development”
 
@@ -64,7 +64,7 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 |------|--------|
 | Namespace | `xgic.cli.<domain>` per namespace convention |
 | Status | If not in catalog → PR to `xgic/ai` catalog first or same change set |
-| Depends | Core CLI (`planned`) + domain libraries |
+| Depends | Core CLI (`available`, [xgic/cli](https://github.com/xgic/cli)) + domain libraries |
 | License | Apache-2.0 |
 | Python | `>=3.14` |
 

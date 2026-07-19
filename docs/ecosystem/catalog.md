@@ -52,7 +52,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 |----|------|-----------|--------|----------|---------|
 | `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin entry framework + plugins (product-agnostic) |
 | `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Docker Compose lifecycle (`xgic up`/`down`/`check`/…) + library |
-| `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `planned` | planned `xgic/gitlab-cli` | Backup/restore and GitLab ops |
+| `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `experimental` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | GitLab product commands (`xgic gitlab …`); B6a bootstrap (info stub; backup/restore later) |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`) |
 | `cli.xde` | xde (retired) | — | `retired` | historical notes only | Former in-tree entrypoint; living template uses modular XGIC CLI only |
