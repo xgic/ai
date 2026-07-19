@@ -26,20 +26,26 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 ## Hard security (absolute)
 
-**Never** place any of the following in this repository (files, issues, PRs, commits, comments, or agent output intended for commit):
+**Never** place any of the following in this repository (files, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output intended for commit):
 
-- Private repository names, paths, hostnames, or internal URLs
-- Private issue / merge-request identifiers from private trackers
+- Private repository names, private hub names, paths, hostnames, or internal URLs
+- Private issue / merge-request identifiers from private trackers (including private work-item links)
 - Internal workspace paths, session store paths, or private plan locations
 - Credentials, tokens, or environment secrets
+- Real private hostnames or tracker paths used as “forbidden examples” on public surfaces
+- Phrases that acknowledge or name private coordination systems on public project artifacts
 
-**Allowed:**
+**Allowed on project artifacts** (PR/issue bodies, release notes):
 
-- High-level abstract wording when necessary (e.g. “private coordination is handled separately”)
+- Technical summary of the public change only
 - Full HTTPS links to **public** GitHub artifacts (`https://github.com/xgic/...`)
 - Same-repo short refs (`#N`) for issues/PRs **in this public repository only**
 
-Violations are security incidents: stop, sanitize, and correct before merge.
+**Do not** restate hard-security rules in PR/issue bodies—rules live in this file and [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md). When work is coordinated privately, omit that fact from public artifacts entirely.
+
+**Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no rule restatement in project artifacts; labels applied.
+
+Violations are security incidents: stop, sanitize public text immediately, and correct before merge.
 
 ---
 
