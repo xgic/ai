@@ -12,7 +12,7 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 
 | Name | Type | Namespace | GitHub | Priority | Dependencies | Status (high-level) |
 |------|------|-----------|--------|----------|--------------|---------------------|
-| GitLab GraphQL Client | Library | `xgic.gitlab.graphql` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.1** | 1 | — | Available — `uv pip install xgic-gitlab-graphql`; Work Items, hierarchy, auth, pagination |
+| GitLab GraphQL Client | Library | `xgic.gitlab.graphql` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.2** | 1 | — | Available — `uv pip install xgic-gitlab-graphql`; Work Items, hierarchy, auth, pagination |
 | Core CLI | CLI / framework | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) | 2 | — | Available — thin core (framework, env detect, output); entrypoint `xgic` |
 | Dev Container CLI | CLI module | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | 2 | Core CLI | Available — Docker Compose lifecycle + library (`xgic up`/`down`/`check`/…) |
 | GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | Planned — backup/restore and GitLab ops |
