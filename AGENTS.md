@@ -45,6 +45,16 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 **Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no rule restatement in project artifacts; labels applied.
 
+**Mandatory checklist completion before close** (issues, PRs, and any Markdown task lists on those artifacts):
+
+1. Enumerate every unchecked item (`- [ ]`).  
+2. Verify each against evidence (merged PRs, CI, Releases, live docs).  
+3. Update the body so completed items are `- [x]`.  
+4. Do **not** close while required items remain unchecked unless a human documents an explicit waiver on the artifact.  
+5. Reviewers (human today; AI agent later) apply the same gate.
+
+Closing with unchecked required checklist items is a process defect: reopen, fix checkboxes, then close.
+
 Violations are security incidents: stop, sanitize public text immediately, and correct before merge.
 
 ---

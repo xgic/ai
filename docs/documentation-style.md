@@ -46,6 +46,8 @@ Reference package READMEs (after updates): [xgic/cli](https://github.com/xgic/cl
 - Apply on **new and edited** files; no required mass rewrite of history  
 - Public content remains **public-safe** only ([BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md))  
 - Labels remain mandatory ([community-health.md](community-health.md))  
+- **Checklist completion before close:** before closing an issue or PR, verify Markdown checklist items (`- [ ]` / `- [x]`), mark completed items, and do not close with unchecked required items unless a human documents a waiver ([AGENTS.md](../AGENTS.md), [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md))  
+
 
 ### Public GitHub hygiene (mandatory)
 
