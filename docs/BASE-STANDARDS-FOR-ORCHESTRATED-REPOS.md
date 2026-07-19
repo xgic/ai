@@ -83,7 +83,7 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 - Squash related tiny commits when they form one logical change (unrelated work = separate PRs)
 - Prefer `Closes #N` only for **same-repo** public issues
 - **Labels (mandatory):** every issue, PR/MR, and GitHub Discussion welcome post must carry proper labels. GitHub: at least the semantic set in [community-health.md](community-health.md) (`bug`, `enhancement`, `documentation`, `standards`, `chore`, `welcome`, …). Welcome Discussions require `welcome` + `documentation`. GitLab: apply project type/priority/process labels (e.g. `type:docs`, `priority:high`). Unlabeled artifacts are incomplete.
-- **Documentation style (mandatory for new/edited Markdown):** [documentation-style.md](documentation-style.md) — **sentence-case** headings; **Docker Compose** and **GitLab EE** full product names; soft prose wrap for new content; public-safe only.
+- **Documentation style (mandatory for new/edited Markdown):** [documentation-style.md](documentation-style.md) — **sentence-case** headings; **Docker Compose** and **GitLab EE** full product names; soft prose wrap for new content; public-safe only; public OSS README badge row on substantial updates.
 
 ---
 

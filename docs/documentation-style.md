@@ -1,7 +1,7 @@
 # XGIC documentation style (public summary)
 
 **Status:** Living public pointer  
-**Date:** 2026-07-18  
+**Date:** 2026-07-19  
 
 This page is the **public** documentation-style summary for open-source repositories. Broader portfolio style rules that are not public-safe stay out of public surfaces.
 
@@ -28,6 +28,19 @@ This page is the **public** documentation-style summary for open-source reposito
 - Language-tagged fenced code blocks; descriptive link text; image alt text  
 - Prefer Mermaid for diagrams  
 
+## Public README headers
+
+On **substantial** updates to a public OSS `README.md`, place a functional badge row directly under the H1:
+
+- Shields.io `flat` or `flat-square`; about **4–10** badges  
+- Typical set: license, CI status, PyPI or GitHub Release version, Python (or primary runtime)  
+- Clickable destinations; meaningful alt text; blank line before the description  
+- Prefer pure Markdown; no decorative badge spam  
+
+Private or confidential projects use a different profile (no misleading public OSS badges). Details live in the private portfolio style guide; public repos follow this public summary and [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
+
+Reference package READMEs (after updates): [xgic/cli](https://github.com/xgic/cli), [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql).
+
 ## Application
 
 - Apply on **new and edited** files; no required mass rewrite of history  
@@ -50,3 +63,4 @@ Cross-repository links on public GitHub use full `https://github.com/xgic/...` U
 - [community-health.md](community-health.md)  
 - [BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)  
 - [python-package-release.md](python-package-release.md)  
+
