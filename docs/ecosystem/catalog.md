@@ -29,7 +29,7 @@
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
-| `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
+| `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.1** | Auth, Work Items, hierarchy, pagination against GitLab GraphQL; install with `uv pip install xgic-gitlab-graphql` |
 | `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
 | `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
 
