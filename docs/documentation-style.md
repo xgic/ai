@@ -16,10 +16,13 @@ This page is the **public** documentation-style summary for open-source reposito
 
 | Topic | Use | Avoid |
 |-------|-----|--------|
-| Compose product | **Docker Compose** | Bare “Compose” |
-| GitLab edition | **GitLab Enterprise Edition** or **GitLab EE** | Bare “EE” |
+| Compose product | **Docker Compose** | Bare “Compose” as a product name |
+| Compose deployment unit | **Docker Compose instance** (or **Docker Compose stack**) | Bare “Compose instance”, “Compose stack”, “Compose target” when referring to a deployment |
+| GitLab edition | **GitLab Enterprise Edition** or **GitLab EE** | Bare “EE” alone in operator docs (acronym OK after first spell-out) |
 | Our GitLab ops CLI | **XGIC GitLab CLI**, `xgic-gitlab-cli`, `xgic/gitlab-cli` | Bare `gitlab-cli` (confusion with official **`glab`**) |
 | GraphQL library | **XGIC GitLab GraphQL Client**, `xgic-gitlab-graphql` | Ambiguous short names |
+
+**Mandatory for new/edited prose:** never write “Compose instance” without the **Docker** prefix. Prefer **Docker Compose instance** for a running deployment and **Docker Compose stack** for the compose definition/set of services.
 
 ## Source formatting
 
