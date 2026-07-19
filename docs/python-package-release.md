@@ -201,6 +201,16 @@ python -c "from xgic.cli import __version__; print(__version__)"
 
 **Stop here if smoke fails.** Do not promote to PyPI. Fix, cut a new RC version, repeat.
 
+### 7.5 GitHub Release for RC (mandatory)
+
+After **successful** TestPyPI smoke for tag `vX.Y.ZrcN`, create a **GitHub Release** for that tag:
+
+- Mark the Release as a **prerelease** (`prerelease: true`)  
+- Public-safe notes only (CHANGELOG excerpt and/or generated notes)  
+- This step is **required**, not optional—RC tags must appear on the repository Releases page  
+
+Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with `permissions: contents: write`, using `softprops/action-gh-release` or `gh release create`.
+
 ---
 
 ## 8. Final release process (PyPI)
@@ -210,7 +220,7 @@ python -c "from xgic.cli import __version__; print(__version__)"
 - [ ] Successful TestPyPI RC smoke for this version line (or explicit waiver **only** for pure docs packages with no code—default is **no waiver** for `xgic.*` libraries/CLIs)  
 - [ ] Final version string set (e.g. `0.2.0`)  
 - [ ] Annotated Git tag (recommended): `v0.2.0`  
-- [ ] GitHub Release notes ready (public-safe)
+- [ ] Public-safe release notes prepared (CHANGELOG / GitHub Release body)
 
 ### 8.2 Publish final to PyPI
 
@@ -238,11 +248,30 @@ uv pip install \
 
 Use **only** the production index (no TestPyPI). Retry briefly if CDN lag occurs; fail the release job if smoke does not pass.
 
-### 8.4 Post-release
+### 8.4 GitHub Release for final (mandatory)
 
-- [ ] Confirm GitHub Release attached to the tag  
+After **successful** PyPI smoke for tag `vX.Y.Z` (no `rc`), create a **GitHub Release** for that tag:
+
+- **Not** a prerelease (`prerelease: false`)  
+- Public-safe notes only  
+- **Required** for every final release—tags alone are not sufficient  
+
+CI job should depend on the PyPI smoke job, with `permissions: contents: write`.
+
+### 8.5 Post-release
+
+- [ ] Confirm **GitHub Release** exists for the tag (RC or final, as applicable)  
 - [ ] Update [ecosystem catalog](ecosystem/catalog.md) / [namespace summary](xgic-python-namespace-convention.md) if status or version narrative changes  
 - [ ] Announce only public-safe content (Discussions/README as appropriate)
+
+### 8.6 Rule summary — GitHub Releases
+
+| Tag | Index | GitHub Release | Prerelease flag |
+|-----|-------|----------------|-----------------|
+| `vX.Y.ZrcN` | TestPyPI | **Mandatory** after TestPyPI smoke | `true` |
+| `vX.Y.Z` | PyPI | **Mandatory** after PyPI smoke | `false` |
+
+A successful package index publish without a GitHub Release is an incomplete release process.
 
 ---
 

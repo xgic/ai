@@ -26,20 +26,39 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 ## Hard security (absolute)
 
-**Never** place any of the following in this repository (files, issues, PRs, commits, comments, or agent output intended for commit):
+**Never** place any of the following in this repository (files, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output intended for commit):
 
-- Private repository names, paths, hostnames, or internal URLs
-- Private issue / merge-request identifiers from private trackers
+- Private repository names, private hub names, paths, hostnames, or internal URLs
+- Private issue / merge-request identifiers from private trackers (including private work-item links)
 - Internal workspace paths, session store paths, or private plan locations
 - Credentials, tokens, or environment secrets
+- Real private hostnames or tracker paths used as “forbidden examples” on public surfaces
+- Phrases that acknowledge or name private coordination systems on public project artifacts
 
-**Allowed:**
+**Allowed on project artifacts** (PR/issue bodies, release notes):
 
-- High-level abstract wording when necessary (e.g. “private coordination is handled separately”)
+- Technical summary of the public change only
 - Full HTTPS links to **public** GitHub artifacts (`https://github.com/xgic/...`)
 - Same-repo short refs (`#N`) for issues/PRs **in this public repository only**
 
-Violations are security incidents: stop, sanitize, and correct before merge.
+**Do not** restate hard-security rules in PR/issue bodies—rules live in this file and [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md). When work is coordinated privately, omit that fact from public artifacts entirely.
+
+**Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no hard-coded private project/user IDs in tests or source; no rule restatement in project artifacts; labels applied.
+
+**Configuration over hard-coding:** hosts, namespace paths, user IDs, and credentials come from env/config or synthetic fixtures—not literals that identify private systems. See [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
+
+**Mandatory checklist completion before close** (issues, PRs, and any Markdown task lists on those artifacts):
+
+1. Enumerate every unchecked item (`- [ ]`).  
+2. Verify each against evidence (merged PRs, CI, Releases, live docs).  
+3. Update the body so completed items are `- [x]`.  
+4. Do **not** close while required items remain unchecked unless a human documents an explicit waiver on the artifact.  
+5. Confirm **assignee** is set for active work (default `@xgic` on XGIC public repos) unless the artifact is explicitly unassigned.  
+6. Reviewers (human today; AI agent later) apply the same gate.
+
+Closing with unchecked required checklist items or missing required assignees is a process defect: reopen, fix fields, then close.
+
+Violations are security incidents: stop, sanitize public text immediately, and correct before merge.
 
 ---
 
@@ -67,6 +86,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
 - **Atomic changes**: include relevant doc updates in the same commit when they are part of the change.
 - **Labels (mandatory):** apply proper labels to every issue, PR, and Discussion welcome post before considering the artifact complete. Welcome posts: `welcome` + `documentation`. See [docs/community-health.md](docs/community-health.md).
+- **Assignee (mandatory for active work):** Every issue and pull request that tracks active work must have an assignee. For XGIC public repositories, the default assignee is **`@xgic`** unless the human explicitly requests unassigned (for example help-wanted or community pickup). Agents set the assignee when creating the artifact and verify it before close.
 - **Rule text lives in standards docs** (this file, base standards). Do not restate full rule procedures in issue/PR templates.
 
 ---

@@ -10,15 +10,38 @@
 
 ## Hard security (non-negotiable)
 
-**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, issues, PRs, commits, comments, or agent output destined for public artifacts).
+**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, **tests**, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output destined for public artifacts).
 
 **Public-safe references only**:
 
 - Use full HTTPS URLs to public GitHub artifacts: `https://github.com/xgic/<repo>/...`
 - Same-repo short refs (`#N`) only within that public repository
-- Do **not** close or reference private trackers from public PR bodies (no private project IDs)
+- Do **not** name private hubs, private repository identities, private hosts, or private trackers on public surfaces—including in “safe” summary phrases
+- Do **not** close or reference private trackers from public PR bodies
+- Do **not** spell real private hostnames or private tracker paths—even as “forbidden examples”—on public surfaces
+- When work is coordinated privately, **omit** that coordination from public artifacts entirely (no substitute phrase that names private systems)
 
-Violations are security incidents: correct immediately; coordinate remediation privately if needed.
+**Configuration over hard-coding (mandatory for production code and tests):**
+
+- Hosts, base URLs, project/namespace paths, user IDs, tokens, and similar environment-specific values must come from **configuration or environment variables** (or explicit test fixtures with **synthetic** names).
+- **Unit tests** use only fictional placeholders (e.g. `example-group/example-project`, `gid://gitlab/User/1001`).
+- **Integration tests** (opt-in) read live targets from env (e.g. `GITLAB_URL`, `GITLAB_TOKEN`, `GITLAB_TEST_NAMESPACE_PATH`) and must target a **dedicated non-production** instance/project—never production coordination projects.
+- Do not hard-code private usernames, production project paths, or real credential material in source, tests, or docs.
+
+**Project artifacts vs rule documents:**
+
+- **Project artifacts** (PR/issue/Discussion bodies, release notes, commit messages meant for product history): describe the technical change only. Do **not** restate portfolio hard-security rules or name private coordination systems.
+- **Rule documents** (this file, `AGENTS.md`, and linked public standards): hold the rules. Agents and humans follow them; they do not copy rule prose into every PR.
+
+**Pre-publish checklist** (every public PR/issue body, comment, and commit message):
+
+1. No private hosts / internal URLs  
+2. No private tracker IDs, private work-item links, or private hub/repository names  
+3. No private local paths  
+4. No restated portfolio rules (rules live in dedicated documents only)  
+5. Labels applied  
+
+Violations are security incidents: correct immediately. Do not re-leak private names, hosts, or tracker URLs while describing the fix on public GitHub.
 
 ---
 
@@ -67,6 +90,9 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 - Squash related tiny commits when they form one logical change (unrelated work = separate PRs)
 - Prefer `Closes #N` only for **same-repo** public issues
 - **Labels (mandatory):** every issue, PR/MR, and GitHub Discussion welcome post must carry proper labels. GitHub: at least the semantic set in [community-health.md](community-health.md) (`bug`, `enhancement`, `documentation`, `standards`, `chore`, `welcome`, …). Welcome Discussions require `welcome` + `documentation`. GitLab: apply project type/priority/process labels (e.g. `type:docs`, `priority:high`). Unlabeled artifacts are incomplete.
+- **Assignee (mandatory for active work):** Every issue and PR that tracks active work must have an assignee. On XGIC public repositories the default is **`@xgic`** unless the human explicitly requests unassigned (for example help-wanted). Agents set assignee at create and verify before close. See [AGENTS.md](../AGENTS.md).
+- **Checklist completion before close (mandatory):** Before closing any issue or PR that contains Markdown task lists (`- [ ]` / `- [x]`), verify every required item, update the body to mark completed items `- [x]`, and do not close with unchecked required items unless a human documents an explicit waiver. Also confirm assignee is set (or explicitly waived). Reviewers (human or future AI) apply the same gate. See [AGENTS.md](../AGENTS.md).
+- **Documentation style (mandatory for new/edited Markdown):** [documentation-style.md](documentation-style.md) — **sentence-case** headings; **Docker Compose** and **GitLab EE** full product names; soft prose wrap for new content; public-safe only; public OSS README badge row on substantial updates.
 
 ---
 

@@ -29,7 +29,7 @@
 
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
-| `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Auth, Work Items, hierarchy, pagination against GitLab GraphQL |
+| `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.2** | Auth, Work Items, hierarchy, pagination against GitLab GraphQL; install with `uv pip install xgic-gitlab-graphql` |
 | `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
 | `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
 
@@ -66,7 +66,8 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
 | `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload CMS + tooling; **consumer** of modular XGIC CLI |
-| `img.ghcr` | GHCR publications | container images | `planned` / partial | GitHub Container Registry under `xgic` | Published images for templates and orchestrators |
+| `img.ghcr` | GHCR publications | container images | `available` | GitHub Container Registry under `xgic` | Published images for templates and orchestrators (expanding product set) |
+| `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
 
@@ -78,7 +79,8 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `orch.gitlab` | GitLab orchestration surface | Docker Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE-oriented orchestration / template experience |
+| `orch.gitlab` | GitLab Compose template (consumer) | Docker Compose / template | `available` | [xgic/gitlab](https://github.com/xgic/gitlab) | End-user template: official `gitlab/gitlab-ee` + Postgres + Redis + `img.xgic-gitlab` (`xgic-gitlab` service starts first) |
+| `orch.gitlab.dev` | GitLab image producer (`*-dev`) | producer / build | `available` | [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Builds and publishes `img.xgic-gitlab` to GHCR; future Dev Container contributor tooling (not the end-user template) |
 | `orch.compose` | Docker Compose-first ops | pattern | `reference` | [platform/docker-compose.md](../platform/docker-compose.md) | Default on-prem deployment model |
 | `orch.k8s` | Kubernetes path | pattern | `reference` | [platform/kubernetes.md](../platform/kubernetes.md) | Future scale-out; same contracts where possible |
 | `orch.hybrid` | Hybrid on-prem / cloud | pattern | `reference` | [platform/hybrid.md](../platform/hybrid.md) | Lab/edge Docker Compose + cloud K8s recommendations |

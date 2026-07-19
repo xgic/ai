@@ -35,7 +35,7 @@ Host / cluster runtime
 | Goal | Prefer | Avoid |
 |------|--------|--------|
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
-| Local GitLab EE lab | `orch.gitlab` + Docker Compose + official images | Custom GitLab EE image forks |
+| Local GitLab EE lab | `orch.gitlab` + `img.xgic-gitlab` + official `gitlab/gitlab-ee` / Postgres / Redis | Custom GitLab EE image forks; building the orchestrator inside the template repo |
 | Payload contributor environment | `dc.payload` + modular XGIC CLI from PyPI | One-off Dockerfiles without shared tooling |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
@@ -49,9 +49,11 @@ Host / cluster runtime
 ### GitLab automation
 
 - **Library:** `xgic.gitlab.graphql` for API access  
-- **Orchestration:** Docker Compose-based GitLab surface for runtime  
-- **CLI (experimental bootstrap):** `xgic.cli.gitlab` (`xgic gitlab …`) for operator workflows
-- **Decision source:** [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md)
+- **Dual-repo orchestration (ADR-0001):**  
+  - **Producer:** `orch.gitlab.dev` ([xgic/gitlab-dev](https://github.com/xgic/gitlab-dev)) publishes `img.xgic-gitlab` (`ghcr.io/xgic/xgic-gitlab`)  
+  - **Template:** `orch.gitlab` ([xgic/gitlab](https://github.com/xgic/gitlab)) Compose consumer — official vendor images + orchestration image  
+- **CLI (experimental B6a bootstrap):** `xgic.cli.gitlab` ([xgic/gitlab-cli](https://github.com/xgic/gitlab-cli)) — nested `xgic gitlab …` (info stub; backup/restore later)  
+- **Decision source:** [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md), [ADR-0005](../adr/0005-modular-xgic-cli-and-retirement-of-xde.md)
 
 ### Content & web
 
