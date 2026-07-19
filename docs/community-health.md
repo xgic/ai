@@ -13,6 +13,7 @@ Coordinating issue: https://github.com/xgic/ai/issues/5
 | Contact links | Only real, existing URLs. Contributing → root `CONTRIBUTING.md`. Discussions → only after Discussions is enabled. |
 | Discussions | Enable on public / soon-to-be-public repos; pin a professional welcome post; questions/ideas in Discussions; bugs/features in Issues. |
 | **Labels (required)** | **Every** GitHub and GitLab project artifact that supports labels must carry **proper, consistent labels** (see [Labels](#labels-required)). This includes issues, pull requests / merge requests, and **GitHub Discussion welcome posts**. |
+| **Markdown style** | New/edited public Markdown follows [documentation-style.md](documentation-style.md): **sentence-case** headings; **Docker Compose** and **GitLab EE** full names; soft prose wrap for new content. |
 | Multi-repo policy | **Link** [xgic/ai](https://github.com/xgic/ai) (BASE-STANDARDS, ADRs, catalog). Do **not** fork large hub policy into product repos. |
 | License | Apache-2.0 for XGIC public solutions ([ADR-0004](adr/0004-apache-2-0-for-public-solutions.md)). |
 | Cross-repo refs | Full HTTPS URLs (e.g. `https://github.com/xgic/ai/issues/5`). Never bare `#N` for another repository. |
