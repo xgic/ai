@@ -10,15 +10,24 @@
 
 ## Hard security (non-negotiable)
 
-**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, issues, PRs, commits, comments, or agent output destined for public artifacts).
+**Zero private leakage**: Do not place private repository names, internal hosts/URLs, private tracker IDs, private filesystem paths, credentials, or private coordination structures into any public XGIC repository (files, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output destined for public artifacts).
 
 **Public-safe references only**:
 
 - Use full HTTPS URLs to public GitHub artifacts: `https://github.com/xgic/<repo>/...`
 - Same-repo short refs (`#N`) only within that public repository
 - Do **not** close or reference private trackers from public PR bodies (no private project IDs)
+- Do **not** spell real private hostnames or private tracker paths—even as “forbidden examples”—on public surfaces
+- When private coordination exists, use only a high-level phrase: “Private portfolio coordination is tracked only in the private XGIC Foundation (org members only).”
 
-Violations are security incidents: correct immediately; coordinate remediation privately if needed.
+**Pre-publish checklist** (every public PR/issue body, comment, and commit message):
+
+1. No private hosts / internal URLs  
+2. No private tracker IDs or private work-item links  
+3. No private local paths  
+4. Labels applied  
+
+Violations are security incidents: correct immediately; coordinate remediation privately if needed. Do not re-leak private hosts or tracker URLs while describing the fix on public GitHub.
 
 ---
 

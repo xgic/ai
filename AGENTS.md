@@ -26,20 +26,23 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 ## Hard security (absolute)
 
-**Never** place any of the following in this repository (files, issues, PRs, commits, comments, or agent output intended for commit):
+**Never** place any of the following in this repository (files, issues, **PR/issue/Discussion bodies and comments**, commits, package metadata, or agent output intended for commit):
 
 - Private repository names, paths, hostnames, or internal URLs
-- Private issue / merge-request identifiers from private trackers
+- Private issue / merge-request identifiers from private trackers (including private work-item links)
 - Internal workspace paths, session store paths, or private plan locations
 - Credentials, tokens, or environment secrets
+- Real private hostnames or tracker paths used as “forbidden examples” on public surfaces
 
 **Allowed:**
 
-- High-level abstract wording when necessary (e.g. “private coordination is handled separately”)
+- High-level abstract wording when necessary (e.g. “Private portfolio coordination is tracked only in the private XGIC Foundation (org members only).”)
 - Full HTTPS links to **public** GitHub artifacts (`https://github.com/xgic/...`)
 - Same-repo short refs (`#N`) for issues/PRs **in this public repository only**
 
-Violations are security incidents: stop, sanitize, and correct before merge.
+**Pre-publish checklist:** no private hosts; no private tracker IDs/links; no private local paths; labels applied.
+
+Violations are security incidents: stop, sanitize public text immediately, and correct before merge.
 
 ---
 
