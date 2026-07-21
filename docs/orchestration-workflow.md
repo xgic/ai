@@ -2,6 +2,10 @@
 
 Practical workflow for humans and AI agents working on XGIC public GitHub repositories, including this hub.
 
+## Core principles (deployments)
+
+- **Deployment quality (every environment):** lab, staging, production, and hybrid/cloud deploys must be **idempotent**, **reliable**, and **reproducible**. Full policy: [BASE-STANDARDS — Deployment quality attributes](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#deployment-quality-attributes-mandatory--every-environment). Docker Compose defaults: [platform/docker-compose.md](platform/docker-compose.md).
+
 ## Branching
 
 - Default branch: **`main`** (always releasable / publishable documentation or software)

@@ -45,6 +45,7 @@ A **secure, well-documented, AI-accelerated platform** for building and operatin
 3. **Agent ergonomics** — Structure docs for machines: catalogs, tables, explicit statuses, stable URLs.
 4. **Security boundaries** — Public docs never expose private coordination; private work stays private.
 5. **Daily improvement** — As Grok Build and automation advance, distill only public-safe, high-value patterns into this hub.
+6. **Deployment quality** — Every environment’s deploy path is **idempotent**, **reliable**, and **reproducible** ([BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#deployment-quality-attributes-mandatory--every-environment)).
 
 ## Success measures
 

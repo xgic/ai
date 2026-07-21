@@ -57,6 +57,29 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 
 ---
 
+## Deployment quality attributes (mandatory — every environment)
+
+**Deployments to any environment** (contributor workstation, lab, staging, production, edge/hybrid, and cloud) **must follow current best practices**, including **idempotency**, **reliability**, and **reproducibility**. This applies to application stacks, platform services, infrastructure-as-code, container images, and CI/CD deploy paths.
+
+| Attribute | Requirement |
+|-----------|-------------|
+| **Idempotency** | Re-running install, configure, or deploy converges to the same desired state without duplicate resources, partial drift, or “only works once” steps. Prefer declarative config and safe automation modules over one-shot shell. |
+| **Reliability** | Safe defaults (dry-run / confirm for destructive ops); health and readiness probes where the platform provides them; explicit failure modes; restart policies; human review gates for production-affecting mutations; backups proven before cutover. |
+| **Reproducibility** | Pinned image/tag and runtime versions; configuration via env/config files—not hard-coded in application code; the same documented procedure produces the same outcome across operators and machines; document version-match rules for restore/migrate when applicable. |
+
+**Also required:**
+
+- Prefer **configuration over hard-coding** hosts, URLs, paths, and secrets.
+- Prefer **official vendor images** and thin orchestration (configure/operate; do not fork application images).
+- Prefer **Docker Compose** for on-prem/lab defaults with a clear path to Kubernetes when scale requires it ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).
+- Fix **root causes** rather than committing environment-specific host-file workarounds into shared automation.
+
+**Enforcement:** Each orchestrated repo’s `AGENTS.md` and workflow docs; dry-run defaults for destructive automation; PR review for hard-coded topology and non-idempotent one-shots; human UI review before production deploys.
+
+Public platform detail: [platform/docker-compose.md](platform/docker-compose.md), [orchestration-workflow.md](orchestration-workflow.md).
+
+---
+
 ## Minimum base set (every public orchestrated repo)
 
 1. **Hard security rule** (this document and/or local `AGENTS.md`).
