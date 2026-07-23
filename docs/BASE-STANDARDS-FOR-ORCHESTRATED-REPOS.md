@@ -63,13 +63,20 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 
 | Attribute | Requirement |
 |-----------|-------------|
-| **Idempotency** | Re-running install, configure, or deploy converges to the same desired state without duplicate resources, partial drift, or one-shot-only steps. Prefer declarative config and safe automation modules. |
+| **Idempotency** | Re-running install, configure, or deploy converges to the same desired state without duplicate resources, partial drift, or “only works once” steps. Prefer declarative config and safe automation modules over one-shot shell. |
 | **Reliability** | Safe defaults (dry-run / confirm for destructive ops); health and readiness probes where the platform provides them; explicit failure modes; restart policies; human review gates for production-affecting mutations; backups proven before cutover. |
-| **Reproducibility** | Pinned image/tag and runtime versions; configuration via env/config—not hard-coded topology in application code; the same documented procedure produces the same outcome across operators and machines. |
+| **Reproducibility** | Pinned image/tag and runtime versions; configuration via env/config files—not hard-coded in application code; the same documented procedure produces the same outcome across operators and machines; document version-match rules for restore/migrate when applicable. |
 
-**Platform version pins (GitLab EE and similar):** When a product publishes a supported database matrix, XGIC stacks pin the **latest stable major** of that database that the product officially supports for the chosen application major—not an older minimum-only pin—unless a temporary, documented exception is required. For **GitLab EE 18.x and 19.x**, that means **PostgreSQL 17**. Re-confirm against [GitLab PostgreSQL requirements](https://docs.gitlab.com/install/requirements/#postgresql) whenever the GitLab EE version pin changes. After changing application or database majors, validate official backup tooling (for GitLab: `gitlab-backup create` with a successful database dump).
+**Also required:**
 
-Public Compose defaults and operator guidance: [platform/docker-compose.md](platform/docker-compose.md), [xgic/gitlab](https://github.com/xgic/gitlab).
+- Prefer **configuration over hard-coding** hosts, URLs, paths, and secrets.
+- Prefer **official vendor images** and thin orchestration (configure/operate; do not fork application images).
+- Prefer **Docker Compose** for on-prem/lab defaults with a clear path to Kubernetes when scale requires it ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).
+- Fix **root causes** rather than committing environment-specific host-file workarounds into shared automation.
+
+**Enforcement:** Each orchestrated repo’s `AGENTS.md` and workflow docs; dry-run defaults for destructive automation; PR review for hard-coded topology and non-idempotent one-shots; human UI review before production deploys.
+
+Public platform detail: [platform/docker-compose.md](platform/docker-compose.md), [orchestration-workflow.md](orchestration-workflow.md).
 
 ---
 

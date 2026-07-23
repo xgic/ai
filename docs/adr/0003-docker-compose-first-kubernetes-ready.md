@@ -16,7 +16,7 @@ Agents need a clear default so recommendations stay consistent across the ecosys
 
 ## Decision
 
-1. **Default deployment documentation and samples use Docker Compose** for on-premises, lab, and single-host scenarios.  
+1. **Default deployment documentation and samples use Docker Compose** for on-premises, lab, and single-host scenarios. Docker Compose instances in every environment must meet portfolio **idempotency, reliability, and reproducibility** requirements ([BASE-STANDARDS](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#deployment-quality-attributes-mandatory--every-environment)).
 2. **Application and image contracts must remain portable** so the same artifacts can run under Kubernetes without redesigning business logic.  
 3. **Kubernetes guidance is first-class documentation** (path, patterns, checklists) and is implemented in product repositories when scale requirements appear.  
 4. **Hybrid** deployments (Docker Compose on edge/on-prem + K8s in cloud) are supported as an explicit pattern, not an afterthought.  
