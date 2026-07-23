@@ -57,6 +57,22 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 
 ---
 
+## Deployment quality attributes (mandatory — every environment)
+
+**Deployments to any environment** (contributor workstation, lab, staging, production, edge/hybrid, and cloud) **must follow current best practices**, including **idempotency**, **reliability**, and **reproducibility**. This applies to application stacks, platform services, infrastructure-as-code, container images, and CI/CD deploy paths.
+
+| Attribute | Requirement |
+|-----------|-------------|
+| **Idempotency** | Re-running install, configure, or deploy converges to the same desired state without duplicate resources, partial drift, or one-shot-only steps. Prefer declarative config and safe automation modules. |
+| **Reliability** | Safe defaults (dry-run / confirm for destructive ops); health and readiness probes where the platform provides them; explicit failure modes; restart policies; human review gates for production-affecting mutations; backups proven before cutover. |
+| **Reproducibility** | Pinned image/tag and runtime versions; configuration via env/config—not hard-coded topology in application code; the same documented procedure produces the same outcome across operators and machines. |
+
+**Platform version pins (GitLab EE and similar):** When a product publishes a supported database matrix, XGIC stacks pin the **latest stable major** of that database that the product officially supports for the chosen application major—not an older minimum-only pin—unless a temporary, documented exception is required. For **GitLab EE 18.x and 19.x**, that means **PostgreSQL 17**. Re-confirm against [GitLab PostgreSQL requirements](https://docs.gitlab.com/install/requirements/#postgresql) whenever the GitLab EE version pin changes. After changing application or database majors, validate official backup tooling (for GitLab: `gitlab-backup create` with a successful database dump).
+
+Public Compose defaults and operator guidance: [platform/docker-compose.md](platform/docker-compose.md), [xgic/gitlab](https://github.com/xgic/gitlab).
+
+---
+
 ## Minimum base set (every public orchestrated repo)
 
 1. **Hard security rule** (this document and/or local `AGENTS.md`).
