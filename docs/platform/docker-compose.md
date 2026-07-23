@@ -14,7 +14,8 @@
 4. **Healthchecks** and restart policies for operator-friendly recovery.  
 5. **Dev Containers** may wrap the same Docker Compose services for IDE parity.  
 6. **Named volumes** for durable data; document backup expectations in the product repo.  
-7. **Deployment quality (every environment):** Docker Compose instances must be **idempotent** (re-apply converges), **reliable** (health probes, restart policy, safe dry-run/confirm for destructive ops), and **reproducible** (pinned tags, documented env files, same procedure for every operator). Portfolio rule: [BASE-STANDARDS — Deployment quality attributes](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#deployment-quality-attributes-mandatory--every-environment).
+7. **Deployment quality:** every Docker Compose instance must be **idempotent**, **reliable**, and **reproducible** ([BASE-STANDARDS](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#deployment-quality-attributes-mandatory--every-environment)).  
+8. **GitLab EE stacks:** pin PostgreSQL to the **latest major GitLab supports** for the selected EE major (EE **18.x** / **19.x** → PostgreSQL **17**). Re-check GitLab’s published requirements when upgrading EE; validate with a successful `gitlab-backup create` database dump after pin changes. Template defaults: [xgic/gitlab](https://github.com/xgic/gitlab).
 
 ## Agent checklist
 
@@ -25,6 +26,8 @@
 - [ ] Image/runtime versions pinned for reproducibility  
 - [ ] Healthchecks (or documented equivalent) present for critical services  
 - [ ] Re-run of configure/deploy is safe (idempotent)  
+- [ ] For GitLab EE: `POSTGRES_VERSION` is the latest major supported by the EE pin  
+- [ ] Healthchecks (or documented equivalent) for critical services  
 - [ ] Path to K8s noted if production scale is expected later  
 
 ## Example topology (illustrative)
