@@ -27,7 +27,6 @@
 - [ ] Healthchecks (or documented equivalent) present for critical services  
 - [ ] Re-run of configure/deploy is safe (idempotent)  
 - [ ] For GitLab EE: `POSTGRES_VERSION` is the latest major supported by the EE pin  
-- [ ] Healthchecks (or documented equivalent) for critical services  
 - [ ] Path to K8s noted if production scale is expected later  
 
 ## Example topology (illustrative)
