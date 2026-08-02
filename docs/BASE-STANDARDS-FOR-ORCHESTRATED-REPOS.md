@@ -41,6 +41,16 @@
 4. No restated portfolio rules (rules live in dedicated documents only)  
 5. Labels applied  
 
+**Mandatory before `gh issue create|edit`, `gh pr create|edit`, or any public comment** (agent and human gate — do not skip):
+
+1. Draft offline; scan for private hostnames, private DNS zones, private project paths, private tracker issue/MR numbers, and real operator identities.  
+2. Replace with **fictional placeholders only** (e.g. `https://gitlab.example.com`, `group/project`, `TOKEN`).  
+3. Prefer describing defects generically (“self-hosted instance missing field X”) over naming any private deployment.  
+4. Re-scan the **final** body after any edit.  
+5. If a leak was published: **sanitize immediately** (edit/delete), then treat as a security incident—without restating the private values on public surfaces.  
+
+Optional helper (generic patterns only; no private host denylist in public trees): `scripts/public-safe-scan.py` in this hub (or a local copy). Prefer running it on a draft file before `gh` create/edit.
+
 Violations are security incidents: correct immediately. Do not re-leak private names, hosts, or tracker URLs while describing the fix on public GitHub.
 
 ---
@@ -124,6 +134,7 @@ Public platform detail: [platform/docker-compose.md](platform/docker-compose.md)
 - Load the target repo’s `AGENTS.md` first; use this hub for multi-repo standards
 - Draft issues/PRs completely; wait for human LGTM before remote create/push/merge when policy requires it
 - Run a **leakage scan** before proposing public commits (private hosts, private IDs, internal paths)
+- **Never** run `gh issue create|edit`, `gh pr create|edit`, or post a public GitHub comment on an `xgic/*` public repo without completing the **mandatory public-safe draft gate** above
 - Distill only public-safe, high-value content into the repo; keep raw session data local
 
 ---

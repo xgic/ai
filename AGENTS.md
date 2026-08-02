@@ -45,6 +45,16 @@ Private strategy and full-fidelity internal coordination are **out of scope** an
 
 **Pre-publish checklist:** no private hosts; no private hub/repo names; no private tracker IDs/links; no private local paths; no hard-coded private project/user IDs in tests or source; no rule restatement in project artifacts; labels applied.
 
+**Mandatory before `gh issue create|edit`, `gh pr create|edit`, or any public comment** (agent gate — do not skip):
+
+1. Draft offline; scan for private hostnames, private DNS zones, private project paths, private tracker issue/MR numbers, and real operator identities.  
+2. Replace with **fictional placeholders only** (e.g. `https://gitlab.example.com`, `group/project`, `TOKEN`).  
+3. Prefer describing defects generically (“self-hosted instance missing field X”) over naming any private deployment.  
+4. Re-scan the **final** body after any edit.  
+5. If a leak was published: **sanitize immediately** (edit/delete), then treat as a security incident—without restating the private values on public surfaces.  
+
+Optional: `python scripts/public-safe-scan.py path/to/draft.md` (generic patterns only). Full multi-repo rule: [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
+
 **Configuration over hard-coding:** hosts, namespace paths, user IDs, and credentials come from env/config or synthetic fixtures—not literals that identify private systems. See [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
 
 **Mandatory checklist completion before close** (issues, PRs, and any Markdown task lists on those artifacts):
@@ -98,7 +108,8 @@ When uncertain whether a component exists publicly, say so and point to the cata
 3. Skim `docs/ecosystem/catalog.md` for the domains you will touch  
 4. List open issues/PRs: `gh issue list`, `gh pr list`  
 5. Confirm the change is **public-safe** (hard security scan)  
-6. Prefer full `https://github.com/xgic/...` URLs for cross-repo links  
+6. Before any public `gh issue`/`gh pr` create/edit or public comment: complete the **mandatory public-safe draft gate** above  
+7. Prefer full `https://github.com/xgic/...` URLs for cross-repo links  
 
 ---
 
