@@ -35,7 +35,9 @@ body:
   - type: checkboxes
     id: safety
     attributes:
-      label: Public safety
+      label: Public safety (mandatory draft gate)
       options:
-        - label: This report does not include private hosts, private tracker IDs, internal paths, or secrets
+        - label: No private hosts, private project paths, private tracker IDs, internal paths, or secrets (fictional placeholders only)
+          required: true
+        - label: I re-scanned the final text before submit (BASE-STANDARDS public-safe gate)
           required: true
