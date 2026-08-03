@@ -218,9 +218,11 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 ### 8.1 Preconditions
 
 - [ ] Successful TestPyPI RC smoke for this version line (or explicit waiver **only** for pure docs packages with no code—default is **no waiver** for `xgic.*` libraries/CLIs)  
+- [ ] At least one Git tag `vX.Y.ZrcN` for this final version already exists (required; not optional for libraries/CLIs)  
 - [ ] Final version string set (e.g. `0.2.0`)  
 - [ ] Annotated Git tag (recommended): `v0.2.0`  
-- [ ] Public-safe release notes prepared (CHANGELOG / GitHub Release body)
+- [ ] Public-safe release notes prepared (CHANGELOG / GitHub Release body)  
+- [ ] Release workflow (or equivalent) **refuses** final publish when no prior RC tag exists
 
 ### 8.2 Publish final to PyPI
 
@@ -320,6 +322,7 @@ Do not publish a dependent module version that requires a core version not yet a
 |-----------|--------|
 | RC broken on TestPyPI | Fix; publish new `rcN+1`; do not promote |
 | Final broken on PyPI (non-security) | Publish patch `X.Y.Z+1`; document in release notes |
+| Final published **without** prior RC / TestPyPI | Process incident: document publicly; **do not** invent a post-hoc RC for the same final as “compliance theater” unless operators need TestPyPI artifacts for other reasons; enforce RC-before-final in CI; next line uses full RC path; yank only if security/severe breakage |
 | Security issue | Follow [SECURITY.md](../SECURITY.md) of the package; yank only if necessary and document |
 | Accidental private leakage in metadata/README | Treat as security incident; fix immediately; scrub release notes |
 
@@ -332,9 +335,13 @@ Do not publish a dependent module version that requires a core version not yet a
 3. Confirm Trusted Publisher + GitHub Environment exist for the target index.  
 4. Run or verify **local-wheel clean-env matrix** before any publish job.  
 5. Publish RC → **TestPyPI smoke** → only then final → **PyPI smoke**.  
+   - **Hard rule:** never tag or push `vX.Y.Z` (final) unless `vX.Y.ZrcN` already exists and TestPyPI smoke succeeded for that line.  
+   - **Hard rule:** never open a “final only” release PR that sets `X.Y.Z` without an RC PR/tag for the same line first.  
+   - Repos **should** fail final Release workflow jobs if no prior RC tag exists (example: `require-prior-rc` gate).  
 6. Use **`uv` for build/smoke** and **PyPA action for upload** only.  
 7. Update catalog/namespace docs if the public surface changed.  
-8. Do **not** merge or approve your own release workflow PR; human UI gate applies.
+8. Do **not** merge or approve your own release workflow PR; human UI gate applies.  
+9. Do **not** push release tags without an explicit human LGTM for **that** RC or final step (feature LGTM is not enough).
 
 ---
 
