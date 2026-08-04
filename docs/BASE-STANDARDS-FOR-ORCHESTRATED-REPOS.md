@@ -40,6 +40,14 @@
 3. No private local paths  
 4. No restated portfolio rules (rules live in dedicated documents only)  
 5. Labels applied  
+6. No financial goals, revenue targets, or private business-strategy language  
+7. No pre-release product or client-confidential marketing/lore content unless that content has already been approved for public release  
+
+**Financial and business strategy:** Public repositories must not document revenue targets, income goals, pricing strategy, commercial partnership terms, GTM pipeline numbers, or other private business strategy. Keep that class of content in private planning systems only.
+
+**Pre-release product confidentiality:** Public repositories and public websites must not disclose pre-release product details (unreleased lore, mechanics, working titles, roadmaps, franchise plans, unreleased media, and similar) unless approved for public release through the proper human approval workflow. Until an official public product site is live and content is authorized, treat unreleased product information as confidential. Public engineering docs may describe **generic** platform capabilities only.
+
+---
 
 **Mandatory before `gh issue create|edit`, `gh pr create|edit`, or any public comment** (agent and human gate — do not skip):
 
@@ -101,7 +109,7 @@ Public platform detail: [platform/docker-compose.md](platform/docker-compose.md)
    - architecture / design overview
    - development or orchestration workflow
    - playbooks for AI-assisted tasks (optional but recommended)
-7. **`.gitignore`** covering secrets, virtualenvs, IDE noise, and **`.xgic/`** (local agent status reports; never commit).
+7. **`.gitignore`** covering secrets, virtualenvs, IDE noise, build/temp dirs, and **`.xgic/`** (local agent status reports; never commit). See **Temporary-file lifecycle** below.
 8. **Issue / PR templates** that collect useful fields **without** embedding full rule text (point to `AGENTS.md` / this document if a short pointer is needed). Follow [community-health.md](community-health.md): YAML issue forms, `blank_issues_enabled: false`, root `CONTRIBUTING.md` only, Discussions contact links only when enabled.
 9. **Python 3.14** for *new* Python development ([ADR-0002](adr/0002-standardize-on-python-3-14.md)):
    - `requires-python = ">=3.14"`
@@ -139,15 +147,35 @@ Public platform detail: [platform/docker-compose.md](platform/docker-compose.md)
 
 ---
 
+## Temporary-file lifecycle (mandatory)
+
+Temporary files are **runtime / agent / CI scratch** — never the product source of truth.
+
+| Rule | Detail |
+|------|--------|
+| **Location** | Prefer OS temp (`TMPDIR`, system temp directories) or **explicit gitignored** project dirs such as `tmp/` and `.xgic/` outside tracked package trees |
+| **Not under product layout** | Do not stage generated files under long-lived source trees (for example package `src/`, or orchestration roots that are versioned as permanent layout) as if they were source |
+| **Source of truth** | Keep templates and static assets in their proper locations; generated renderings stay ephemeral |
+| **`.gitignore`** | Ignore project temp dirs; add a short comment explaining why |
+| **Create** | Prefer restrictive modes when secrets might land in temps; use unique or run-scoped directory names |
+| **Reliable removal** | Always remove after success **and** on failure paths (`try`/`finally`, process exit handlers, CI cleanup jobs that always run) |
+| **Idempotency** | Re-runs must not accumulate garbage; prefer wipe-and-recreate of run-scoped dirs |
+| **Secrets** | Never write credentials or vault material to repo-adjacent temps that might be committed |
+| **CI** | Prefer runner-provided temp; upload only intentional artifacts |
+| **Agents** | Keep session drafts under gitignored temp dirs; never commit them; run the public-safe gate before any public write |
+
+---
+
 ## Bootstrap checklist (new public repo)
 
 1. Initialize GitHub Flow + protect `main`
-2. Add comprehensive `.gitignore` (include `.xgic/`)
+2. Add comprehensive `.gitignore` (include `.xgic/`, `tmp/`, and other temp/build dirs)
 3. Add `README.md`, `AGENTS.md`, `CONTRIBUTING.md`
 4. Add docs skeleton and CI as needed
 5. Link multi-repo policy to `https://github.com/xgic/ai`
 6. Human review of the bootstrap PR
 7. Register or update the public namespace summary when a new public Python package is introduced
+8. Confirm temporary-file lifecycle rules are followed in scripts/CI that create scratch files
 
 ---
 
