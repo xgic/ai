@@ -114,6 +114,11 @@ Public platform detail: [platform/docker-compose.md](platform/docker-compose.md)
 9. **Python 3.14** for *new* Python development ([ADR-0002](adr/0002-standardize-on-python-3-14.md)):
    - `requires-python = ">=3.14"`
    - Prefer official `python:3.14.6-slim` (or current pinned 3.14 patch) for containers
+9a. **Dual-mode Python development environments:**
+   - **Applications / services** that match Linux container runtime or production: use a **VS Code Dev Container** (or the project’s documented Linux container workflow) as the development source of truth. Do not treat a host OS virtualenv as the primary environment for those projects.
+   - **Pure Python libraries and CLI packages** with no hard Linux-only dependencies: use **`uv`** for install, lock, and local development. Open the **library repository folder** as the VS Code workspace for Python tooling so a parent multi-folder workspace does not auto-activate a nested project `.venv` in unrelated terminals.
+   - Prefer gitignoring `.venv` / `.venv*`. Prefer [python-package-release.md](python-package-release.md) clean-env smoke patterns over long-lived disposable envs under multi-folder workspace roots.
+   - Rationale (technical): Dev Containers reproduce CI/prod Linux dependencies; `uv` is fast and lockfile-friendly for pure packages; automatic nested-venv activation in a multi-folder parent workspace pollutes orchestration shells with the wrong environment.
 10. **Conventional Commits**, atomic changes, positive professional tone.
 11. **XGIC CLI / environment orchestration** — no new Makefiles. Living docs and guidelines refer only to **XGIC CLI** (`xgic` / `xgic.cli.*`); no `xde` in current standards (historical completed artifacts only). Public template is a modular CLI consumer. See [ecosystem catalog](ecosystem/catalog.md) naming note.
 12. **Public package metadata** uses the org-facing author identity (e.g. `XGIC`), never private project names.
