@@ -78,7 +78,8 @@ Without a hub, multi-repo ecosystems fragment: agents invent dependencies, human
 | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | XGIC CLI Payload CMS module (`xgic.cli.payload`) |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | GitLab GraphQL client (`xgic.gitlab.graphql`) |
 | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab EE orchestration / template surface |
-| [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev Container + Payload template (XGIC CLI consumer) |
+| [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Payload Dev Container **producer** (`*-dev`; GHCR target) |
+| [xgic/payload-cms](https://github.com/xgic/payload-cms) | Payload CMS end-user Dev Container **template** |
 
 ---
 
