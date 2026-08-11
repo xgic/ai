@@ -30,8 +30,7 @@
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.4** | Auth, Work Items, hierarchy, pagination, `create_merge_request()` against GitLab GraphQL; min GitLab EE **19.2.1-ee**; install with `uv pip install xgic-gitlab-graphql` |
-| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
-| `lib.xde` | Environment orchestration library (current surface) | (via `xde` today; future `xgic.cli.*`) | `experimental` | Lives with [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) until extraction | Dev container & environment orchestration primitives |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) · PyPI [`xgic-cli`](https://pypi.org/project/xgic-cli/) **0.2.0** | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
@@ -65,7 +64,9 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `dc.payload` | Payload CMS dev containers | Dev Container project | `available` | [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Reproducible Payload CMS + tooling; **consumer** of modular XGIC CLI |
+| `dc.payload.dev` | Payload CMS Dev Container **producer** (`*-dev`) | Dev Container / image producer | `available` | [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Dockerfile, compose, image CI; installs modular XGIC CLI from PyPI; publishes **`ghcr.io/xgic/payload-cms-dev`** (publish pipeline in progress) |
+| `dc.payload` | Payload CMS end-user **template** | Dev Container template | `available` | [xgic/payload-cms](https://github.com/xgic/payload-cms) | Thin `devcontainer.json` consumer of producer image; app-focused extensions; “Use this template” |
+| `img.payload.dev` | Payload Dev Container image | container image | `planned` / publishing | `ghcr.io/xgic/payload-cms-dev` · built by [payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Semver + `latest` tags for template pin |
 | `img.ghcr` | GHCR publications | container images | `available` | GitHub Container Registry under `xgic` | Published images for templates and orchestrators (expanding product set) |
 | `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |

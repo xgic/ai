@@ -1,19 +1,20 @@
 # ADR-0005: Modular XGIC CLI and retirement of the transitional `xde` brand
 
-**Status**: Proposed  
+**Status**: Accepted  
 **Date**: 2026-07-15  
+**Accepted**: 2026-08-11  
 **Scope**: Public XGIC CLI packages, environment orchestration modules, hub catalog/namespace docs, and living standards that describe the CLI brand
 
 ---
 
 ## Context
 
-XGIC ships environment and dev-container orchestration today primarily as an in-tree CLI/library surface known as **`xde`** (for example inside the public Payload CMS Dev Containers project). That surface is valuable, but:
+XGIC previously shipped environment and dev-container orchestration primarily as an in-tree CLI/library surface known as **`xde`** (historically inside the Payload CMS Dev Container project). That surface was valuable, but:
 
 1. The **product brand** intended for the portfolio is **XGIC CLI**, not a permanent dual name.  
 2. Shared libraries should live in **modular public packages** under the `xgic.cli` / `xgic.cli.*` namespaces, not only inside one product template repo.  
-3. Living documentation already uses a **pre-cutover** bridge: introduce the tool as `xde` (current CLI; successor brand: XGIC CLI) while real commands/paths remain `xde`.  
-4. Agents and humans are confused when strategy docs say one name and packages another without a clear end state.
+3. Living documentation had used a **pre-cutover** bridge: introduce the tool as `xde` (successor brand: XGIC CLI) while real commands/paths remained `xde`.  
+4. Agents and humans were confused when strategy docs said one name and packages another without a clear end state.
 
 A long-term **compatibility alias** period (`xde` entrypoint remaining supported after modular cutover) was considered and **rejected**: it prolongs dual branding and confuses catalog rows, packaging, and agent instructions.
 
@@ -103,12 +104,20 @@ New public CLI modules follow the public bar: Apache-2.0 + `Copyright 2026 XGIC`
 
 ## Implementation notes (public)
 
-1. Hub ADR accepted (this document).  
-2. Create `xgic/cli` with installable stub (`xgic --help` / `--version`).  
-3. Port core library + tests; keep product template green on transitional entrypoint until cutover.  
-4. Publish domain modules; update catalog rows from `planned` / `experimental` as they ship.  
-5. Cutover PR set: entrypoints, living READMEs, catalog, namespace summary.  
-6. Command migration map in hub or module READMEs for humans and agents.
+### Done (2026-08)
+
+1. Hub ADR **Accepted** (this document).  
+2. `xgic/cli` ships installable core (`xgic --help` / `--version`) — PyPI **`xgic-cli` 0.2.0**.  
+3. Domain modules published: **`xgic-dev-cli`**, **`xgic-payload-cms-cli`** (and GitLab CLI bootstrap).  
+4. **B5 hard cutover** on the Payload Dev Container producer: no supported `xde` entrypoint; modular packages installed from PyPI.  
+5. Dual-repo naming (ADR-0001): producer [payload-cms-dev](https://github.com/xgic/payload-cms-dev) + end-user template [payload-cms](https://github.com/xgic/payload-cms).  
+6. Command migration map: historical `xde` → `xgic` / `xgic payload …` (see payload-cms-cli README; living docs use **XGIC CLI only**).
+
+### Follow-ups
+
+1. GHCR publish `ghcr.io/xgic/payload-cms-dev` from the producer CI.  
+2. Thin template pins the published image semver.  
+3. Further domain CLI modules (`ais-cli`, fuller `gitlab-cli`) as capacity allows.
 
 ---
 
@@ -119,5 +128,6 @@ New public CLI modules follow the public bar: Apache-2.0 + `Copyright 2026 XGIC`
 - [ADR-0001](0001-xgic-gitlab-architecture-and-repository-naming.md) (phased CLI / repo naming patterns)  
 - [ADR-0002](0002-standardize-on-python-3-14.md)  
 - [ADR-0004](0004-apache-2-0-for-public-solutions.md)  
-- Transitional reference implementation: [payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) (in-tree CLI surface until extraction)  
-- Existing modular library example: [gitlab-graphql](https://github.com/xgic/gitlab-graphql)  
+- Producer: [payload-cms-dev](https://github.com/xgic/payload-cms-dev) · Template: [payload-cms](https://github.com/xgic/payload-cms)  
+- Historical name (redirects): `payload-cms-dev-containers`  
+- Modular library example: [gitlab-graphql](https://github.com/xgic/gitlab-graphql)  
