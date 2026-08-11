@@ -64,9 +64,9 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Type | Status | Location | Purpose |
 |----|------|------|--------|----------|---------|
-| `dc.payload.dev` | Payload CMS Dev Container **producer** (`*-dev`) | Dev Container / image producer | `available` | [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Dockerfile, compose, image CI; installs modular XGIC CLI from PyPI; publishes **`ghcr.io/xgic/payload-cms-dev`** (publish pipeline in progress) |
+| `dc.payload.dev` | Payload CMS Dev Container **producer** (`*-dev`) | Dev Container / image producer | `available` | [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Dockerfile, compose, image CI; installs modular XGIC CLI from PyPI; publishes **`ghcr.io/xgic/payload-cms-dev`** |
 | `dc.payload` | Payload CMS end-user **template** | Dev Container template | `available` | [xgic/payload-cms](https://github.com/xgic/payload-cms) | Thin `devcontainer.json` consumer of producer image; app-focused extensions; “Use this template” |
-| `img.payload.dev` | Payload Dev Container image | container image | `planned` / publishing | `ghcr.io/xgic/payload-cms-dev` · built by [payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Semver + `latest` tags for template pin |
+| `img.payload.dev` | Payload Dev Container image | container image | `available` | [`ghcr.io/xgic/payload-cms-dev`](https://github.com/users/xgic/packages/container/package/payload-cms-dev) · built by [payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Public multi-arch image; tags `latest` / `main` / SHA (semver on `v*` tags) |
 | `img.ghcr` | GHCR publications | container images | `available` | GitHub Container Registry under `xgic` | Published images for templates and orchestrators (expanding product set) |
 | `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
