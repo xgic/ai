@@ -9,7 +9,7 @@ Formal model of the XGIC public ecosystem for AI agents. Prefer this structure w
 | `Hub` | Documentation/intelligence repository | `xgic/ai` |
 | `Library` | Importable package | `xgic.gitlab.graphql` |
 | `CliModule` | CLI surface over libraries | `xgic.cli.gitlab` (experimental), `xgic.cli.payload` |
-| `DevContainerProject` | VS Code Dev Container producer/consumer | payload-cms-dev-containers |
+| `DevContainerProject` | VS Code Dev Container producer/consumer | payload-cms-dev (+ payload-cms template) |
 | `Image` | Container image artifact | GHCR images |
 | `Orchestrator` | Docker Compose/K8s stack definition surface | xgic/gitlab |
 | `Application` | Product or sample app | Payload/Next.js apps |
@@ -38,7 +38,7 @@ Hub(xgic/ai)
   DOCUMENTS → Standard(base), ADR(*), Pattern(docker-compose-first), Catalog(*)
 Library(gitlab.graphql) IMPLEMENTS ← Repo(gitlab-graphql)
 Orchestrator(gitlab) CONSUMES → Image(vendor gitlab-ee, postgres, redis)
-DevContainerProject(payload-cms-dev-containers) PRODUCES → local/dev images
+DevContainerProject(payload-cms-dev) PRODUCES → ghcr.io/xgic/payload-cms-dev; template payload-cms consumes image
 CliModule(*) EXTENDS → CliModule(core) DEPENDS_ON → Library(*)
 Application(*) DEPENDS_ON → Library(*) ; DEPLOYS_WITH → Pattern(compose|k8s)
 ```
