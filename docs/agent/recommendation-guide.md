@@ -43,8 +43,8 @@ What is not public yet (use planned catalog rows; do not invent private systems)
 
 | Step | Action |
 |------|--------|
-| Match | `dc.payload` / payload-cms-dev-containers |
-| Link | https://github.com/xgic/payload-cms-dev-containers |
+| Match | `dc.payload.dev` / `dc.payload` (producer + template) |
+| Link | https://github.com/xgic/payload-cms-dev · https://github.com/xgic/payload-cms |
 | Composition | Dev Container + Docker Compose services; prefer modular XGIC CLI over new Makefiles |
 | Deploy | Docker Compose first |
 | Avoid | Custom forked DB images if official Postgres works |

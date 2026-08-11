@@ -12,7 +12,8 @@
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | Python GraphQL client | `lib.gitlab.graphql` |
 | [xgic/gitlab](https://github.com/xgic/gitlab) | GitLab Compose template (consumer) | `orch.gitlab` |
 | [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | GitLab orchestration image producer (`*-dev`) | `orch.gitlab.dev`, `img.xgic-gitlab` |
-| [xgic/payload-cms-dev-containers](https://github.com/xgic/payload-cms-dev-containers) | Dev Container + Payload template (XGIC CLI consumer) | `dc.payload` |
+| [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Payload Dev Container **producer** (`*-dev`; GHCR `payload-cms-dev`) | `dc.payload.dev` |
+| [xgic/payload-cms](https://github.com/xgic/payload-cms) | Payload CMS end-user Dev Container **template** | `dc.payload` |
 
 **Published image:** [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) (`img.xgic-gitlab`, public multi-arch).
 
