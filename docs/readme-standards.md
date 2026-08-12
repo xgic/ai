@@ -90,6 +90,16 @@ Choose the set that matches the repo’s **primary deliverable**. Do not invent 
 - [payload-cms-dev](https://github.com/xgic/payload-cms-dev) — image + Compose + GHCR + Release (Compose is first-class in the producer)  
 - [gitlab-dev](https://github.com/xgic/gitlab-dev) — image + GHCR + Release (Compose stack lives on [gitlab](https://github.com/xgic/gitlab))
 
+**GitHub Release is mandatory for final image lines.** Publishing only to GHCR (or only creating a git tag) is an
+incomplete release. Prefer:
+
+1. CHANGELOG entry for `X.Y.Z` on `main`  
+2. Annotated tag `vX.Y.Z` after human LGTM for that release line  
+3. CI: multi-arch GHCR push **and** GitHub Release create/update on `v*` (example: [gitlab-dev publish.yml](https://github.com/xgic/gitlab-dev/blob/main/.github/workflows/publish.yml))  
+
+PyPI modules still follow [python-package-release.md](python-package-release.md). Image producers use the same
+**Release-required** rule with GHCR as the distribution channel.
+
 #### Clean templates (consume published image / Compose stack)
 
 **Required:** License, **Docker Compose** (operator surface), **Release** of the **producer** (or image pin badge) when the template pins a published image, CI if present.
