@@ -63,6 +63,10 @@ Violations are security incidents: correct immediately. Do not re-leak private n
 
 ---
 
+## README quality (first impression)
+
+Every public repository **README** should meet [readme-standards.md](readme-standards.md): clear positioning for humans and AI, Quick start before long tutorials, dual-repo clarity where applicable, working badges, and public-safe full HTTPS links.
+
 ## Mandatory human review before `main`
 
 While AI-assisted development tools are used heavily:

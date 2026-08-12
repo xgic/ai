@@ -61,3 +61,5 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | Document | Description |
 |----------|-------------|
 | [templates/status-report-template.md](templates/status-report-template.md) | Optional local session status report structure |
+
+- [README standards](readme-standards.md) — public repo README quality bar for humans and agents

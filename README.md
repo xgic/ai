@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/docs-hub-informational)](docs/README.md)
 [![ADRs](https://img.shields.io/badge/ADRs-index-success)](docs/adr/README.md)
-[![Style](https://img.shields.io/badge/docs-style-guide-informational)](docs/documentation-style.md)
+[![Style](https://img.shields.io/static/v1?label=docs&message=style%20guide&color=informational)](docs/documentation-style.md)
 [![Standards](https://img.shields.io/badge/base-standards-success)](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)
 
 **Public multi-repository intelligence hub** for the XGIC ecosystem — standards, architecture, orchestration guidance, and structured knowledge for humans and AI agents.
