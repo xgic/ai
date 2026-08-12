@@ -61,6 +61,15 @@ Optional helper (generic patterns only; no private host denylist in public trees
 
 Violations are security incidents: correct immediately. Do not re-leak private names, hosts, or tracker URLs while describing the fix on public GitHub.
 
+
+## Work tracking and checklists (mandatory)
+
+**Do not maintain progress checklists in living documentation.** Put acceptance and operator checklists on **issues and pull requests** (GitHub). Documentation holds stable procedures (numbered steps) and links to those items.
+
+Full standard: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
+
+Before closing an issue or PR that **does** contain Markdown task lists, complete or waive each required item (see **Checklist completion before close** below).
+
 ---
 
 ## README quality (first impression)
