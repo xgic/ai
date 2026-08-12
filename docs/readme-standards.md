@@ -54,13 +54,79 @@ Reference implementations:
 
 ## Badges (shields.io)
 
-| Use | Example pattern |
-|-----|-----------------|
-| License | Static Apache-2.0 badge |
-| CI | `https://github.com/xgic/<repo>/actions/workflows/<file>.yml/badge.svg` |
-| PyPI version | `https://img.shields.io/pypi/v/<dist>.svg` |
-| GitHub release | `https://img.shields.io/github/v/release/xgic/<repo>` |
-| GHCR package | Link badge to package page; pair with **release** badge for version (native GHCR version badges are often unreliable) |
+### Universal (every public repo)
+
+| Badge | When | Pattern |
+|-------|------|---------|
+| **License** | Always | Static Apache-2.0 → `LICENSE` |
+| **CI** | When Actions exist | `https://github.com/xgic/<repo>/actions/workflows/<file>.yml/badge.svg` |
+
+### By repository type (required sets)
+
+Choose the set that matches the repo’s **primary deliverable**. Do not invent one-off badge layouts.
+
+#### Image producers (`*-dev` that publish GHCR)
+
+**Required (in roughly this order after License):**
+
+| Badge | Purpose | Example |
+|-------|---------|---------|
+| **Docker image** | Signals “this repo produces a container image” | `[![Docker](https://img.shields.io/badge/Docker-image-blue?logo=docker&logoColor=white)](https://docs.docker.com/)` |
+| **GHCR** | Links to the published package page | `[![GHCR](https://img.shields.io/badge/GHCR-<package>--name-blue?logo=github)](https://github.com/users/xgic/packages/container/package/<package-name>)` |
+| **Release** | Semver / release discovery | `[![Release](https://img.shields.io/github/v/release/xgic/<repo>)](https://github.com/xgic/<repo>/releases)` |
+| **CI** | Build/publish health | Workflow badge (above) |
+
+**Optional on producers:**
+
+| Badge | When to add |
+|-------|-------------|
+| **Docker Compose** | Producer **ships first-class Compose** used to develop or smoke the image (e.g. [payload-cms-dev](https://github.com/xgic/payload-cms-dev)). |
+| Product / runtime (Payload, Python, …) | When it clarifies the stack without crowding the first row |
+
+**Do not** replace the **Docker image** badge with **Docker Compose** on a pure image producer. Compose-first operator experience lives on the **clean template** repo ([ADR-0001](adr/0001-xgic-gitlab-architecture-and-repository-naming.md)).
+
+**Reference producers:**
+
+- [payload-cms-dev](https://github.com/xgic/payload-cms-dev) — image + Compose + GHCR + Release (Compose is first-class in the producer)  
+- [gitlab-dev](https://github.com/xgic/gitlab-dev) — image + GHCR + Release (Compose stack lives on [gitlab](https://github.com/xgic/gitlab))
+
+#### Clean templates (consume published image / Compose stack)
+
+**Required:** License, **Docker Compose** (operator surface), **Release** of the **producer** (or image pin badge) when the template pins a published image, CI if present.
+
+**Optional:** Product badge (e.g. GitLab EE, Payload CMS), GHCR link to the **consumed** package.
+
+**Example Compose badge:**
+
+```markdown
+[![Docker Compose](https://img.shields.io/badge/Docker-Compose-blue?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
+```
+
+#### PyPI libraries / CLI modules
+
+**Required when published:** License, **PyPI**, **Python versions** (or static Python 3.14+), **Release**, CI.
+
+```markdown
+[![PyPI](https://img.shields.io/pypi/v/<dist>.svg)](https://pypi.org/project/<dist>/)
+[![Python](https://img.shields.io/pypi/pyversions/<dist>.svg)](https://pypi.org/project/<dist>/)
+[![Release](https://img.shields.io/github/v/release/xgic/<repo>)](https://github.com/xgic/<repo>/releases)
+```
+
+Until the first PyPI release, omit PyPI version badges (they 404 or show “not found”); keep License + CI + static Python if useful.
+
+#### Standards / docs hubs (e.g. `xgic/ai`)
+
+License + docs/ADR/style static badges as needed. Prefer **working** static badges over decorative ones.
+
+### GHCR badge rules
+
+- Link target: `https://github.com/users/xgic/packages/container/package/<package-name>`  
+  (user-owned packages under the `xgic` account use `/users/xgic/…`, not `/orgs/xgic/…`).
+- Label message is the **package name** (e.g. `payload-cms-dev`, `xgic-gitlab`), not necessarily the repo name.
+- Pair GHCR with **Release** for version signal (native GHCR version badges are often unreliable).
+- In shields **path-style** badges, encode a hyphen in the message as **double hyphen** (`payload--cms--dev`, `xgic--gitlab`). Prefer `static/v1?label=…&message=…` when multi-hyphen path parsing is fragile.
+
+### Broken badge prevention
 
 **Avoid broken static badge paths:** multi-hyphen messages without encoding (e.g. `badge/docs-style-guide-informational`) parse incorrectly and return **404**. Prefer:
 
@@ -69,6 +135,8 @@ Reference implementations:
 ```
 
 or encode hyphens per [Shields static badge docs](https://shields.io/badges).
+
+Before opening a README PR: open each badge URL in a browser or `curl -I` and confirm **200** (or an intentional “no releases yet” release badge, not a shields parse 404).
 
 ---
 
@@ -86,7 +154,9 @@ or encode hyphens per [Shields static badge docs](https://shields.io/badges).
 - [ ] First screen states purpose and audience  
 - [ ] Quick start present (or justified absence for pure standards hubs)  
 - [ ] Architecture / ADR links not crowding the lede  
-- [ ] Badges resolve (no shields 404)  
+- [ ] **Badge set matches repo type** (image producer / template / PyPI module / hub)  
+- [ ] Image producers include **Docker image + GHCR + Release + CI** (Compose only if first-class on producer)  
+- [ ] Badges resolve (no shields 404); GHCR package URL matches the published package name  
 - [ ] Full HTTPS links to sibling `xgic/*` repos  
 - [ ] AGENTS.md / catalog / BASE-STANDARDS linked  
 - [ ] Public-safe scan clean  
