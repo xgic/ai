@@ -74,10 +74,6 @@ Single-repo release trains may use a milestone **only** on that repository (no `
 
 Keep all public milestone, issue, and PR text **public-safe**.
 
-### Work that also spans private projects
-
-When the same effort includes **private** GitLab projects as well as public GitHub repositories, private coordination uses a parent milestone in the private **XGIC Foundation** project (highest-level hub) in addition to the public `xgic/ai` parent when two or more public repos are in scope. Do not put private hosts, private project paths, or confidential detail in public milestone descriptions—link only public URLs from public trackers.
-
 ---
 
 ## Agent obligations
