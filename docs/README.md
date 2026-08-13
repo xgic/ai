@@ -40,7 +40,7 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | Document | Description |
 |----------|-------------|
 | [BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) | Minimum base set for public XGIC GitHub repos |
-| [work-tracking-and-checklists.md](work-tracking-and-checklists.md) | Progress checklists on issues/PRs, not living docs |
+| [work-tracking-and-checklists.md](work-tracking-and-checklists.md) | Checklists on issues/PRs; milestones for release trains; no living status tables |
 | [community-health.md](community-health.md) | Issue forms, Discussions, root CONTRIBUTING.md standard |
 | [orchestration-workflow.md](orchestration-workflow.md) | GitHub Flow, commits, PRs, agent workflow |
 | [licensing.md](licensing.md) | Apache 2.0 policy |
