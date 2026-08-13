@@ -56,14 +56,27 @@ Fixed **policy verification** lists (for example public-safe gates in BASE-STAND
 
 ---
 
-## Multi-repository public work
+## Multi-repository public work (required parent milestone)
 
-GitHub Free does not provide a single free milestone across all organization repositories. For work that spans multiple public repos:
+GitHub Free does not provide an organization-wide milestone across all `xgic/*` repositories. **This repository (`xgic/ai`) is the public multi-repo hub.**
 
-- Use a **milestone per repository**, and/or  
-- A public-safe coordination issue in this hub (`xgic/ai`) that **links** to those milestones.
+When an effort spans **two or more** public repositories under `github.com/xgic/*`:
 
-Keep all public tracker text **public-safe**.
+1. **Required:** create a **parent milestone** on **https://github.com/xgic/ai**.  
+2. In that milestone’s description, maintain a **public-safe link map**:
+   - **Larger / multi-PR efforts:** link **child milestones** on each consumer repository (assign PRs/issues to those child milestones).  
+   - **Smaller efforts:** link the **PRs and issues** directly (child milestones optional when a single PR per repo is enough).  
+3. Close the parent milestone only when the multi-repo effort is accepted.
+
+**Example:** implementing a new mandatory rule or standard that must land in this hub and several other public repos → one `xgic/ai` parent milestone with links to each repo’s PR or child milestone.
+
+Single-repo release trains may use a milestone **only** on that repository (no `xgic/ai` parent required).
+
+Keep all public milestone, issue, and PR text **public-safe**.
+
+### Work that also spans private projects
+
+When the same effort includes **private** GitLab projects as well as public GitHub repositories, private coordination uses a parent milestone in the private **XGIC Foundation** project (highest-level hub) in addition to the public `xgic/ai` parent when two or more public repos are in scope. Do not put private hosts, private project paths, or confidential detail in public milestone descriptions—link only public URLs from public trackers.
 
 ---
 
@@ -71,6 +84,7 @@ Keep all public tracker text **public-safe**.
 
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.  
 - Prefer milestones for release trains and multi-issue features.  
+- For work spanning **2+ public repos**: create or update a **parent milestone on `xgic/ai`** with a link map to child milestones or PRs/issues.  
 - Do not open documentation-only PRs whose sole purpose is updating checklist ticks or status tables.  
 - Keep public issue/PR/milestone text **public-safe** ([BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).
 

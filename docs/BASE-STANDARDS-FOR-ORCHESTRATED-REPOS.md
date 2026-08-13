@@ -66,6 +66,8 @@ Violations are security incidents: correct immediately. Do not re-leak private n
 
 **Do not maintain progress checklists or living phase/status tables in documentation.** Put acceptance and operator checklists on **issues and pull requests**. Put release trains and multi-issue feature progress on **repository milestones**. Documentation holds stable procedures (numbered steps) and permanent links to those items.
 
+**Required:** work spanning **two or more** public `xgic/*` repositories must use a **parent milestone on this hub ([xgic/ai](https://github.com/xgic/ai))** whose description links child repo milestones (multi-PR) or PRs/issues (smaller efforts). Example: a new mandatory standard rolled out across multiple public repositories.
+
 Full standard: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 
 Before closing an issue or PR that **does** contain Markdown task lists, complete or waive each required item (see **Checklist completion before close** below).
