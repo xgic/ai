@@ -62,9 +62,9 @@ Optional helper (generic patterns only; no private host denylist in public trees
 Violations are security incidents: correct immediately. Do not re-leak private names, hosts, or tracker URLs while describing the fix on public GitHub.
 
 
-## Work tracking and checklists (mandatory)
+## Work tracking, checklists, and milestones (mandatory)
 
-**Do not maintain progress checklists in living documentation.** Put acceptance and operator checklists on **issues and pull requests** (GitHub). Documentation holds stable procedures (numbered steps) and links to those items.
+**Do not maintain progress checklists or living phase/status tables in documentation.** Put acceptance and operator checklists on **issues and pull requests**. Put release trains and multi-issue feature progress on **repository milestones**. Documentation holds stable procedures (numbered steps) and permanent links to those items.
 
 Full standard: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 
