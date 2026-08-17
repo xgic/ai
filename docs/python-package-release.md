@@ -44,22 +44,43 @@
 
 ## 3. Package families and publish order
 
-For modular CLI and libraries that share the `xgic` namespace ([namespace convention](xgic-python-namespace-convention.md)):
+All public **PyPI-distributed** packages under `github.com/xgic` that use the `xgic.*` namespace share **this same release standard** (RC → TestPyPI → smoke → final PyPI → GitHub Release; OIDC Trusted Publishing; no workstation publish). That includes **libraries** and **CLI modules**. Omission from an earlier CLI-focused table is **not** an exemption.
 
-| Order | Distribution (example) | Namespace (example) | Repository (example) |
-|------:|------------------------|---------------------|----------------------|
+### 3.1 Domain libraries (independent version lines)
+
+Libraries are not CLI entrypoint modules. They may release on their own semver line. They still require RC → TestPyPI → final PyPI.
+
+| Distribution | Namespace | Repository | Notes |
+|--------------|-----------|------------|--------|
+| [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) | `xgic.gitlab.graphql` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | GitLab GraphQL client (Work Items, MRs, hierarchy). **Reference library** for release automation (RC gate, version↔tag assert, TestPyPI smoke). |
+
+Add new public libraries to this table when they first publish to PyPI. Catalog entry: [ecosystem catalog](ecosystem/catalog.md) (`lib.gitlab.graphql`).
+
+### 3.2 Modular XGIC CLI stack (dependency order)
+
+CLI packages share the `xgic` console entrypoint. **Always publish and smoke in dependency order** (core first, then modules that depend on core) when releasing a coordinated stack. Independent patch releases of a single module are allowed when smoke installs compatible ranges of already-published core packages (see package `release.yml`).
+
+| Order | Distribution | Namespace | Repository |
+|------:|--------------|-----------|------------|
 | 1 | `xgic-cli` | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) |
 | 2 | `xgic-dev-cli` | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) |
 | 3 | `xgic-payload-cms-cli` | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) |
+| 4 | `xgic-gitlab-cli` | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) |
 
-**Always publish and smoke in dependency order** (core first, then modules that depend on core).
+`xgic-gitlab-cli` must use the **same** GitHub Actions release pattern (TestPyPI RC, `require-prior-rc`, PyPI final, GitHub Release) before its first production PyPI cut after this standard is applied repo-wide. Until its `release.yml` matches, do **not** treat laptop/`twine` publish as acceptable.
 
 ### Namespace packaging rules (release blockers)
 
-Domain packages **must not** ship intermediate `xgic/__init__.py` or `xgic/cli/__init__.py` files that overwrite the core package on non-editable install. After a full-stack install, this **must** succeed:
+Domain packages **must not** ship intermediate `xgic/__init__.py` or `xgic/cli/__init__.py` files that overwrite the core package on non-editable install. After a full-stack CLI install, this **must** succeed:
 
 ```bash
 python -c "from xgic.cli import __version__; print(__version__)"
+```
+
+Library-only install (example):
+
+```bash
+python -c "from xgic.gitlab.graphql import GitLabClient, GitLabConfig; print(GitLabClient, GitLabConfig)"
 ```
 
 ---
@@ -93,9 +114,10 @@ Use a **fresh** environment per matrix cell (no editable install of the package 
 
 | Matrix cell | Install (local wheels) | Minimum assertions |
 |-------------|------------------------|--------------------|
+| **Library alone** (e.g. gitlab-graphql) | `xgic-gitlab-graphql` wheel | Import public API (e.g. `GitLabClient`, `GitLabConfig`); no CLI entrypoint required |
 | **Core alone** | `xgic-cli` wheel | `from xgic.cli import __version__`; `xgic --version`; `xgic info` (or package equivalent) |
 | **Core + dev** | + `xgic-dev-cli` wheel | `import xgic.cli.dev`; `xgic up --help` (or module equivalent) |
-| **Full stack** | + domain modules (e.g. `xgic-payload-cms-cli`) | All prior imports; domain help (e.g. `xgic payload --help`); `from xgic.cli import __version__` still works |
+| **Full CLI stack** | + domain modules (e.g. `xgic-payload-cms-cli`) | All prior imports; domain help (e.g. `xgic payload --help`); `from xgic.cli import __version__` still works |
 
 Illustrative commands (adapt paths):
 
@@ -184,12 +206,26 @@ uv pip install --upgrade pip
 uv pip install \
   --index-url https://test.pypi.org/simple/ \
   --extra-index-url https://pypi.org/simple/ \
+  --index-strategy unsafe-best-match \
+  --prerelease allow \
   "xgic-cli==0.2.0rc1" \
   "xgic-dev-cli==0.2.0rc1" \
-  "xgic-payload-cms-cli==0.2.0rc1"   # when releasing the full stack
+  "xgic-payload-cms-cli==0.2.0rc1"   # when releasing the full CLI stack
 ```
 
-Assertions (adapt to the packages released):
+Library-only example ([xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql)):
+
+```bash
+uv pip install \
+  --index-url https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple/ \
+  --index-strategy unsafe-best-match \
+  --prerelease allow \
+  "xgic-gitlab-graphql==0.1.4rc1"
+python -c "from xgic.gitlab.graphql import GitLabClient, GitLabConfig; print(GitLabClient, GitLabConfig)"
+```
+
+Assertions for CLI packages (adapt to the packages released):
 
 ```bash
 xgic --version
@@ -222,7 +258,19 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 - [ ] Final version string set (e.g. `0.2.0`)  
 - [ ] Annotated Git tag (recommended): `v0.2.0`  
 - [ ] Public-safe release notes prepared (CHANGELOG / GitHub Release body)  
-- [ ] Release workflow (or equivalent) **refuses** final publish when no prior RC tag exists
+- [ ] Release workflow (or equivalent) **refuses** final publish when no prior RC tag exists  
+
+**CI enforcement (mandatory for all public PyPI packages under `xgic`):** On final tags (`vX.Y.Z` without `rc`), the package `release.yml` **must** run a `require-prior-rc` (or equivalent) job that **fails** unless at least one tag matching `vX.Y.Zrc*` exists (for example `v0.2.1rc1` before `v0.2.1`). Do not push final tags until the RC path is green.
+
+| Repository | Distribution | Release workflow | RC-before-final gate |
+|------------|--------------|------------------|----------------------|
+| [xgic/cli](https://github.com/xgic/cli) | `xgic-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
+| [xgic/dev-cli](https://github.com/xgic/dev-cli) | `xgic-dev-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
+| [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | `xgic-payload-cms-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
+| [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | `xgic-gitlab-graphql` | `.github/workflows/release.yml` | `require-prior-rc` (+ version↔tag assert) |
+| [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | `xgic-gitlab-cli` | **Must match** before production PyPI | Required when `release.yml` is added/updated |
+
+Preferred library reference implementation: **gitlab-graphql** (RC path, `require-prior-rc`, `git fetch --tags`, pyproject version must match tag, TestPyPI smoke with `--prerelease allow`).
 
 ### 8.2 Publish final to PyPI
 
@@ -241,11 +289,14 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 ```bash
 uv venv .venv-pypi && source .venv-pypi/bin/activate
 uv pip install --upgrade pip
+# CLI stack example
 uv pip install \
   "xgic-cli==0.2.0" \
   "xgic-dev-cli==0.2.0" \
   "xgic-payload-cms-cli==0.2.0"
-# same assertions as TestPyPI smoke
+# Library example
+# uv pip install "xgic-gitlab-graphql==0.1.4"
+# same assertions as TestPyPI smoke (adapt imports)
 ```
 
 Use **only** the production index (no TestPyPI). Retry briefly if CDN lag occurs; fail the release job if smoke does not pass.
