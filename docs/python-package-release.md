@@ -222,8 +222,9 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 - [ ] Final version string set (e.g. `0.2.0`)  
 - [ ] Annotated Git tag (recommended): `v0.2.0`  
 - [ ] Public-safe release notes prepared (CHANGELOG / GitHub Release body)  
-- [ ] Release workflow (or equivalent) **refuses** final publish when no prior RC tag exists
+- [ ] Release workflow (or equivalent) **refuses** final publish when no prior RC tag exists  
 
+**CI enforcement (modular CLI packages):** `xgic/cli`, `xgic/dev-cli`, and `xgic/payload-cms-cli` run a `require-prior-rc` job on final tags (`vX.Y.Z` without `rc`). That job **fails** unless at least one tag matching `vX.Y.Zrc*` exists on the repository (for example `v0.2.1rc1` before `v0.2.1`). Do not push final tags until the RC path is green.
 ### 8.2 Publish final to PyPI
 
 - Trigger the **final release** workflow from the tag (or approved dispatch).  
