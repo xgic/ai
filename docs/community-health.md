@@ -116,10 +116,12 @@ Welcome posts must include:
 
 ## GitHub Flow
 
+- **Issue first** for bugs, features, DX, and standards (see [work-tracking-and-checklists.md](work-tracking-and-checklists.md)); then open the PR  
 - Dedicated branch named with the tracking issue number  
-- PR to `main` with human review in the GitHub UI  
+- PR to `main` with human review in the GitHub UI; body uses `Fixes #N` / `Tracks #N`  
 - Conventional Commits  
 - Public-safe content only  
+- Issue and PR labels (and assignee) applied; milestone when part of a train  
 - PR labels applied before merge  
 
 ## Related

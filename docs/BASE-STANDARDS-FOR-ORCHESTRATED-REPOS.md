@@ -66,6 +66,8 @@ Violations are security incidents: correct immediately. Do not re-leak private n
 
 **Do not maintain progress checklists or living phase/status tables in documentation.** Put acceptance and operator checklists on **issues and pull requests**. Put release trains and multi-issue feature progress on **repository milestones**. Documentation holds stable procedures (numbered steps) and permanent links to those items.
 
+**Issue-first (mandatory):** For bugs, features, DX defects, and standards changes, create or reuse a **same-repo issue before** opening the PR (branch named with the issue number; `Fixes #N` / `Tracks #N`). Exceptions: Dependabot/Renovate; pure release version-bump PRs under an existing release train; trivial typo-only docs; emergency hotfix with same-day follow-up issue. Full rule: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
+
 **Required:** work spanning **two or more** public `xgic/*` repositories must use a **parent milestone on this hub ([xgic/ai](https://github.com/xgic/ai))** whose description links child repo milestones (multi-PR) or PRs/issues (smaller efforts). Example: a new mandatory standard rolled out across multiple public repositories.
 
 Full standard: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).

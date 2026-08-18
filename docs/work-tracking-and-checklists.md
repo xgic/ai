@@ -44,15 +44,46 @@ Fixed **policy verification** lists (for example public-safe gates in BASE-STAND
 
 ---
 
+## Issue-first tracking (mandatory)
+
+**Default:** For any **bug, feature, DX defect, or standards change**, create or reuse a **same-repo issue** **before** opening the pull request.
+
+Then:
+
+1. Assign **labels** and **assignee** (public default `@xgic` unless help-wanted / explicit unassigned).  
+2. Assign a **milestone** when the work is part of a release train or multi-issue effort. Small one-off chores may omit a milestone.  
+3. Open the PR from a branch **named with the tracking issue number** (see [community-health.md](community-health.md)).  
+4. PR body includes `Fixes #N` / `Closes #N` (same repo) or an explicit “Tracks #N” link.  
+5. Put acceptance checklists on the **issue** (and/or PR). Prefer the issue as the durable tracker if a PR is superseded.  
+
+**Why:** Milestones and backlog planning attach cleanly to issues. Issue-less PRs often never get a milestone, bury acceptance in the diff, and break the branch-naming convention.
+
+### Exceptions (no prior issue required)
+
+| Exception | Still required |
+|-----------|----------------|
+| Dependabot / Renovate dependency PRs | Labels; optional milestone |
+| Pure **version-bump / release** PRs that only change version strings under an already-tracked release issue or train | `release` label; link the release train/milestone |
+| Trivial typo-only docs with no behavior change | Labels; human LGTM |
+| Emergency hotfix with human waiver in the PR body | Open a follow-up issue the **same day** |
+
+PRs **may** also be added to milestones; the issue remains the stable handle.
+
+### Agent obligation
+
+Agents **must not** open a public PR for in-scope work without a tracking issue, except for the table above. If an issue is missing, **create the issue first** (public-safe draft gate), then the PR.
+
+---
+
 ## GitHub practice
 
-1. Create a labeled issue for multi-step work; put the checklist in the issue body.  
-2. Link PRs with `Fixes #N` / `Refs #N`.  
-3. For single-PR work, the PR description may hold the acceptance checklist.  
+1. **Issue first** (see above); put the checklist in the issue body when multi-step.  
+2. Link PRs with `Fixes #N` / `Refs #N` / `Tracks #N`.  
+3. For single-PR work under an exception, the PR description may hold the acceptance checklist.  
 4. For a release train or multi-issue feature, create a **repository milestone**, assign issues/PRs, and track progress there (not in Markdown tables).  
 5. Before closing an issue or PR that contains task lists, mark required items complete (`- [x]`) or document a human waiver (see [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).
 
-**Sizing:** not every PR needs a milestone. Prefer milestones for releases and coordinated multi-issue work. Small independent changes can use labels and the PR checklist alone.
+**Sizing:** not every PR needs a milestone. Prefer milestones for releases and coordinated multi-issue work. Small independent changes can use labels and the issue/PR checklist alone.
 
 ---
 
@@ -79,7 +110,8 @@ Keep all public milestone, issue, and PR text **public-safe**.
 ## Agent obligations
 
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.  
-- Prefer milestones for release trains and multi-issue features.  
+- **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.  
+- Prefer milestones for release trains and multi-issue features; assign the **issue** (and optionally the PR) to the milestone.  
 - For work spanning **2+ public repos**: create or update a **parent milestone on `xgic/ai`** with a link map to child milestones or PRs/issues.  
 - Do not open documentation-only PRs whose sole purpose is updating checklist ticks or status tables.  
 - Keep public issue/PR/milestone text **public-safe** ([BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).
