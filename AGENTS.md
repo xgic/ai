@@ -91,7 +91,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 ## Collaboration principles
 
 - **Positive, constructive, professional** tone; forward-looking documentation.
-- **GitHub Flow**: short-lived branches named with the issue number (e.g. `3-world-class-ecosystem-hub`).
+- **GitHub Flow**: **issue first** (bugs/features/DX/standards), then short-lived branches named with the issue number (e.g. `58-issue-first-tracking`). See [docs/work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md).
 - **Human review gate**: agents prepare complete drafts; humans review and approve in the GitHub UI before merge to `main`. Agents never approve or merge their own PRs.
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
 - **Atomic changes**: include relevant doc updates in the same commit when they are part of the change.
