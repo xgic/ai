@@ -21,6 +21,7 @@ Practical workflow for humans and AI agents working on XGIC public GitHub reposi
 4. Commit with Conventional Commits
 5. Push branch and open a PR
 6. Human review in GitHub UI → merge
+7. After merge: run [post-merge workspace cleanup](grok-playbooks.md#playbook-g--post-merge-workspace-cleanup) (remove extra worktrees / OS temp for that issue)
 
 ## Agent loop (Grok Build–style)
 
@@ -30,6 +31,7 @@ Practical workflow for humans and AI agents working on XGIC public GitHub reposi
 4. **Implement** on a dedicated issue branch
 5. **Scan**: hard-security / leakage check
 6. **Pause** for human review and merge
+7. **Cleanup** extra worktrees and OS temp dirs for that issue after merge (playbook G)
 
 ## Linking conventions
 

@@ -185,6 +185,33 @@ Temporary files are **runtime / agent / CI scratch** — never the product sourc
 | **Secrets** | Never write credentials or vault material to repo-adjacent temps that might be committed |
 | **CI** | Prefer runner-provided temp; upload only intentional artifacts |
 | **Agents** | Keep session drafts under gitignored temp dirs; never commit them; run the public-safe gate before any public write |
+| **Post-merge cleanup** | After a PR merges to `main`, agents **must** automatically remove **work-scoped** extra git worktrees and OS temp directories created for that issue (see below) |
+
+### Post-merge workspace cleanup (agents)
+
+When a pull request targeting `main` is **merged** and the remote source
+branch is gone, delete scratch created **only for that unit of work**.
+
+**Remove (after safety checks):** extra git worktrees whose path includes
+the issue number (prefer
+`git worktree add -b <N>-short-desc ../<repo>-<N>` or a gitignored
+`.worktrees/<N>-…` directory); OS temp dirs named with a run-scoped
+prefix that includes the issue number.
+
+**Keep (exceptions):** the canonical long-lived clone; dirty or unpushed
+trees; worktrees still used by an **open** PR or stack; the agent
+session’s current working directory (switch first); agent session
+transcripts/plans outside the repo; project virtualenvs in the canonical
+clone; Docker volumes and engine data; OS credential stores; anything a
+human asked to keep; a second full clone that is **not** a git worktree.
+
+**Safety before `git worktree remove`:** `git status` clean; no unique
+commits missing from `origin/main` (squash merges: trust GitHub
+**merged** + deleted branch + clean tree); no process still using the
+path. Do not `git clean -fdx` the canonical clone. Report removed vs
+skipped paths.
+
+Playbook: [grok-playbooks.md](grok-playbooks.md) (playbook G).
 
 ---
 

@@ -69,6 +69,27 @@ If found: remove or rewrite with high-level public wording; do not describe priv
 2. Write to `.xgic/grok-build/status-report.md` (gitignored).  
 3. Never commit `.xgic/`.  
 
+## Playbook G — Post-merge workspace cleanup
+
+After a PR **merges** to `main` (and the remote feature branch is
+deleted):
+
+1. Confirm merge on GitHub (`gh pr view` state merged).  
+2. If the session cwd is the extra worktree, switch to the canonical
+   clone.  
+3. List extra worktrees (`git worktree list`) named with the issue
+   number; list OS temp dirs created for that issue.  
+4. Skip dirty trees, unique unpushed commits, open stacked PRs, live
+   processes, and the canonical clone.  
+5. `git worktree remove` → `git worktree prune` → delete the local
+   issue branch.  
+6. Remove only matching OS temp dirs.  
+7. Report what was removed or skipped.  
+
+Create extra checkouts with
+`git worktree add -b <N>-short-desc ../<repo>-<N>` so this playbook can
+find them. Policy: [BASE-STANDARDS — Temporary-file lifecycle](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md#temporary-file-lifecycle-mandatory).
+
 ## Related
 
 - [Orchestration workflow](orchestration-workflow.md)
