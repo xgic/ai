@@ -37,6 +37,7 @@ Host / cluster runtime
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
 | Local GitLab EE lab | `orch.gitlab` + `img.xgic-gitlab` + official `gitlab/gitlab-ee` / Postgres / Redis | Custom GitLab EE image forks; building the orchestrator inside the template repo |
 | Payload contributor environment | `dc.payload` + modular XGIC CLI from PyPI | One-off Dockerfiles without shared tooling |
+| Directus contributor environment (planned) | `dc.directus` + `cli.directus` after those repos exist ([ADR-0006](../adr/0006-adopt-directus.md)) | Custom CMS Dockerfiles without the producer/template split |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
 | Cloud HA / multi-cluster | K8s path with portable contracts | Rewriting app logic for the orchestrator |
@@ -57,8 +58,14 @@ Host / cluster runtime
 
 ### Content & web
 
-- **CMS:** Payload CMS with shared dev-container patterns  
-- **Web:** Next.js apps as separate deployable units  
+- **CMS (next candidate):** Directus with the three-repo CLI / producer /
+  template split ([ADR-0006](../adr/0006-adopt-directus.md)); prefer the
+  official `directus/directus` image until a measured need for a custom
+  producer
+- **CMS (published tooling):** Payload CMS Dev Container producer and
+  template remain available; they are not the current production-candidate
+  path
+- **Web:** Next.js apps as separate deployable units
 - **Shared:** Apache 2.0, public-safe docs, Docker Compose for local stacks
 
 ### Environment orchestration

@@ -54,6 +54,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `experimental` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | GitLab product commands (`xgic gitlab …`); B6a bootstrap (info stub; backup/restore later) |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`) |
+| `cli.directus` | Directus CLI module | `xgic.cli.directus` | `planned` | planned `xgic/directus-cli` | Directus product commands (`xgic directus …`); [ADR-0006](../adr/0006-adopt-directus.md) |
 | `cli.xde` | xde (retired) | — | `retired` | historical notes only | Former in-tree entrypoint; living template uses modular XGIC CLI only |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
@@ -71,6 +72,9 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
+| `dc.directus.dev` | Directus Dev Container **producer** (`*-dev`) | Dev Container / image producer | `planned` | planned `xgic/directus-dev` | Pinned multi-arch image `ghcr.io/xgic/directus-dev`; prefer official `directus/directus` until a measured need for a custom producer ([ADR-0006](../adr/0006-adopt-directus.md)) |
+| `dc.directus` | Directus end-user **template** | Dev Container template | `planned` | planned `xgic/directus` | Thin consumer of the producer image; site schema and Docker Compose overrides |
+| `img.directus.dev` | Directus Dev Container image | container image | `planned` | planned `ghcr.io/xgic/directus-dev` | Public multi-arch image once the producer exists |
 
 **Vendor images:** Prefer official unaltered images for third-party products (GitLab EE, Postgres, Redis, etc.).
 
@@ -92,7 +96,8 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 
 | ID | Name | Stack | Status | Location | Purpose |
 |----|------|-------|--------|----------|---------|
-| `app.payload` | Payload CMS solutions | Payload CMS | `experimental` / `available` tooling | Dev-container repo + future app templates | Headless CMS and content apps |
+| `app.payload` | Payload CMS solutions | Payload CMS | `experimental` / `available` tooling | [xgic/payload-cms](https://github.com/xgic/payload-cms) + [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Published Payload tooling; not the current production-candidate path ([ADR-0006](../adr/0006-adopt-directus.md)) |
+| `app.directus` | Directus solutions | Directus | `planned` | planned `xgic/directus` | Next production CMS candidate; schema-first Postgres ([ADR-0006](../adr/0006-adopt-directus.md)) |
 | `app.next` | Next.js applications | Next.js | `planned` | future public app repos | Web frontends and full-stack Next apps |
 | `app.fullstack` | Custom full-stack apps | polyglot | `planned` | future public app repos | Product-specific full-stack systems following hub standards |
 | `app.unreal` | Unreal Engine tools & plugins | Unreal Engine | `planned` | future public UE repos | Editor tools, plugins, pipelines |
