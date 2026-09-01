@@ -46,6 +46,7 @@ Canonical public documentation for the XGIC multi-repository ecosystem.
 | [licensing.md](licensing.md) | Apache 2.0 policy |
 | [xgic-python-namespace-convention.md](xgic-python-namespace-convention.md) | Public `xgic.*` namespace registry |
 | [python-package-release.md](python-package-release.md) | Publish public Python packages (TestPyPI → PyPI, OIDC, `uv` smoke) |
+| [xgic-cli-command-usage.md](xgic-cli-command-usage.md) | Missing required args print full usage (document now; implement later) |
 
 ## Architecture decisions
 
