@@ -1,7 +1,8 @@
 # ADR-0006: Adopt Wagtail as the default CMS
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Date:** 2026-09-02  
+**Accepted:** 2026-09-02  
 **Scope:** Public XGIC CMS tooling, image producers, templates, and
 agent playbooks
 
