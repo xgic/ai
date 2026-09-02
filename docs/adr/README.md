@@ -11,7 +11,7 @@ ADRs capture **multi-repository** decisions that public XGIC projects and AI age
 | [0003](0003-docker-compose-first-kubernetes-ready.md) | Docker Compose-first deployments, Kubernetes-ready architecture | Accepted |
 | [0004](0004-apache-2-0-for-public-solutions.md) | Apache 2.0 for XGIC public solutions | Accepted |
 | [0005](0005-modular-xgic-cli-and-retirement-of-xde.md) | Modular XGIC CLI and retirement of transitional `xde` brand | Accepted |
-| [0006](0006-adopt-directus.md) | Adopt Directus as the next production CMS candidate | Proposed |
+| [0006](0006-adopt-wagtail.md) | Adopt Wagtail as the default CMS | Proposed |
 
 ## When to write an ADR here
 
