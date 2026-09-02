@@ -18,6 +18,7 @@ This document defines the Python namespace convention for XGIC libraries and CLI
 | GitLab CLI | CLI module | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | 2 | Core CLI, GraphQL client | **Experimental** — B6a bootstrap (`xgic gitlab info`); backup/restore later |
 | AIS CLI | CLI module | `xgic.cli.ais` | [xgic/ais-cli](https://github.com/xgic/ais-cli) | 3 | Core CLI | Planned — automation-oriented AIS features (public surface only) |
 | Payload CMS CLI | CLI module | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | 4 | Core CLI, Dev CLI | Available — Payload CMS product commands (`xgic payload …`) |
+| Wagtail CLI | CLI module | `xgic.cli.wagtail` | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) | 4 | Core CLI | Experimental — Wagtail product commands (`xgic wagtail …`); default CMS path |
 
 ### Naming note (post B5 cutover)
 

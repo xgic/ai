@@ -37,7 +37,7 @@ Host / cluster runtime
 | Talk to GitLab GraphQL from Python | `lib.gitlab.graphql` | Ad-hoc raw GraphQL clients in each app |
 | Local GitLab EE lab | `orch.gitlab` + `img.xgic-gitlab` + official `gitlab/gitlab-ee` / Postgres / Redis | Custom GitLab EE image forks; building the orchestrator inside the template repo |
 | Payload contributor environment | `dc.payload` + modular XGIC CLI from PyPI | One-off Dockerfiles without shared tooling |
-| Wagtail contributor environment (planned) | `dc.wagtail` + `cli.wagtail` after those repos exist ([ADR-0006](../adr/0006-adopt-wagtail.md)) | Custom CMS Dockerfiles without the producer/template split |
+| Wagtail contributor environment | `dc.wagtail` + `cli.wagtail` ([ADR-0006](../adr/0006-adopt-wagtail.md)); official Python/Postgres pins | Custom CMS Dockerfiles without the producer/template split; unpublished GHCR tags |
 | New Python package | `xgic.*` namespace + Python 3.14 + Apache 2.0 | Random top-level package names |
 | On-prem deploy | Docker Compose first ([platform/docker-compose.md](../platform/docker-compose.md)) | Jumping to K8s without requirements |
 | Cloud HA / multi-cluster | K8s path with portable contracts | Rewriting app logic for the orchestrator |

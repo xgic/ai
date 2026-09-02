@@ -70,7 +70,10 @@ This continues the producer / template split in
 the modular CLI model in
 [ADR-0005](0005-modular-xgic-cli-and-retirement-of-xde.md).
 
-Do **not** bootstrap those repositories until this ADR is accepted.
+Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
+[xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
+[xgic/wagtail](https://github.com/xgic/wagtail). Custom GHCR image remains
+deferred until a measured need.
 
 ### 4. Start lean; optimize from day one
 
@@ -158,6 +161,7 @@ models) may be used for content generation, review, and enhancement.
 - [ADR-0005](0005-modular-xgic-cli-and-retirement-of-xde.md)
 - [Base standards](../BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)
 - [Ecosystem catalog](../ecosystem/catalog.md)
-- Intended public repositories (not yet published): `xgic/wagtail-dev`,
-  `xgic/wagtail`, `xgic/wagtail-cli`
-- Intended image: `ghcr.io/xgic/wagtail-dev`
+- Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
+  [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
+  [xgic/wagtail](https://github.com/xgic/wagtail)
+- Custom image `ghcr.io/xgic/wagtail-dev` remains deferred until a measured need
