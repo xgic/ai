@@ -72,17 +72,27 @@ the modular CLI model in
 
 Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
 [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
-[xgic/wagtail](https://github.com/xgic/wagtail). Custom GHCR image remains
-deferred until a measured need.
+[xgic/wagtail](https://github.com/xgic/wagtail).
+`xgic/wagtail-dev` is the GHCR **producer** for `ghcr.io/xgic/wagtail-dev`
+([ADR-0001](0001-xgic-gitlab-architecture-and-repository-naming.md)).
+The image is not published yet; that does not change the repo’s purpose.
 
 ### 4. Start lean; optimize from day one
 
-**Decision:** Prefer official Wagtail/Django images with explicit
-version pins. Build a custom producer image only with a concrete,
-measured need. Optimize for low idle memory and fast cold start, and
-validate the empty-site footprint on a constrained Linux test
-environment before schema work. Model data in Postgres with real
-relational and hierarchical structures rather than freeform documents.
+**Decision:** Prefer official Python / Wagtail / Django / Postgres
+images as **unaltered bases** (same rule as GitLab EE, Postgres, and
+Redis in [ADR-0001](0001-xgic-gitlab-architecture-and-repository-naming.md)).
+Do not fork vendor CMS images. The XGIC `*-dev` repository still
+**publishes** `ghcr.io/xgic/wagtail-dev`: a pinned multi-arch Dev
+Container producer image built FROM those official bases, installing
+the CLI modules, an AI coding agent, DB clients, and the test harness.
+“Measured need” applies to extra customization beyond that producer,
+not to whether the GHCR image exists.
+
+Optimize for low idle memory and fast cold start, and validate the
+empty-site footprint on a constrained Linux test environment before
+schema work. Model data in Postgres with real relational and
+hierarchical structures rather than freeform documents.
 
 ### 5. API strategy: v3 for writes, Grapple for reads
 
@@ -164,4 +174,4 @@ models) may be used for content generation, review, and enhancement.
 - Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
   [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
   [xgic/wagtail](https://github.com/xgic/wagtail)
-- Custom image `ghcr.io/xgic/wagtail-dev` remains deferred until a measured need
+- Intended image: `ghcr.io/xgic/wagtail-dev` (produced by `xgic/wagtail-dev`; not yet published)

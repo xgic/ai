@@ -72,9 +72,9 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
-| `dc.wagtail.dev` | Wagtail Dev Container **producer** (`*-dev`) | Dev Container / image producer | `experimental` | [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Official `python:3.14-bookworm` + `postgres:18-bookworm` pins and Compose; custom `ghcr.io/xgic/wagtail-dev` only with measured need ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `dc.wagtail` | Wagtail end-user **template** | Dev Container template | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) | Thin GitHub Template; official image pins; site schema later |
-| `img.wagtail.dev` | Wagtail Dev Container image | container image | `planned` | planned `ghcr.io/xgic/wagtail-dev` | Custom multi-arch image only after a measured need; official Python/Postgres pins are current |
+| `dc.wagtail.dev` | Wagtail Dev Container **producer** (`*-dev`) | Dev Container / image producer | `experimental` | [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Dockerfile, Compose, image CI; publishes **`ghcr.io/xgic/wagtail-dev`** FROM official Python/Wagtail/Django pins; official Postgres service ([ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md), [ADR-0006](../adr/0006-adopt-wagtail.md)) |
+| `dc.wagtail` | Wagtail end-user **template** | Dev Container template | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) | Thin GitHub Template consumer of `ghcr.io/xgic/wagtail-dev`; site schema and Compose overrides |
+| `img.wagtail.dev` | Wagtail Dev Container image | container image | `planned` | planned `ghcr.io/xgic/wagtail-dev` | Public multi-arch image produced by [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev); not published yet |
 
 **Vendor images:** Prefer official unaltered images for third-party products (GitLab EE, Postgres, Redis, etc.).
 
@@ -97,7 +97,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | ID | Name | Stack | Status | Location | Purpose |
 |----|------|-------|--------|----------|---------|
 | `app.payload` | Payload CMS solutions | Payload CMS | `experimental` / `available` tooling | [xgic/payload-cms](https://github.com/xgic/payload-cms) + [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Published Payload tooling; not the default CMS path ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `app.wagtail` | Wagtail solutions | Wagtail / Django | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) + [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Default CMS; official image pins; empty-site before schema; hybrid Django templates + Next.js ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
+| `app.wagtail` | Wagtail solutions | Wagtail / Django | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) + [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Default CMS; producer/template split; empty-site before schema; hybrid Django templates + Next.js ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
 | `app.next` | Next.js applications | Next.js | `planned` | future public app repos | Web frontends and full-stack Next apps |
 | `app.fullstack` | Custom full-stack apps | polyglot | `planned` | future public app repos | Product-specific full-stack systems following hub standards |
 | `app.unreal` | Unreal Engine tools & plugins | Unreal Engine | `planned` | future public UE repos | Editor tools, plugins, pipelines |
