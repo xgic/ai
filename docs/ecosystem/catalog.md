@@ -54,7 +54,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `experimental` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | GitLab product commands (`xgic gitlab …`); B6a bootstrap (info stub; backup/restore later) |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`); not the default CMS path ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `cli.wagtail` | Wagtail CLI module | `xgic.cli.wagtail` | `planned` | planned `xgic/wagtail-cli` | Wagtail product commands (`xgic wagtail …`); [ADR-0006](../adr/0006-adopt-wagtail.md) |
+| `cli.wagtail` | Wagtail CLI module | `xgic.cli.wagtail` | `experimental` | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) | Wagtail product commands (`xgic wagtail …`); bootstrap (`info`; missing ACTION prints full usage); [ADR-0006](../adr/0006-adopt-wagtail.md) |
 | `cli.xde` | xde (retired) | — | `retired` | historical notes only | Former in-tree entrypoint; living template uses modular XGIC CLI only |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
@@ -72,9 +72,9 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `img.xgic-gitlab` | XGIC GitLab orchestration image | container image | `available` | [`ghcr.io/xgic/xgic-gitlab`](https://github.com/users/xgic/packages/container/package/xgic-gitlab) · built by [xgic/gitlab-dev](https://github.com/xgic/gitlab-dev) | Production multi-arch orchestration runtime for GitLab Compose stacks (`latest` / `main` / semver tags) |
 | `img.dockerhub` | Docker Hub publications | container images | `planned` | as announced per product | Optional mirror / distribution channel |
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
-| `dc.wagtail.dev` | Wagtail Dev Container **producer** (`*-dev`) | Dev Container / image producer | `planned` | planned `xgic/wagtail-dev` | Pinned multi-arch image `ghcr.io/xgic/wagtail-dev`; prefer official Wagtail/Django images until a measured need for a custom producer ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `dc.wagtail` | Wagtail end-user **template** | Dev Container template | `planned` | planned `xgic/wagtail` | Thin consumer of the producer image; site schema and Docker Compose overrides |
-| `img.wagtail.dev` | Wagtail Dev Container image | container image | `planned` | planned `ghcr.io/xgic/wagtail-dev` | Public multi-arch image once the producer exists |
+| `dc.wagtail.dev` | Wagtail Dev Container **producer** (`*-dev`) | Dev Container / image producer | `experimental` | [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Dockerfile, Compose, image CI; publishes **`ghcr.io/xgic/wagtail-dev`** FROM official Python/Wagtail/Django pins; official Postgres service ([ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md), [ADR-0006](../adr/0006-adopt-wagtail.md)) |
+| `dc.wagtail` | Wagtail end-user **template** | Dev Container template | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) | Thin GitHub Template consumer of `ghcr.io/xgic/wagtail-dev`; site schema and Compose overrides |
+| `img.wagtail.dev` | Wagtail Dev Container image | container image | `planned` | planned `ghcr.io/xgic/wagtail-dev` | Public multi-arch image produced by [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev); not published yet |
 
 **Vendor images:** Prefer official unaltered images for third-party products (GitLab EE, Postgres, Redis, etc.).
 
@@ -97,7 +97,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | ID | Name | Stack | Status | Location | Purpose |
 |----|------|-------|--------|----------|---------|
 | `app.payload` | Payload CMS solutions | Payload CMS | `experimental` / `available` tooling | [xgic/payload-cms](https://github.com/xgic/payload-cms) + [xgic/payload-cms-dev](https://github.com/xgic/payload-cms-dev) | Published Payload tooling; not the default CMS path ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `app.wagtail` | Wagtail solutions | Wagtail / Django | `planned` | planned `xgic/wagtail` | Default CMS; schema-first Postgres; hybrid Django templates + Next.js ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
+| `app.wagtail` | Wagtail solutions | Wagtail / Django | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) + [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Default CMS; producer/template split; empty-site before schema; hybrid Django templates + Next.js ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
 | `app.next` | Next.js applications | Next.js | `planned` | future public app repos | Web frontends and full-stack Next apps |
 | `app.fullstack` | Custom full-stack apps | polyglot | `planned` | future public app repos | Product-specific full-stack systems following hub standards |
 | `app.unreal` | Unreal Engine tools & plugins | Unreal Engine | `planned` | future public UE repos | Editor tools, plugins, pipelines |
