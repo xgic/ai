@@ -14,7 +14,7 @@ CLI module — then decide whether the usage fix ships in the same pull
 request or stays on this milestone.
 
 Apply the pattern first to **new** modules (including planned
-`xgic directus`). Existing Payload CMS commands are not the first
+`xgic wagtail`). Existing Payload CMS commands are not the first
 implementation target.
 
 Removing the architecture footer from `xgic` help (entry-point / ADR
