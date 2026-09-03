@@ -74,7 +74,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `pattern.dev-suffix` | `*-dev` producer repos | naming pattern | `reference` | [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md) | Image producers use `-dev`; clean templates omit it |
 | `dc.wagtail.dev` | Wagtail Dev Container **producer** (`*-dev`) | Dev Container / image producer | `experimental` | [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Dockerfile, Compose, image CI; publishes **`ghcr.io/xgic/wagtail-dev`** FROM official Python/Wagtail/Django pins; official Postgres service ([ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md), [ADR-0006](../adr/0006-adopt-wagtail.md)) |
 | `dc.wagtail` | Wagtail end-user **template** | Dev Container template | `experimental` | [xgic/wagtail](https://github.com/xgic/wagtail) | Thin GitHub Template consumer of `ghcr.io/xgic/wagtail-dev`; site schema and Compose overrides |
-| `img.wagtail.dev` | Wagtail Dev Container image | container image | `planned` | planned `ghcr.io/xgic/wagtail-dev` | Public multi-arch image produced by [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev); not published yet |
+| `img.wagtail.dev` | Wagtail Dev Container image | container image | `experimental` | [`ghcr.io/xgic/wagtail-dev`](https://github.com/users/xgic/packages/container/package/wagtail-dev) · built by [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev) | Public multi-arch image; tags `latest` / `main` / SHA (semver on `v*` tags; first GitHub Release still open) |
 
 **Vendor images:** Prefer official unaltered images for third-party products (GitLab EE, Postgres, Redis, etc.).
 

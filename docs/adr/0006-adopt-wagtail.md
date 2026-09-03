@@ -76,7 +76,7 @@ Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
 [xgic/wagtail](https://github.com/xgic/wagtail).
 `xgic/wagtail-dev` is the GHCR **producer** for `ghcr.io/xgic/wagtail-dev`
 ([ADR-0001](0001-xgic-gitlab-architecture-and-repository-naming.md)).
-The image is not published yet; that does not change the repo’s purpose.
+The image is published (`main` / `latest` / SHA; semver on `v*` tags).
 
 ### 4. Start lean; optimize from day one
 
