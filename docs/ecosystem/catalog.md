@@ -30,7 +30,7 @@
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.4** | Auth, Work Items, hierarchy, pagination, `create_merge_request()` against GitLab GraphQL; min GitLab EE **19.2.1-ee**; install with `uv pip install xgic-gitlab-graphql` |
-| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) · PyPI [`xgic-cli`](https://pypi.org/project/xgic-cli/) **0.2.0** | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) · PyPI [`xgic-cli`](https://pypi.org/project/xgic-cli/) **0.2.1** | Thin core: framework, env detection, output helpers; entrypoint `xgic` (no architecture epilogue on empty `xgic`) |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
@@ -54,7 +54,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `experimental` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | GitLab product commands (`xgic gitlab …`); B6a bootstrap (info stub; backup/restore later) |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`); not the default CMS path ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
-| `cli.wagtail` | Wagtail CLI module | `xgic.cli.wagtail` | `experimental` | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) | Wagtail product commands (`xgic wagtail …`); bootstrap (`info`; missing ACTION prints full usage); [ADR-0006](../adr/0006-adopt-wagtail.md) |
+| `cli.wagtail` | Wagtail CLI module | `xgic.cli.wagtail` | `experimental` | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) · PyPI [`xgic-wagtail-cli`](https://pypi.org/project/xgic-wagtail-cli/) **0.1.0** | Wagtail product commands (`xgic wagtail …`): `info`, `setup`, `schema`, `dev`; missing ACTION prints full usage; [ADR-0006](../adr/0006-adopt-wagtail.md) |
 | `cli.xde` | xde (retired) | — | `retired` | historical notes only | Former in-tree entrypoint; living template uses modular XGIC CLI only |
 
 **Principle:** Domain logic in importable libraries; CLI modules are thin orchestration over libraries.
