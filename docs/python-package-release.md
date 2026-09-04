@@ -68,7 +68,7 @@ CLI packages share the `xgic` console entrypoint. **Always publish and smoke in 
 | 4 | `xgic-payload-cms-cli` | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) |
 | 5 | `xgic-gitlab-cli` | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) |
 
-`xgic-gitlab-cli` must use the **same** GitHub Actions release pattern (TestPyPI RC, `require-prior-rc`, PyPI final, GitHub Release) before its first production PyPI cut after this standard is applied repo-wide. Until its `release.yml` matches, do **not** treat laptop/`twine` publish as acceptable.
+`xgic-gitlab-cli` **0.1.1** is on PyPI ([project](https://pypi.org/project/xgic-gitlab-cli/0.1.1/)). Its `.github/workflows/release.yml` uses the same TestPyPI RC → `require-prior-rc` → PyPI final → GitHub Release path. Do not retag `v0.1.1`.
 
 ### Namespace packaging rules (release blockers)
 
@@ -270,7 +270,7 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | `xgic-payload-cms-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | `xgic-gitlab-graphql` | `.github/workflows/release.yml` | `require-prior-rc` (+ version↔tag assert) |
 | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) | `xgic-wagtail-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
-| [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | `xgic-gitlab-cli` | **Must match** before production PyPI | Required when `release.yml` is added/updated |
+| [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | `xgic-gitlab-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
 
 Preferred library reference implementation: **gitlab-graphql** (RC path, `require-prior-rc`, `git fetch --tags`, pyproject version must match tag, TestPyPI smoke with `--prerelease allow`).
 
