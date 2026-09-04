@@ -17,9 +17,9 @@ Apply the pattern first to **new** modules (including planned
 `xgic wagtail`). Existing Payload CMS commands are not the first
 implementation target.
 
-Removing the architecture footer from `xgic` help (entry-point / ADR
-blurb) needs **explicit approval** and must not drop operationally
-useful output. Do not copy that footer class into new module help.
+The architecture footer was removed from `xgic` help after explicit
+approval ([xgic/cli#18](https://github.com/xgic/cli/pull/18); ships in
+**xgic-cli 0.2.1**). Do not copy that footer class into new module help.
 
 Catalog: [ecosystem/catalog.md](ecosystem/catalog.md). Modular CLI:
 [ADR-0005](adr/0005-modular-xgic-cli-and-retirement-of-xde.md).

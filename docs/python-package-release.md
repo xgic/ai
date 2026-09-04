@@ -64,8 +64,9 @@ CLI packages share the `xgic` console entrypoint. **Always publish and smoke in 
 |------:|--------------|-----------|------------|
 | 1 | `xgic-cli` | `xgic.cli` | [xgic/cli](https://github.com/xgic/cli) |
 | 2 | `xgic-dev-cli` | `xgic.cli.dev` | [xgic/dev-cli](https://github.com/xgic/dev-cli) |
-| 3 | `xgic-payload-cms-cli` | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) |
-| 4 | `xgic-gitlab-cli` | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) |
+| 3 | `xgic-wagtail-cli` | `xgic.cli.wagtail` | [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) |
+| 4 | `xgic-payload-cms-cli` | `xgic.cli.payload` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) |
+| 5 | `xgic-gitlab-cli` | `xgic.cli.gitlab` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) |
 
 `xgic-gitlab-cli` must use the **same** GitHub Actions release pattern (TestPyPI RC, `require-prior-rc`, PyPI final, GitHub Release) before its first production PyPI cut after this standard is applied repo-wide. Until its `release.yml` matches, do **not** treat laptop/`twine` publish as acceptable.
 
@@ -268,6 +269,7 @@ Wire this in CI (preferred): a job that depends on the TestPyPI smoke job, with 
 | [xgic/dev-cli](https://github.com/xgic/dev-cli) | `xgic-dev-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
 | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | `xgic-payload-cms-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
 | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) | `xgic-gitlab-graphql` | `.github/workflows/release.yml` | `require-prior-rc` (+ version↔tag assert) |
+| [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli) | `xgic-wagtail-cli` | `.github/workflows/release.yml` | `require-prior-rc` |
 | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) | `xgic-gitlab-cli` | **Must match** before production PyPI | Required when `release.yml` is added/updated |
 
 Preferred library reference implementation: **gitlab-graphql** (RC path, `require-prior-rc`, `git fetch --tags`, pyproject version must match tag, TestPyPI smoke with `--prerelease allow`).
