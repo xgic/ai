@@ -53,7 +53,7 @@ Host / cluster runtime
 - **Dual-repo orchestration (ADR-0001):**  
   - **Producer:** `orch.gitlab.dev` ([xgic/gitlab-dev](https://github.com/xgic/gitlab-dev)) publishes `img.xgic-gitlab` (`ghcr.io/xgic/xgic-gitlab`)  
   - **Template:** `orch.gitlab` ([xgic/gitlab](https://github.com/xgic/gitlab)) Compose consumer — official vendor images + orchestration image  
-- **CLI (experimental B6a bootstrap):** `xgic.cli.gitlab` ([xgic/gitlab-cli](https://github.com/xgic/gitlab-cli)) — nested `xgic gitlab …` (info stub; backup/restore later)  
+- **CLI (experimental):** `xgic.cli.gitlab` ([xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) · PyPI [`xgic-gitlab-cli`](https://pypi.org/project/xgic-gitlab-cli/) **0.1.1**) — nested `xgic gitlab …` (`info`, `health`, `backup`, `restore`; missing ACTION prints full usage)  
 - **Decision source:** [ADR-0001](../adr/0001-xgic-gitlab-architecture-and-repository-naming.md), [ADR-0005](../adr/0005-modular-xgic-cli-and-retirement-of-xde.md)
 
 ### Content & web

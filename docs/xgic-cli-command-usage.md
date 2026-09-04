@@ -1,6 +1,7 @@
 # XGIC CLI command usage
 
-**Status:** Documented requirement; implementation later  
+**Status:** Documented requirement. Missing ACTION prints full usage
+on `xgic wagtail` and `xgic gitlab`. Other modules later.  
 **Tracking:** https://github.com/xgic/ai/issues/65
 
 When required parameters or options are missing, every `xgic` command
@@ -13,9 +14,10 @@ higher-priority work is complete, unless a change already touches that
 CLI module — then decide whether the usage fix ships in the same pull
 request or stays on this milestone.
 
-Apply the pattern first to **new** modules (including planned
-`xgic wagtail`). Existing Payload CMS commands are not the first
-implementation target.
+Shipped on `xgic wagtail`
+(https://github.com/xgic/wagtail-cli) and `xgic gitlab`
+(https://github.com/xgic/gitlab-cli/pull/18). Existing Payload CMS
+commands are not the next implementation target.
 
 The architecture footer was removed from `xgic` help after explicit
 approval ([xgic/cli#18](https://github.com/xgic/cli/pull/18); landed in
