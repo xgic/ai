@@ -18,7 +18,7 @@ Apply the pattern first to **new** modules (including planned
 implementation target.
 
 The architecture footer was removed from `xgic` help after explicit
-approval ([xgic/cli#18](https://github.com/xgic/cli/pull/18); ships in
+approval ([xgic/cli#18](https://github.com/xgic/cli/pull/18); landed in
 **xgic-cli 0.2.1**). Do not copy that footer class into new module help.
 
 Catalog: [ecosystem/catalog.md](ecosystem/catalog.md). Modular CLI:

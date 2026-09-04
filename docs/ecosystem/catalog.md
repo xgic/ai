@@ -30,7 +30,7 @@
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `lib.gitlab.graphql` | GitLab GraphQL client | `xgic.gitlab.graphql` | `available` | [xgic/gitlab-graphql](https://github.com/xgic/gitlab-graphql) · PyPI [`xgic-gitlab-graphql`](https://pypi.org/project/xgic-gitlab-graphql/) **0.1.4** | Auth, Work Items, hierarchy, pagination, `create_merge_request()` against GitLab GraphQL; min GitLab EE **19.2.1-ee**; install with `uv pip install xgic-gitlab-graphql` |
-| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) · PyPI [`xgic-cli`](https://pypi.org/project/xgic-cli/) **0.2.0** | Thin core: framework, env detection, output helpers; entrypoint `xgic` |
+| `lib.cli.core` | Core CLI framework | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) · PyPI [`xgic-cli`](https://pypi.org/project/xgic-cli/) **0.2.1** | Thin core: framework, env detection, output helpers; entrypoint `xgic` (no architecture epilogue on empty `xgic`) |
 
 See also: [Python namespace convention](../xgic-python-namespace-convention.md).
 
