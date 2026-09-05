@@ -63,10 +63,19 @@ Optional: `python scripts/public-safe-scan.py path/to/draft.md` (generic pattern
 2. Verify each against evidence (merged PRs, CI, Releases, live docs).  
 3. Update the body so completed items are `- [x]`.  
 4. Do **not** close while required items remain unchecked unless a human documents an explicit waiver on the artifact.  
-5. Confirm **assignee** is set for active work (default `@xgic` on XGIC public repos) unless the artifact is explicitly unassigned.  
+5. **Assignee before close:** `gh issue view --json assignees` (or the PR equivalent). If the list is empty and no written exception applies, **assign `@xgic` first, then close**. Never close then assign.  
 6. Reviewers (human today; AI agent later) apply the same gate.
 
-Closing with unchecked required checklist items or missing required assignees is a process defect: reopen, fix fields, then close.
+Closing with unchecked required checklist items or missing required assignees is a process defect: reopen, assign, fix fields, then close.
+
+**Close without an assignee** only when **one** of these is written on the artifact (body or closing comment). See [work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md):
+
+1. Human unassigned waiver (help-wanted / community pickup), repeated in the close note.  
+2. Spam / abuse / invalid (`invalid` or equivalent).  
+3. Duplicate of another issue or PR that **is** assigned (link required).  
+4. Rare platform artifact the API cannot assign (name the type in the close note).  
+
+Completed work, merged PRs, and “the bot forgot” are **not** exceptions.
 
 Violations are security incidents: stop, sanitize public text immediately, and correct before merge.
 
@@ -97,7 +106,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
 - **Atomic changes**: include relevant doc updates in the same commit when they are part of the change.
 - **Labels (mandatory):** apply proper labels to every issue, PR, and Discussion welcome post before considering the artifact complete. Welcome posts: `welcome` + `documentation`. See [docs/community-health.md](docs/community-health.md).
-- **Assignee (mandatory for active work):** Every issue and pull request that tracks active work must have an assignee. For XGIC public repositories, the default assignee is **`@xgic`** unless the human explicitly requests unassigned (for example help-wanted or community pickup). Agents set the assignee when creating the artifact and verify it before close.
+- **Assignee (mandatory at create and before close):** Every issue and pull request must have an assignee at create (same command as labels; default **`@xgic`**). Empty assignee after create is a process defect: assign immediately. Before close, re-check `assignees`; assign then close. Exceptions are the short table in [work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md). GitHub cannot native-lock close on assignee; this is layered process. Optional post-close repair workflows are follow-up only.
 - **Rule text lives in standards docs** (this file, base standards). Do not restate full rule procedures in issue/PR templates.
 
 ---
