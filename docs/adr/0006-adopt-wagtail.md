@@ -3,6 +3,7 @@
 **Status:** Accepted  
 **Date:** 2026-09-02  
 **Accepted:** 2026-09-02  
+**Updated:** 2026-09-04  
 **Scope:** Public XGIC CMS tooling, image producers, templates, and
 agent playbooks
 
@@ -165,6 +166,38 @@ models) may be used for content generation, review, and enhancement.
 
 ---
 
+## Implementation notes (public)
+
+### Done (2026-09)
+
+1. Hub ADR **Accepted** (this document).
+2. Three-repo structure live: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
+   [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
+   [xgic/wagtail](https://github.com/xgic/wagtail).
+3. GHCR producer image **published**: `ghcr.io/xgic/wagtail-dev`
+   (semver on `v*` tags; `main` / `latest` / SHA also available).
+   First releases: v0.1.0 (2026-09-03), v0.1.1 (2026-09-03).
+4. Thin template pins the published image semver and consumes it via
+   Dev Container.
+5. Modular CLI module `xgic.cli.wagtail` shipped under the XGIC CLI
+   brand (ADR-0005); `xgic wagtail …` commands available.
+6. Wagtail 8.0 (released 2026-08-25) pinned in the producer image,
+   including the v3 API preview.
+
+### Follow-ups
+
+1. Exercise the full three-repo path in real development and record a
+   production verdict.
+2. Validate empty-site idle memory and cold-start on a constrained
+   Linux environment before schema work.
+3. Stabilize agent playbooks and root-cause rules in the shared CLI
+   playbook + per-repo AGENTS.md overrides.
+4. Monitor v3 API stabilization; migrate automation off preview
+   semantics once stable.
+5. Consider Grapple adoption for read-heavy frontends as sites grow.
+
+---
+
 ## References
 
 - [ADR-0001](0001-xgic-gitlab-architecture-and-repository-naming.md)
@@ -175,4 +208,4 @@ models) may be used for content generation, review, and enhancement.
 - Public repositories: [xgic/wagtail-cli](https://github.com/xgic/wagtail-cli),
   [xgic/wagtail-dev](https://github.com/xgic/wagtail-dev),
   [xgic/wagtail](https://github.com/xgic/wagtail)
-- Intended image: `ghcr.io/xgic/wagtail-dev` (produced by `xgic/wagtail-dev`; not yet published)
+- Intended image: `ghcr.io/xgic/wagtail-dev` (produced by `xgic/wagtail-dev`; published as of 2026-09-03)
