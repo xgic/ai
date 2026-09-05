@@ -107,7 +107,8 @@ Enforcement: branch protection (required reviews, no direct pushes to `main`, li
 - Prefer **configuration over hard-coding** hosts, URLs, paths, and secrets.
 - Prefer **official vendor images** and thin orchestration (configure/operate; do not fork application images).
 - Prefer **Docker Compose** for on-prem/lab defaults with a clear path to Kubernetes when scale requires it ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).
-- Fix **root causes** rather than committing environment-specific host-file workarounds into shared automation.
+- **Compose project identity:** the top-level Compose `name:` is the project. `XGIC_COMPOSE_PROJECT`, `composeProjectName` (when a create-*-config.json exists), and `XGIC_PRIMARY_SERVICE` / `devcontainer.json` `service` must match it. Pattern: `xgic-<product>` for end-user templates; `xgic-<product>-dev` for image producers. Generic `xgic` lifecycle must not invent a different default (for example `xgic-dev`) when `name:` is present. Details: [platform/docker-compose.md](platform/docker-compose.md).
+- Fix **root causes** rather than committing environment-specific host-file workarounds into shared automation. First-consumer learnings belong on the **owning public repository** (or the correct private SoT), not as a one-off only in a consumer tree.
 
 **Enforcement:** Each orchestrated repo’s `AGENTS.md` and workflow docs; dry-run defaults for destructive automation; PR review for hard-coded topology and non-idempotent one-shots; human UI review before production deploys.
 
