@@ -1,7 +1,8 @@
 # ADR-0007: Headless Wagtail v2 read path for static sites
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-05
+**Accepted:** 2026-09-05
 **Scope:** Public-safe extract of a site-level specialization of
 [ADR-0006](0006-adopt-wagtail.md) for statically generated front ends
 **Does not change:** ADR-0005 (modular CLI) or ADR-0006 (adopt Wagtail)
