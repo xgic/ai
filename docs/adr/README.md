@@ -12,7 +12,7 @@ ADRs capture **multi-repository** decisions that public XGIC projects and AI age
 | [0004](0004-apache-2-0-for-public-solutions.md) | Apache 2.0 for XGIC public solutions | Accepted |
 | [0005](0005-modular-xgic-cli-and-retirement-of-xde.md) | Modular XGIC CLI and retirement of transitional `xde` brand | Accepted |
 | [0006](0006-adopt-wagtail.md) | Adopt Wagtail as the default CMS | Accepted |
-| [0007](0007-headless-wagtail-v2-read-path-for-static-sites.md) | Headless Wagtail v2 read path for static sites | Proposed |
+| [0007](0007-headless-wagtail-v2-read-path-for-static-sites.md) | Headless Wagtail v2 read path for static sites | Accepted |
 
 ## When to write an ADR here
 
