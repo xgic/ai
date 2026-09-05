@@ -50,7 +50,7 @@ Full extraction and rename follow [ADR-0005](../adr/0005-modular-xgic-cli-and-re
 | ID | Name | Namespace | Status | Location | Purpose |
 |----|------|-----------|--------|----------|---------|
 | `cli.core` | XGIC CLI core | `xgic.cli` | `available` | [xgic/cli](https://github.com/xgic/cli) | Thin entry framework + plugins (product-agnostic) |
-| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) | Docker Compose lifecycle (`xgic up`/`down`/`check`/…) + library |
+| `cli.dev` | Dev Container CLI module | `xgic.cli.dev` | `available` | [xgic/dev-cli](https://github.com/xgic/dev-cli) · PyPI [`xgic-dev-cli`](https://pypi.org/project/xgic-dev-cli/) **0.2.1** | Docker Compose lifecycle (`xgic up`/`down`/`check`/…); honors Compose `name:` for project identity |
 | `cli.gitlab` | GitLab CLI module | `xgic.cli.gitlab` | `experimental` | [xgic/gitlab-cli](https://github.com/xgic/gitlab-cli) · PyPI [`xgic-gitlab-cli`](https://pypi.org/project/xgic-gitlab-cli/) **0.1.1** | GitLab product commands (`xgic gitlab …`): `info`, `health`, `backup`, `restore`; missing ACTION prints full usage |
 | `cli.ais` | AIS CLI module | `xgic.cli.ais` | `planned` | planned `xgic/ais-cli` | Automation-oriented features (public surface only) |
 | `cli.payload` | Payload CMS CLI module | `xgic.cli.payload` | `available` | [xgic/payload-cms-cli](https://github.com/xgic/payload-cms-cli) | Payload CMS product commands (`xgic payload …`); not the default CMS path ([ADR-0006](../adr/0006-adopt-wagtail.md)) |
