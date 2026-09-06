@@ -57,6 +57,8 @@ Optional: `python scripts/public-safe-scan.py path/to/draft.md` (generic pattern
 
 **Configuration over hard-coding:** hosts, namespace paths, user IDs, and credentials come from env/config or synthetic fixtures—not literals that identify private systems. See [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md).
 
+**Docker Compose env:** never hard-code usernames, passwords, email addresses, or URLs in Dockerfiles or Docker Compose files. `.env.example` uses fictional placeholders only. `.env` is gitignored.
+
 **Mandatory checklist completion before close** (issues, PRs, and any Markdown task lists on those artifacts):
 
 1. Enumerate every unchecked item (`- [ ]`).  
