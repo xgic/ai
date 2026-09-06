@@ -10,7 +10,7 @@
 
 1. **One stack per concern** where practical (e.g. data services vs app) or a clear mono-compose with profiles.  
 2. **Official images** for Postgres, Redis, GitLab EE, etc.  
-3. **Bind configs, not secrets into git** — use `.env` (gitignored) and documented examples.  
+3. **Bind configs, not secrets into git** — use `.env` (gitignored) and a committed `.env.example`. Never hard-code usernames, passwords, email addresses, or URLs in Dockerfiles or Docker Compose files. `.env.example` uses fictional placeholders only (`example.com`, `CHANGE_ME_STRONG`). Application code must fail if required env is missing rather than falling back to a real host or mailbox.  
 4. **Healthchecks** and restart policies for operator-friendly recovery.  
 5. **Dev Containers** may wrap the same Docker Compose services for IDE parity.  
 5a. **Project identity:** set top-level Compose `name:`. Keep `XGIC_COMPOSE_PROJECT`, `composeProjectName` (if used), and `XGIC_PRIMARY_SERVICE` / `devcontainer.json` `service` aligned with that name. Export the `XGIC_COMPOSE_*` variables on the primary service. Naming: `xgic-<product>` (template) and `xgic-<product>-dev` (producer). The generic CLI default `xgic-dev` is last-resort only when no `name:` is present. `docker compose -p` must not silently create a second project next to the Dev Container.  
@@ -22,7 +22,7 @@
 ## Agent checklist
 
 - [ ] Docker Compose file(s) validated (`docker compose config`)  
-- [ ] No secrets committed  
+- [ ] No secrets committed (Compose/Dockerfiles have no literal usernames, passwords, emails, or URLs; `.env.example` is fictional)  
 - [ ] Service names stable for app connection strings  
 - [ ] README documents up/down/backup  
 - [ ] Image/runtime versions pinned for reproducibility  

@@ -27,6 +27,7 @@
 - **Unit tests** use only fictional placeholders (e.g. `example-group/example-project`, `gid://gitlab/User/1001`).
 - **Integration tests** (opt-in) read live targets from env (e.g. `GITLAB_URL`, `GITLAB_TOKEN`, `GITLAB_TEST_NAMESPACE_PATH`) and must target a **dedicated non-production** instance/project—never production coordination projects.
 - Do not hard-code private usernames, production project paths, or real credential material in source, tests, or docs.
+- **Docker / Docker Compose env:** never hard-code usernames, passwords, email addresses, or URLs in Dockerfiles or Docker Compose files. Commit `.env.example` with **fictional** placeholders only (for example `https://www.example.com`, `app@example.com`, `CHANGE_ME_STRONG`). Real values belong in `.env`, which must be gitignored. Application code must not fall back to real mailboxes or hosts when env is missing. See [platform/docker-compose.md](platform/docker-compose.md).
 
 **Project artifacts vs rule documents:**
 

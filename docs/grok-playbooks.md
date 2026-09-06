@@ -58,6 +58,7 @@ Search the diff and new text for:
 
 - Private hostnames / non-GitHub internal URLs  
 - Private project IDs or `Closes` targets that are not same-repo public issues  
+- Literal usernames, passwords, emails, or URLs in Dockerfiles / Docker Compose (use `.env.example` fictional placeholders instead)  
 - Absolute internal workspace paths  
 - Secrets (`.env`, tokens, keys)  
 
