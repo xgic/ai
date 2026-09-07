@@ -69,7 +69,13 @@ Violations are security incidents: correct immediately. Do not re-leak private n
 
 **Issue-first (mandatory):** For bugs, features, DX defects, and standards changes, create or reuse a **same-repo issue before** opening the PR (branch named with the issue number; `Fixes #N` / `Tracks #N`). Exceptions: Dependabot/Renovate; pure release version-bump PRs under an existing release train; trivial typo-only docs; emergency hotfix with same-day follow-up issue. Full rule: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 
-**Required:** work spanning **two or more** public `xgic/*` repositories must use a **parent milestone on this hub ([xgic/ai](https://github.com/xgic/ai))** whose description links child repo milestones (multi-PR) or PRs/issues (smaller efforts). Example: a new mandatory standard rolled out across multiple public repositories.
+**Required:** work spanning **two or more** public `xgic/*` repositories
+must use a **parent milestone on this hub ([xgic/ai](https://github.com/xgic/ai))**
+plus a **same-repo parent issue** assigned to that milestone. Attach
+children with sub-issues or tracked `owner/repo#n` items. Do **not**
+inventory active issues or child milestones in the parent milestone
+description. Example: a new mandatory standard rolled out across
+multiple public repositories.
 
 Full standard: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 

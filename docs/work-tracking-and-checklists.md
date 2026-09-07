@@ -123,39 +123,98 @@ Optional GitHub Actions repair on `issues: closed` / `pull_request: closed` is f
 
 ## Multi-repository public work (required parent milestone)
 
-GitHub Free does not provide an organization-wide milestone across all `xgic/*` repositories. **This repository (`xgic/ai`) is the public multi-repo hub.**
+GitHub Free does not provide an organization-wide milestone across all
+`xgic/*` repositories. **This repository (`xgic/ai`) is the public
+multi-repo hub.**
 
-When an effort spans **two or more** public repositories under `github.com/xgic/*`:
+### Parent issue tracking (mandatory on Free)
 
-1. **Required:** create a **parent milestone** on **https://github.com/xgic/ai**.  
-2. In that milestone’s description, maintain a **public-safe link map**:
-   - **Larger / multi-PR efforts:** link **child milestones** on each consumer repository (assign PRs/issues to those child milestones).  
-   - **Smaller efforts:** link the **PRs and issues** directly (child milestones optional when a single PR per repo is enough).  
-3. Close the parent milestone only when the multi-repo effort is accepted.
+Parent **milestones must not** hard-code active issues or child
+milestones in their descriptions. Those lists go stale and force agents
+to rewrite Markdown instead of using GitHub’s automated tracking.
 
-**Example:** implementing a new mandatory rule or standard that must land in this hub and several other public repos → one `xgic/ai` parent milestone with links to each repo’s PR or child milestone.
+**Parent milestone description** (stable only):
 
-Single-repo release trains may use a milestone **only** on that repository (no `xgic/ai` parent required).
+```markdown
+## Scope
 
-Keep all public milestone, issue, and PR text **public-safe**.
+Public-safe one-paragraph goal.
+
+## Parent issue
+
+#N
+```
+
+Create a **parent issue in the same repository** as that parent
+milestone and assign the issue **to** the milestone.
+
+Attach children with native GitHub features:
+
+| Child location | Attach how |
+|----------------|------------|
+| Same repository | **Sub-issues** |
+| Other public `xgic/*` repo | Tracked task-list item `owner/repo#n`, or that repo’s own parent issue |
+| Child milestone on a consumer repo | Link that repo’s **parent issue**, not every leaf PR |
+
+Agents **open, close, and track** issues. They do **not** edit the
+parent milestone description to add or remove children. Wave progress
+is the milestone % complete plus sub-issue / tracked-by widgets.
+
+When an effort spans **two or more** public repositories under
+`github.com/xgic/*`:
+
+1. **Required:** create a **parent milestone** on
+   **https://github.com/xgic/ai** (title = stable effort name).
+2. Create a **parent issue** in `xgic/ai` and assign it to that
+   milestone. Point the milestone description at `#N` only.
+3. Attach children:
+   - **Larger / multi-PR per repo:** child milestone on the consumer
+     repo **plus** a parent issue there; track that parent issue from
+     the `xgic/ai` parent issue (`owner/repo#n`).
+   - **Smaller effort:** tracked task-list items or sub-issues for the
+     PRs/issues (no child milestone if a single PR per repo is enough).
+4. Keep all public milestone, issue, and PR text **public-safe**.
+5. Close the parent issue, then the parent milestone, when the
+   multi-repo effort is accepted.
+
+**Example:** a new mandatory rule that must land in this hub and several
+other public repos → one `xgic/ai` parent milestone, one `xgic/ai`
+parent issue, tracked child parent-issues or PRs.
+
+Single-repo release trains may use a milestone **only** on that
+repository (no `xgic/ai` parent required). Still prefer a same-repo
+parent issue when the train has multiple issues.
+
+### Paid-tier revision
+
+This rule is optimized for **GitHub Free**. When XGIC adopts a paid
+GitHub plan (and matching GitLab EE paid features for private work),
+**revise this document** to use organization-level planning those plans
+provide. Until then, do not require paid-only features.
 
 ---
 
 ## Agent obligations
 
-- Prefer numbered procedures in docs; open issues/PRs for acceptance lists.  
-- **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.  
-- Prefer milestones for release trains and multi-issue features; assign the **issue** (and optionally the PR) to the milestone.  
-- For work spanning **2+ public repos**: create or update a **parent milestone on `xgic/ai`** with a link map to child milestones or PRs/issues.  
-- Do not open documentation-only PRs whose sole purpose is updating checklist ticks or status tables.  
-- Before close: checklists ticked **and** assignee set (or a written exception). Assign first, then close.  
+- Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
+- **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
+- Prefer milestones for release trains and multi-issue features; assign the **issue** (and optionally the PR) to the milestone.
+- For work spanning **2+ public repos**: create a **parent milestone and
+  parent issue on `xgic/ai`**; attach children with sub-issues or
+  tracked `owner/repo#n` items. Do not inventory children on the
+  milestone description.
+- Do not edit a parent milestone description to add or remove child
+  issues or child milestones.
+- Do not open documentation-only PRs whose sole purpose is updating checklist ticks or status tables.
+- Before close: checklists ticked **and** assignee set (or a written exception). Assign first, then close.
 - Keep public issue/PR/milestone text **public-safe** ([BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).
 
 ---
 
 ## Related
 
-- [BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)  
-- [orchestration-workflow.md](orchestration-workflow.md)  
-- [community-health.md](community-health.md)  
-- [grok-playbooks.md](grok-playbooks.md)  
+- [BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)
+- [orchestration-workflow.md](orchestration-workflow.md)
+- [community-health.md](community-health.md)
+- [grok-playbooks.md](grok-playbooks.md)
+- Tracking: https://github.com/xgic/ai/issues/86  

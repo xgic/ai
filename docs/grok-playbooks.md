@@ -22,6 +22,21 @@ For structured recommendation format, see [agent/recommendation-guide.md](agent/
 4. Default deploy path: **Docker Compose**; escalate to **Kubernetes** only with explicit requirements.  
 5. Cite ADRs 0001–0004 as applicable.  
 
+## Playbook B2 — Parent milestone + same-repo parent issue
+
+When creating a parent milestone for a multi-repo public effort:
+
+1. Create the parent milestone on `xgic/ai` with stable **scope** only.
+2. Create a **parent issue** in `xgic/ai`; assign it to that milestone;
+   point the milestone description at `#N` only.
+3. Attach children with **sub-issues** (same repo) or tracked
+   `owner/repo#n` items (other public repos). Consumer repos that need a
+   local train get their own milestone **and** parent issue.
+4. Do **not** rewrite the parent milestone description when children
+   open or close.
+
+Full rule: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
+
 ## Playbook C — Adopt a hub standard in a product repo
 
 1. Confirm canonical text in `https://github.com/xgic/ai`.  
