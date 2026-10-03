@@ -19,6 +19,16 @@ Shipped on `xgic wagtail`
 (https://github.com/xgic/gitlab-cli/pull/18). Existing Payload CMS
 commands are not the next implementation target.
 
+## Option defaults
+
+Every optional option shows its default in `--help`. Required options
+do not. Use `argparse.ArgumentDefaultsHelpFormatter`, or a subclass
+when the stored default is not the value a reader should see. Write
+that value in the help text.
+
+A command that is already being edited includes this formatter. Leave
+untouched commands for their own change.
+
 The architecture footer was removed from `xgic` help after explicit
 approval ([xgic/cli#18](https://github.com/xgic/cli/pull/18); landed in
 **xgic-cli 0.2.1**). Do not copy that footer class into new module help.
