@@ -144,6 +144,19 @@ Downstream public repositories should **link** here rather than copy large polic
 
 ---
 
+## XGIC CLI help
+
+When editing an `xgic` command, agents and humans follow the same help rule:
+
+- Every optional option shows its default in `--help`.
+- Required options do not show a default.
+- Use `argparse.ArgumentDefaultsHelpFormatter`, or a subclass when the stored default is not the value a reader should see.
+- Leave untouched commands for their own change.
+
+Detail: [XGIC CLI command usage](docs/xgic-cli-command-usage.md).
+
+---
+
 ## Status reports (optional, local only)
 
 - Session ID: `XGIC AI`  

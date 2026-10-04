@@ -146,6 +146,8 @@ Public platform detail: [platform/docker-compose.md](platform/docker-compose.md)
    - Rationale (technical): Dev Containers reproduce CI/prod Linux dependencies; `uv` is fast and lockfile-friendly for pure packages; automatic nested-venv activation in a multi-folder parent workspace pollutes orchestration shells with the wrong environment.
 10. **Conventional Commits**, atomic changes, positive professional tone.
 11. **XGIC CLI / environment orchestration** — no new Makefiles. Living docs and guidelines refer only to **XGIC CLI** (`xgic` / `xgic.cli.*`); no `xde` in current standards (historical completed artifacts only). Public template is a modular CLI consumer. See [ecosystem catalog](ecosystem/catalog.md) naming note.
+    Optional options show their default in `--help`. Required options do not.
+    Apply this when editing a command. Detail: [XGIC CLI command usage](xgic-cli-command-usage.md).
 12. **Public package metadata** uses the org-facing author identity (e.g. `XGIC`), never private project names.
 13. **Apache License 2.0** for public XGIC solutions ([licensing.md](licensing.md), [ADR-0004](adr/0004-apache-2-0-for-public-solutions.md)).
 14. **Docker Compose-first ops docs** for on-prem; Kubernetes path documented when relevant ([ADR-0003](adr/0003-docker-compose-first-kubernetes-ready.md)).
