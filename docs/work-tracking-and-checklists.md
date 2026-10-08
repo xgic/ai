@@ -51,7 +51,7 @@ Fixed **policy verification** lists (for example public-safe gates in BASE-STAND
 Then:
 
 1. Assign **labels** and **assignee** (public default `@xgic` unless help-wanted / explicit unassigned).  
-2. Assign a **milestone** when the work is part of a release train or multi-issue effort. Small one-off chores may omit a milestone.  
+2. Assign every issue that belongs to the effort to that repository's **milestone**, including siblings. Leave an issue off a milestone only when its description states why it is unscheduled.  
 3. Open the PR from a branch **named with the tracking issue number** (see [community-health.md](community-health.md)).  
 4. PR body includes `Fixes #N` / `Closes #N` (same repo) or an explicit “Tracks #N” link.  
 5. Put acceptance checklists on the **issue** (and/or PR). Prefer the issue as the durable tracker if a PR is superseded.  
@@ -80,7 +80,7 @@ Agents **must not** open a public PR for in-scope work without a tracking issue,
 1. **Issue first** (see above); put the checklist in the issue body when multi-step.  
 2. Link PRs with `Fixes #N` / `Refs #N` / `Tracks #N`.  
 3. For single-PR work under an exception, the PR description may hold the acceptance checklist.  
-4. For a release train or multi-issue feature, create a **repository milestone**, assign issues/PRs, and track progress there (not in Markdown tables).  
+4. Create a **repository milestone** for the effort. Assign every issue in the effort, including siblings, and track progress there (not in Markdown tables).  
 5. Before closing an issue or PR that contains task lists, mark required items complete (`- [x]`) or document a human waiver (see [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).  
 6. **Assign before close.** `gh issue view --json assignees` (or the PR equivalent). If empty, assign `@xgic` then close, unless a written exception below applies. Never close then assign.
 
@@ -117,17 +117,24 @@ Write **one** of these on the artifact (body or closing comment):
 
 Optional GitHub Actions repair on `issues: closed` / `pull_request: closed` is follow-up only. It runs after close and does not replace this gate.
 
-**Sizing:** not every PR needs a milestone. Prefer milestones for releases and coordinated multi-issue work. Small independent changes can use labels and the issue/PR checklist alone.
+Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled. The milestone description names the parent issue only.
 
 ---
 
 ## Multi-repository public work (required parent milestone)
 
-GitHub Free does not provide an organization-wide milestone across all
-`xgic/*` repositories. **This repository (`xgic/ai`) is the public
-multi-repo hub.**
+GitHub milestones are repository-scoped on every GitHub plan. GitHub
+has no organization milestone and no cross-repository milestone.
+**This repository (`xgic/ai`) is the public multi-repo hub.** Each
+other public repository still uses its own milestone for its own
+issues, including siblings.
 
-### Parent issue tracking (mandatory on Free)
+GitLab project milestones are project-scoped. GitLab group milestones
+are available on the Free tier and apply to issues and merge requests
+in that group's projects. A group milestone does not cross groups, and
+it does not cross to GitHub.
+
+### Parent issue tracking
 
 Parent **milestones must not** hard-code active issues or child
 milestones in their descriptions. Those lists go stale and force agents
@@ -187,10 +194,9 @@ parent issue when the train has multiple issues.
 
 ### Paid-tier revision
 
-This rule is optimized for **GitHub Free**. When XGIC adopts a paid
-GitHub plan (and matching GitLab EE paid features for private work),
-**revise this document** to use organization-level planning those plans
-provide. Until then, do not require paid-only features.
+GitHub milestones stay repository-scoped on every plan, including paid
+plans. GitLab Epics, the roadmap, and burndown charts are paid GitLab
+features and are not required here.
 
 ---
 
@@ -198,7 +204,7 @@ provide. Until then, do not require paid-only features.
 
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
-- Prefer milestones for release trains and multi-issue features; assign the **issue** (and optionally the PR) to the milestone.
+- Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
