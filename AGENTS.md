@@ -103,7 +103,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 
 - **Positive, constructive, professional** tone; forward-looking documentation.
 - **GitHub Flow**: **issue first** (bugs/features/DX/standards), then short-lived branches named with the issue number (e.g. `58-issue-first-tracking`). See [docs/work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md).
-- **Parent milestones:** same-repo **parent issue** assigned to the milestone; do not inventory active issues or child milestones in the milestone description. Full rule: [work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md).
+- **Milestones:** Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled. The milestone description names the parent issue only. Full rule: [work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md).
 - **Post-merge workspace cleanup:** After a PR merges to `main`, automatically remove extra git worktrees and OS temp dirs created for that issue. Keep the canonical clone, session files, virtualenvs, and dirty/unmerged trees. See [BASE-STANDARDS](docs/BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md) and [grok-playbooks.md](docs/grok-playbooks.md) playbook G.
 - **Human review gate**: agents prepare complete drafts; humans review and approve in the GitHub UI before merge to `main`. Agents never approve or merge their own PRs.
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
