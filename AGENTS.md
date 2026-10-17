@@ -108,7 +108,7 @@ When uncertain whether a component exists publicly, say so and point to the cata
 - **Human review gate**: agents prepare complete drafts; humans review and approve in the GitHub UI before merge to `main`. Agents never approve or merge their own PRs.
 - **Conventional Commits**: `type(scope): subject` plus a body explaining *what* and *why*.
 - **Atomic changes**: include relevant doc updates in the same commit when they are part of the change.
-- **Labels (mandatory):** apply proper labels to every issue, PR, and Discussion welcome post before considering the artifact complete. Welcome posts: `welcome` + `documentation`. See [docs/community-health.md](docs/community-health.md).
+- **Labels (mandatory):** Every issue and pull request gets exactly one type label in the create call: `bug`, `enhancement`, `documentation`, `standards`, or `chore`. Welcome Discussion posts use `welcome` and `documentation`. Do not put scoped GitLab labels on GitHub. See [docs/community-health.md](docs/community-health.md).
 - **Assignee (mandatory at create and before close):** Every issue and pull request must have an assignee at create (same command as labels; default **`@xgic`**). Empty assignee after create is a process defect: assign immediately. Before close, re-check `assignees`; assign then close. Exceptions are the short table in [work-tracking-and-checklists.md](docs/work-tracking-and-checklists.md). GitHub cannot native-lock close on assignee; this is layered process. Optional post-close repair workflows are follow-up only.
 - **Rule text lives in standards docs** (this file, base standards). Do not restate full rule procedures in issue/PR templates.
 
