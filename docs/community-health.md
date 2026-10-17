@@ -24,55 +24,56 @@ Labels are mandatory for discoverability, triage, and agent/human automation. Un
 
 ### GitHub (issues, pull requests, Discussions)
 
-**Create** these labels on every public XGIC GitHub repository if missing (names are exact):
+Use GitHub's own label names. Do not put scoped labels such as
+`type::`, `priority::`, or `workflow::` on a public repository, and do
+not invent unscoped process labels.
 
-| Label | Color (suggested) | Use |
-|-------|-------------------|-----|
-| `bug` | `d73a4a` | Defects |
-| `enhancement` | `a2eeef` | Features / improvements |
-| `documentation` | `0075ca` | Docs-only work |
-| `standards` | `5319e7` | Standards / policy / community health |
-| `chore` | `fef2c0` | Maintenance, templates, hygiene |
-| `welcome` | `0e8a16` | **Welcome / onboarding Discussion posts** |
-| `question` | `d876e3` | Questions (prefer Discussions when enabled) |
+**Create** these type labels on every public XGIC GitHub repository if
+missing. Names and colors are exact:
 
-Optional but recommended when useful: `good first issue`, `help wanted`, priority-style labels (`priority:high`, etc.) if the repo adopts them consistently.
+| Label | Color | Use |
+|-------|-------|-----|
+| `bug` | `d73a4a` | A defect |
+| `enhancement` | `a2eeef` | A feature or improvement |
+| `documentation` | `0075ca` | Product documentation only |
+| `standards` | `5319e7` | Standards, policy, or community health |
+| `chore` | `fef2c0` | Maintenance, templates, or hygiene |
+| `welcome` | `0e8a16` | Welcome Discussion posts only |
+| `question` | `d876e3` | A question. Prefer Discussions when enabled |
 
-#### Minimum labels by artifact type
+Every **issue** and **pull request** has **exactly one** type label,
+chosen from `bug`, `enhancement`, `documentation`, `standards`, and
+`chore`. Apply it in the same `gh issue create` or `gh pr create` call
+that opens the artifact, then confirm it with `gh issue view` or
+`gh pr view`. An artifact with no type label, or with two type labels,
+is not complete.
 
-| Artifact | Required labels |
-|----------|-----------------|
-| Bug issue | `bug` (plus area labels if the repo defines them) |
-| Feature / enhancement issue | `enhancement` |
-| Documentation issue | `documentation` |
-| Standards / community-health issue | `standards` (and `documentation` when docs-only) |
-| Pull request | Same semantic labels as the work (e.g. `documentation`, `bug`, `chore`, `standards`) |
-| **Welcome Discussion post** | **`welcome`** and **`documentation`** (add `standards` when the post also defines org process) |
-| Other Discussions | At least one of: `question`, `enhancement`, `documentation`, `standards` (as appropriate) |
+A welcome Discussion post is the only artifact that carries two labels:
+`welcome` and `documentation`. Any other Discussion carries exactly one
+of `question`, `enhancement`, `documentation`, or `standards`.
 
-YAML issue forms should set default labels via the form `labels:` field where possible.
+Optional labels do not replace the type label. Use at most one of
+`priority:high`, `priority:medium`, or `priority:low`, and only when
+the scheduling difference matters. `good first issue` and `help wanted`
+may be added for contributors.
 
-### GitLab (issues, merge requests, and related)
+YAML issue forms set that one type label in the form `labels:` field.
 
-Private and public GitLab projects must use the project’s standard label taxonomy consistently (examples used across XGIC orchestration):
+### Private GitLab
 
-| Category | Examples |
-|----------|----------|
-| Type | `type:docs`, `type:bug`, `type:feature`, `chore`, `type:standards` |
-| Priority | `priority:high`, `priority:medium`, `priority:low` |
-| Process | `grok`, `review:human-ui`, area labels (`area:wiki`, etc.) as defined |
-
-**Rules:**
-
-- Every new issue and merge request receives **type** (or equivalent) and **priority** when known, before or at creation.
-- Do not leave MRs/issues unlabeled after human review completes.
-- Prefer the same names already used in that GitLab project; extend the taxonomy deliberately rather than inventing one-off labels per issue.
+Private GitLab uses its own scoped taxonomy. Do not copy these GitHub
+names onto private work items, and do not copy that private taxonomy
+onto GitHub.
 
 ### Enforcement
 
-- Agents and humans: refuse to treat an artifact as “complete” until required labels are applied.
-- Welcome Discussion posts are created or updated **with** `welcome` + `documentation` labels in the same change set when the API allows; otherwise apply labels immediately after create.
-- Coordinating issues (e.g. multi-repo standards) use `standards` (and `documentation` / `enhancement` as appropriate).
+- Agents and humans refuse to treat an artifact as complete until the
+  one type label is present.
+- Welcome Discussion posts are created with `welcome` and
+  `documentation` in the same change. If the API cannot set labels at
+  create, apply them before any other work.
+- A standards change uses `standards` only. It does not also carry
+  `documentation`.
 
 ## Repository-local (required) vs hub (link only)
 
