@@ -97,6 +97,7 @@ python -c "from xgic.gitlab.graphql import GitLabClient, GitLabConfig; print(Git
 - Prefer **aligned** versions across a coordinated multi-package release when modules ship together.  
 - Do not reuse a version string on an index after a bad upload; cut a new RC or patch.  
 - Yank only for security or severe breakage; prefer a fix release.
+- The repository milestone for that final version is titled `X.Y.Z`. The release candidate and the final publish share it. Set it on every issue and pull request included in the release. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to the shipped `X.Y.Z` before the milestone closes. Close the parent issue, then the milestone, after the final publish and its acceptance. Detail: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 
 ---
 
