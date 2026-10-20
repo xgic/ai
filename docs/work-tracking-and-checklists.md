@@ -67,7 +67,11 @@ Then:
 | Trivial typo-only docs with no behavior change | Labels; human LGTM |
 | Emergency hotfix with human waiver in the PR body | Open a follow-up issue the **same day** |
 
-PRs **may** also be added to milestones; the issue remains the stable handle.
+GitHub keeps a separate milestone on the issue and on the pull request.
+Setting the issue does not set the pull request. A semantic-version
+release sets `X.Y.Z` on both, as the section below requires. On another
+effort, the pull request may carry that effort's milestone. The issue
+remains the stable handle.
 
 ### Agent obligation
 
@@ -128,8 +132,19 @@ metadata publishes. The Git tag remains `vX.Y.Z`.
 The release candidate and the final publish belong to that same
 milestone. Create it when the release is intended, with a parent issue
 in the same repository. The milestone description names that issue
-only. Assign every issue and pull request that ships in that version,
-including siblings.
+only.
+
+`X.Y.Z` is the milestone for the release that ships the change. GitHub
+keeps a separate milestone on the issue and on the pull request.
+Setting the issue does not set the pull request. Set `X.Y.Z` on every
+issue and every pull request included in that release, including
+siblings and both the candidate and the final version bump. When the
+shipped version differs from the version first planned, move the issue
+and its pull requests to the shipped `X.Y.Z` before that milestone
+closes.
+
+A hub effort milestone stays on the hub issue. The releasing
+repository's issue and pull requests use `X.Y.Z` only.
 
 Dependabot and Renovate pull requests, typo-only documentation, and
 work that is not in that release stay off the milestone. An omitted
@@ -232,7 +247,7 @@ features and are not required here.
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
 - Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
-- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for that final version. The release candidate and the final publish share it. Close the parent issue, then the milestone, after the final publish and its acceptance.
+- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. Set it on every included issue and pull request. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the

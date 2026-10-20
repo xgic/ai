@@ -122,7 +122,7 @@ Welcome posts must include:
 - PR to `main` with human review in the GitHub UI; body uses `Fixes #N` / `Tracks #N`  
 - Conventional Commits  
 - Public-safe content only  
-- Issue and PR labels (and assignee) applied; a publishing repository uses the `X.Y.Z` release milestone  
+- Issue and PR labels (and assignee) applied; a publishing repository sets the shipped `X.Y.Z` milestone on the issue and on each pull request  
 - PR labels applied before merge  
 
 ## Related
