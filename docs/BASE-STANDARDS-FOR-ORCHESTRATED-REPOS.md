@@ -69,6 +69,8 @@ Violations are security incidents: correct immediately. Do not re-leak private n
 
 **Issue-first (mandatory):** For bugs, features, DX defects, and standards changes, create or reuse a **same-repo issue before** opening the PR (branch named with the issue number; `Fixes #N` / `Tracks #N`). Exceptions: Dependabot/Renovate; pure release version-bump PRs under an existing release train; trivial typo-only docs; emergency hotfix with same-day follow-up issue. Full rule: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
 
+**Semantic-version releases:** a repository that publishes versions uses one milestone titled `X.Y.Z` for the release that ships the change. The Git tag stays `vX.Y.Z`. Set that milestone on every included issue and pull request. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. Close the parent issue, then the milestone, after the final publish and its acceptance. A hub effort milestone stays on the hub issue. Detail: [work-tracking-and-checklists.md](work-tracking-and-checklists.md).
+
 **Required:** work spanning **two or more** public `xgic/*` repositories
 must use a **parent milestone on this hub ([xgic/ai](https://github.com/xgic/ai))**
 plus a **same-repo parent issue** assigned to that milestone. Attach
