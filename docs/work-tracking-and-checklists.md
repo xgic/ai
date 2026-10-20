@@ -51,7 +51,7 @@ Fixed **policy verification** lists (for example public-safe gates in BASE-STAND
 Then:
 
 1. Assign **labels** and **assignee** (public default `@xgic` unless help-wanted / explicit unassigned).  
-2. Assign a **milestone** when the work is part of a release train or multi-issue effort. Small one-off chores may omit a milestone.  
+2. Assign every issue that belongs to the effort to that repository's **milestone**, including siblings. Leave an issue off a milestone only when its description states why it is unscheduled.  
 3. Open the PR from a branch **named with the tracking issue number** (see [community-health.md](community-health.md)).  
 4. PR body includes `Fixes #N` / `Closes #N` (same repo) or an explicit “Tracks #N” link.  
 5. Put acceptance checklists on the **issue** (and/or PR). Prefer the issue as the durable tracker if a PR is superseded.  
@@ -67,7 +67,11 @@ Then:
 | Trivial typo-only docs with no behavior change | Labels; human LGTM |
 | Emergency hotfix with human waiver in the PR body | Open a follow-up issue the **same day** |
 
-PRs **may** also be added to milestones; the issue remains the stable handle.
+GitHub keeps a separate milestone on the issue and on the pull request.
+Setting the issue does not set the pull request. A semantic-version
+release sets `X.Y.Z` on both, as the section below requires. On another
+effort, the pull request may carry that effort's milestone. The issue
+remains the stable handle.
 
 ### Agent obligation
 
@@ -80,7 +84,7 @@ Agents **must not** open a public PR for in-scope work without a tracking issue,
 1. **Issue first** (see above); put the checklist in the issue body when multi-step.  
 2. Link PRs with `Fixes #N` / `Refs #N` / `Tracks #N`.  
 3. For single-PR work under an exception, the PR description may hold the acceptance checklist.  
-4. For a release train or multi-issue feature, create a **repository milestone**, assign issues/PRs, and track progress there (not in Markdown tables).  
+4. Create a **repository milestone** for the effort. Assign every issue in the effort, including siblings, and track progress there (not in Markdown tables). A repository that publishes semantic versions uses the `X.Y.Z` milestone in the next section.  
 5. Before closing an issue or PR that contains task lists, mark required items complete (`- [x]`) or document a human waiver (see [BASE-STANDARDS](BASE-STANDARDS-FOR-ORCHESTRATED-REPOS.md)).  
 6. **Assign before close.** `gh issue view --json assignees` (or the PR equivalent). If empty, assign `@xgic` then close, unless a written exception below applies. Never close then assign.
 
@@ -117,17 +121,62 @@ Write **one** of these on the artifact (body or closing comment):
 
 Optional GitHub Actions repair on `issues: closed` / `pull_request: closed` is follow-up only. It runs after close and does not replace this gate.
 
-**Sizing:** not every PR needs a milestone. Prefer milestones for releases and coordinated multi-issue work. Small independent changes can use labels and the issue/PR checklist alone.
+Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled. The milestone description names the parent issue only.
+
+## Semantic-version release milestones
+
+A repository that publishes semantic versions uses one milestone per
+final version. The title is `X.Y.Z`, the same version the package
+metadata publishes. The Git tag remains `vX.Y.Z`.
+
+The release candidate and the final publish belong to that same
+milestone. Create it when the release is intended, with a parent issue
+in the same repository. The milestone description names that issue
+only.
+
+`X.Y.Z` is the milestone for the release that ships the change. GitHub
+keeps a separate milestone on the issue and on the pull request.
+Setting the issue does not set the pull request. Set `X.Y.Z` on every
+issue and every pull request included in that release, including
+siblings and both the candidate and the final version bump. When the
+shipped version differs from the version first planned, move the issue
+and its pull requests to the shipped `X.Y.Z` before that milestone
+closes.
+
+A hub effort milestone stays on the hub issue. The releasing
+repository's issue and pull requests use `X.Y.Z` only.
+
+Dependabot and Renovate pull requests, typo-only documentation, and
+work that is not in that release stay off the milestone. An omitted
+issue says why in its description.
+
+Close the parent issue first, then the milestone, after the final
+publish and its acceptance are done. Publishing the release candidate
+does not close the milestone.
+
+Do not open a version milestone before its parent issue exists. Leave
+a closed release's milestone as it was. A repository that does not
+publish versions does not take a version milestone for another
+repository's release. Work that spans repositories keeps an effort
+milestone on this hub, titled for the effort. Each publishing
+repository keeps its own `X.Y.Z` milestone.
 
 ---
 
 ## Multi-repository public work (required parent milestone)
 
-GitHub Free does not provide an organization-wide milestone across all
-`xgic/*` repositories. **This repository (`xgic/ai`) is the public
-multi-repo hub.**
+GitHub milestones are repository-scoped on every GitHub plan. GitHub
+has no organization milestone and no cross-repository milestone.
+**This repository (`xgic/ai`) is the public multi-repo hub.** Each
+other public repository still uses its own milestone for its own
+issues, including siblings.
 
-### Parent issue tracking (mandatory on Free)
+GitLab project milestones are project-scoped. GitLab group milestones
+are available on the Free tier and apply to issues and merge requests
+in that group's projects. A group milestone does not cross groups, and
+it does not cross to GitHub.
+
+### Parent issue tracking
 
 Parent **milestones must not** hard-code active issues or child
 milestones in their descriptions. Those lists go stale and force agents
@@ -181,16 +230,15 @@ When an effort spans **two or more** public repositories under
 other public repos → one `xgic/ai` parent milestone, one `xgic/ai`
 parent issue, tracked child parent-issues or PRs.
 
-Single-repo release trains may use a milestone **only** on that
-repository (no `xgic/ai` parent required). Still prefer a same-repo
-parent issue when the train has multiple issues.
+A single-repository release uses the `X.Y.Z` milestone in that
+repository only. No hub parent milestone is required. The
+semantic-version section above is the rule.
 
 ### Paid-tier revision
 
-This rule is optimized for **GitHub Free**. When XGIC adopts a paid
-GitHub plan (and matching GitLab EE paid features for private work),
-**revise this document** to use organization-level planning those plans
-provide. Until then, do not require paid-only features.
+GitHub milestones stay repository-scoped on every plan, including paid
+plans. GitLab Epics, the roadmap, and burndown charts are paid GitLab
+features and are not required here.
 
 ---
 
@@ -198,7 +246,8 @@ provide. Until then, do not require paid-only features.
 
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
-- Prefer milestones for release trains and multi-issue features; assign the **issue** (and optionally the PR) to the milestone.
+- Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
+- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. Set it on every included issue and pull request. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
