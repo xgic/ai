@@ -149,7 +149,16 @@ does not need its own pull request for that assignment. Each
 sub-issue, and each pull request that changes code, stays on the
 release that contains that change. A parent that also changes code
 keeps those pull requests on the releases that contain the code. The
-parent issue still marks the release that finishes the parent. A
+parent issue still marks the release that finishes the parent. It is
+not placed on an interim release. An open parent on an interim
+milestone would block the tag that release exists to ship. When
+acceptance cannot be finished and a release must ship work that
+belongs to that parent, create the next patch of the current minor
+and put the new child issues and pull requests on that patch. When
+the interim release is not part of that parent, the hotfix is that
+same next patch and is not one of the parent's sub-issues. Do not
+open the next minor or major for the hotfix. Use an unreleased patch
+milestone for that minor when one already exists. A
 parent with no code and no sub-issues in a release stays unscheduled.
 
 A completed proof of a release uses that same milestone. Every issue
@@ -268,7 +277,7 @@ features and are not required here.
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
 - Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
-- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. Set it on every included issue and pull request, including work merged to `main` after the previous final tag. A parent whose sub-issues span more than one release is on the release that completes every sub-issue, even when the parent has no pull request of its own. A pull request that changes code stays on the release that contains that change. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
+- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. Set it on every included issue and pull request, including work merged to `main` after the previous final tag. A parent whose sub-issues span more than one release is on the release that completes every sub-issue, even when the parent has no pull request of its own. It is not placed on an interim patch. A shippable slice uses the next patch of the current minor. A hotfix that is not part of that parent is that same next patch. A pull request that changes code stays on the release that contains that change. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
