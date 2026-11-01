@@ -158,6 +158,8 @@ When editing an `xgic` command, agents and humans follow the same help rule:
 - Keep `docs/commands.md` alphabetical for commands, subcommands, and options.
 - Mark each option Required, Optional, or Required to apply.
 - Update `docs/commands.md` in the same change as the command or option.
+- Keep non-secret runtime configuration in one JSON file named after the project in `pyproject.toml`.
+- Validate that file with its schema and a Pydantic model. `pyproject.toml` stays project metadata.
 
 Detail: [XGIC CLI command usage](docs/xgic-cli-command-usage.md).
 
