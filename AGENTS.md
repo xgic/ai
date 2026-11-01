@@ -155,6 +155,9 @@ When editing an `xgic` command, agents and humans follow the same help rule:
 - Required options do not show a default.
 - Use `argparse.ArgumentDefaultsHelpFormatter`, or a subclass when the stored default is not the value a reader should see.
 - Leave untouched commands for their own change.
+- Keep `docs/commands.md` alphabetical for commands, subcommands, and options.
+- Mark each option Required, Optional, or Required to apply.
+- Update `docs/commands.md` in the same change as the command or option.
 
 Detail: [XGIC CLI command usage](docs/xgic-cli-command-usage.md).
 
