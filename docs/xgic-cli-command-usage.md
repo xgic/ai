@@ -31,6 +31,24 @@ Each CLI package keeps `docs/commands.md`.
 - A change to a command or option updates `docs/commands.md` in the
   same change.
 
+## Package configuration
+
+Each CLI distribution keeps non-secret runtime configuration in one JSON
+file. The filename is the project name from `[project].name` in
+`pyproject.toml`, the PEP 503 name in lowercase with hyphens. A project
+named `xgic-cli` uses `xgic-cli.json`. The contract beside it is
+`xgic-cli.schema.json`. A Pydantic model validates the document.
+
+Do not put hostnames, paths, or URLs in `pyproject.toml`. That file is
+project and tool metadata. Do not name the file after the import
+package. Dots imitate a module path.
+
+One file holds every non-secret section. A second file is only for
+secrets, or for a deployment that replaces the whole document. The
+environment variable for that replacement is the project name in
+uppercase, with hyphens turned into underscores, plus `_CONFIG`. For
+`xgic-cli` the variable is `XGIC_CLI_CONFIG`.
+
 ## Option defaults
 
 Every optional option shows its default in `--help`. Required options
