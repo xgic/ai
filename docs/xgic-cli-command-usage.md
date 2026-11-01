@@ -19,6 +19,18 @@ Shipped on `xgic wagtail`
 (https://github.com/xgic/gitlab-cli/pull/18). Existing Payload CMS
 commands are not the next implementation target.
 
+## Command reference
+
+Each CLI package keeps `docs/commands.md`.
+
+- Commands, subcommands, and options are alphabetical.
+- Each option is Required, Optional, or Required to apply. A
+  required-to-apply option may be omitted. The command then stays a
+  dry run or refuses the write.
+- Optional options state their default.
+- A change to a command or option updates `docs/commands.md` in the
+  same change.
+
 ## Option defaults
 
 Every optional option shows its default in `--help`. Required options
