@@ -181,6 +181,41 @@ does not close the milestone.
 
 Do not open a version milestone before its parent issue exists.
 
+### Future release milestone
+
+An accepted plan is an issue whose acceptance names one `X.Y.Z`
+release. Opening that plan creates that repository's `X.Y.Z`
+milestone. The plan's approval is the approval to create the
+milestone. A draft in triage, a mention of a version, and ordinary
+unscheduled work do not open a milestone. The next patch opens only
+when a release must ship that patch, or when an accepted plan names
+that patch. Do not open it only because work landed after the
+previous tag.
+
+The milestone description says the tag waits for the publish issue.
+The publish issue authorizes the version bump and the tag. Do not tag
+while any issue on the milestone is open. Do not change the package
+version or push the tag before that publish issue is approved.
+Planned work can move to another milestone when its priority changes.
+
+GitHub milestones stay repository-scoped. One milestone per issue.
+
+```mermaid
+flowchart TD
+  plan[Accepted plan names X.Y.Z]
+  future[Open milestone X.Y.Z and say the tag waits]
+  assign[Assign the planned work]
+  publish[Approved publish issue]
+  tag[Tag only when nothing on the milestone is open]
+  plan --> future --> assign --> publish --> tag
+```
+
+One organization Project may be a planning view across public
+repositories when a roadmap or status board is needed. The issues
+stay in their repositories. The Project is a lens. It is not a second
+source of truth, and it does not add time tracking. A Project per
+repository is not the plan. Milestones remain the release assignment.
+
 A repository that does not publish semantic versions uses an open
 milestone that already matches the effort. When none matches and the
 effort has two or more issues or pull requests, create one milestone
@@ -277,7 +312,7 @@ features and are not required here.
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
 - Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
-- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. Set it on every included issue and pull request, including work merged to `main` after the previous final tag. A parent whose sub-issues span more than one release is on the release that completes every sub-issue, even when the parent has no pull request of its own. It is not placed on an interim patch. A shippable slice uses the next patch of the current minor. A hotfix that is not part of that parent is that same next patch. A pull request that changes code stays on the release that contains that change. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
+- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. An accepted plan that names one `X.Y.Z` may open that milestone before the tag. The description says the tag waits for the publish issue, and an open issue on the milestone blocks the tag. Set it on every included issue and pull request, including work merged to `main` after the previous final tag. A parent whose sub-issues span more than one release is on the release that completes every sub-issue, even when the parent has no pull request of its own. It is not placed on an interim patch. A shippable slice uses the next patch of the current minor. A hotfix that is not part of that parent is that same next patch. A pull request that changes code stays on the release that contains that change. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
