@@ -129,6 +129,23 @@ A repository that publishes semantic versions uses one milestone per
 final version. The title is `X.Y.Z`, the same version the package
 metadata publishes. The Git tag remains `vX.Y.Z`.
 
+A repository that publishes a stable `vX.Y.Z` tag uses milestone
+titles `X.Y.Z` only. Set that milestone on the issue and on the pull
+request when they are created. Choose the next major for a breaking
+change, the next minor for a feature, and the next patch for a fix, a
+documentation change, or a chore. When the only unreleased milestone
+is too low for the change and it has no tag, rename it. Do not rename
+a milestone that already has a tag. When a higher milestone is
+already open, assign the larger change there and do not rename the
+lower milestone. When no open milestone matches, create the `X.Y.Z`
+milestone. Its description says the tag waits for the publish issue.
+Creating it does not authorize the tag. Work merged after the
+previous stable tag joins that next milestone. Do not assign new work
+to a milestone at or below the latest stable tag. A repository that
+does not publish a stable tag keeps an effort milestone. Delete an
+empty milestone whose title is not `X.Y.Z` on a repository that
+publishes versions.
+
 The release candidate and the final publish belong to that same
 milestone. Create it when the release is intended, with a parent issue
 in the same repository. The milestone description names that issue
@@ -185,7 +202,9 @@ Close the parent issue first, then the milestone, after the final
 publish and its acceptance are done. Publishing the release candidate
 does not close the milestone.
 
-Do not open a version milestone before its parent issue exists.
+A publish issue is required before the tag. It is not required before
+the milestone. Set the milestone when the issue or pull request is
+created.
 
 ### Future release milestone
 
@@ -193,10 +212,9 @@ An accepted plan is an issue whose acceptance names one `X.Y.Z`
 release. Opening that plan creates that repository's `X.Y.Z`
 milestone. The plan's approval is the approval to create the
 milestone. A draft in triage, a mention of a version, and ordinary
-unscheduled work do not open a milestone. The next patch opens only
-when a release must ship that patch, or when an accepted plan names
-that patch. Do not open it only because work landed after the
-previous tag.
+unscheduled work do not open a milestone. Creating an issue or pull
+request on a repository that publishes a stable tag does open or join
+the next `X.Y.Z` milestone. That does not authorize the tag.
 
 The milestone description says the tag waits for the publish issue.
 The publish issue authorizes the version bump and the tag. Do not tag
@@ -222,7 +240,7 @@ stay in their repositories. The Project is a lens. It is not a second
 source of truth, and it does not add time tracking. A Project per
 repository is not the plan. Milestones remain the release assignment.
 
-A repository that does not publish semantic versions uses an open
+A repository that does not publish a stable `vX.Y.Z` tag uses an open
 milestone that already matches the effort. When none matches and the
 effort has two or more issues or pull requests, create one milestone
 titled for the effort. One item with no matching milestone stays
@@ -318,7 +336,7 @@ features and are not required here.
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
 - Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
-- For a repository that publishes semantic versions, follow the semantic-version section above.
+- For a repository that publishes a stable `vX.Y.Z` tag, set the `X.Y.Z` milestone when the issue and the pull request are created. Follow the semantic-version section above.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
