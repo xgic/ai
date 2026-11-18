@@ -168,7 +168,13 @@ The version-bump pull request stays on the milestone it publishes.
 Dependency-update pull requests, typo-only documentation, and hotfixes
 are included when they are merged to `main`. After a milestone is
 closed, reopen it only to set a missed assignment, then close it
-again. The release tag is not moved.
+again. The release tag is not moved. When a version tag already
+exists and its milestone is still open, move every issue and pull
+request whose merge is not in that tag to the next release milestone,
+then close the shipped milestone. Do not move the tag. A later proof
+that needs the next release stays off the milestone that publishes it.
+Choose that next milestone from the changes on `main`: a feature is a
+minor, a breaking change is a major, and a fix alone is a patch.
 
 A hub effort milestone stays on the hub issue. The releasing
 repository's issue and pull requests use `X.Y.Z` only.
@@ -312,7 +318,7 @@ features and are not required here.
 - Prefer numbered procedures in docs; open issues/PRs for acceptance lists.
 - **Issue-first** before PRs for in-scope work (see above); do not open issue-less feature/bug/DX/standards PRs.
 - Assign every issue that belongs to an effort to that repository's milestone, including siblings. Keep child links on the parent issue. Leave an issue off a milestone only when its description states why it is unscheduled.
-- For a repository that publishes semantic versions, use one milestone titled `X.Y.Z` for the release that ships the change. An accepted plan that names one `X.Y.Z` may open that milestone before the tag. The description says the tag waits for the publish issue, and an open issue on the milestone blocks the tag. Set it on every included issue and pull request, including work merged to `main` after the previous final tag. A parent whose sub-issues span more than one release is on the release that completes every sub-issue, even when the parent has no pull request of its own. It is not placed on an interim patch. A shippable slice uses the next patch of the current minor. A hotfix that is not part of that parent is that same next patch. A pull request that changes code stays on the release that contains that change. GitHub does not copy the issue milestone onto the pull request. When the shipped version changes, move both to that `X.Y.Z` before the milestone closes. A hub effort milestone stays on the hub issue. Close the parent issue, then the milestone, after the final publish and its acceptance.
+- For a repository that publishes semantic versions, follow the semantic-version section above.
 - For work spanning **2+ public repos**: create a **parent milestone and
   parent issue on `xgic/ai`**; attach children with sub-issues or
   tracked `owner/repo#n` items. Do not inventory children on the
